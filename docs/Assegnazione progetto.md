@@ -1,11 +1,21 @@
 # Assegnazione Progetto
 
-## Battleship
+## Ataxx 23/24
 
+![Ataxx](docs/img/Screenshot 2024-03-29 194422.png)
 
-![Battleship](./img/battleship.png)
-
-- Il sistema posiziona le navi su una griglia.
-- Il giocatore cerca di indovinare la posizione delle navi e affondarle.
-- Il giocatore vince se affonda tutte le navi prima di esaurire le mosse.
-- Il numero di mosse disponibili dipende dalla modalità di gioco (facile/media/difficile/...).
+• Videogioco di strategia del
+1988
+• Due giocatori competono su
+una griglia quadrata sette per
+sette
+• Lo scopo del gioco è che un
+giocatore abbia la
+maggioranza dei pezzi sul
+tabellone alla fine del gioco,
+convertendo il maggior
+numero possibile di pezzi
+dell'avversario
+• I due giocatori si alterneranno su
+un unico device Command Line
+Interface (CLI)
