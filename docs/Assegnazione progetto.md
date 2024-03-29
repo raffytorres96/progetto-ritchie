@@ -2,7 +2,7 @@
 
 ## Ataxx 23/24
 
-![Ataxx](docs/img/Screenshot%202024-03-29%20194422.png)
+![Ataxx](./img/Screenshot%202024-03-29%20194422.png)
 
 • Videogioco di strategia del 1988;
 
