@@ -199,7 +199,7 @@ Come prima attività, è necessario clonare il repository remoto sulla propria m
 - Da terminale con shell bash spostarsi attraverso il comando *cd* nella cartella scelta al passo precedente;
 - Scrivere il comando `git clone <url>` , dove l’url è quello visibile da GitHub premendo il bottone *Clone or Download*, in alto a destra nell’interfaccia. Ad esempio:
 
-![GuidaDelloStudente_ritchie_12](img/GuidaDelloStudente_ritchie_12.jpg)
+![GuidaDelloStudente_ritchie_12](./img/GuidaDelloStudente_ritchie_12.jpg)
 
 Se l’operazione è andata a buon fine, sarà possibile importare il progetto nell'IDE con cui intendete lavorare.
 
@@ -292,11 +292,12 @@ Svolgere le seguenti operazioni:
 -->
 
 - recarsi alla pagina principale dedicata al repository su GitHub e fare click sul link del package sotto il titolo *"Packages"*, come evidenziato in figura;
+
    **N.B.**: se i Secret menzionati in questa guida sono stati impostati correttamente e se almeno un'esecuzione del workflow di GitHub Actions è andata a buon fine, la vostra immagine Docker (nella sua ultima versione) dovrebbe essere disponibile.
-   ![ExecuteDockerImage_1](./img/GuidaDelloStudente_ritchie_6.jpg)
+   ![GuidaDelloStudente_ritchie_6](./img/GuidaDelloStudente_ritchie_6.jpg)
 
 - nella pagina dedicata al package è indicato il comando da copiare ed eseguire nel terminale per scaricare l'immagine Docker in locale.
-   ![ExecuteDockerImage_2](./img/GuidaDelloStudente_ritchie_11.jpg)
+   ![GuidaDelloStudente_ritchie_11](./img/GuidaDelloStudente_ritchie_11.jpg)
 
 - incollare ed eseguire il comando nel terminale. Attendere che Docker scarichi l’immagine dell’applicazione
 
