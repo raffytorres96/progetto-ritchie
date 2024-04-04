@@ -1,4 +1,4 @@
-## CODE OF CODUCT 
+## CODE OF CONDUCT 
 
 
 Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in un team Scrum.
@@ -23,7 +23,7 @@ Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in
 
 ###  Revisione paritaria
 
--  Sarò professionale e pieno di tatto quando fornirò commenti di revisione. 
+-  Sarò professionale e pieno di tatto quando fornirò commenti di revisione; 
 
 - Sarò aperto a ricevere feedback quando altri esamineranno il mio lavoro.
 
@@ -37,7 +37,7 @@ Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in
 
 -  Non invierò il codice di produzione senza test approfonditi delle unità memoria;
 
-- Non invierò codice che causa l'emissione di un avviso da parte di uno strumento;
+- Non invierò codice che causa l'emissione di un avviso da parte di uno strumento.
 
 
   
