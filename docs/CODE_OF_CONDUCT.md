@@ -21,7 +21,7 @@ Questo documento definisce un codice di condotta a cui mi impegno ad attenermi i
 
 - Esprimerò i miei limiti nelle mie abilità se questi si presenteranno nell'assegnazione di un compito.
 ### Revisione paritaria
-- Sarò professionale e pieno di tatto quando fornirò commenti di revisione;
+- Sarò professionale e rispettoso quando fornirò commenti di revisione;
 
 - Sarò aperto a ricevere feedback quando altri esamineranno il mio lavoro.
 
