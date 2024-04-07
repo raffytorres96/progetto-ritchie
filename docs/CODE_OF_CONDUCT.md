@@ -1,7 +1,7 @@
 ## CODE OF CONDUCT 
  
 
-Questo documento definisce un codice di condotta a cui cercherò di aderire in un team Scrum.
+Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in un team Scrum.
 
 
 ### Partecipazione del Team
