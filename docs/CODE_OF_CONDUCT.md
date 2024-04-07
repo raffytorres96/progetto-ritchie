@@ -1,7 +1,7 @@
 ## CODE OF CONDUCT 
  
 
-Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in un team Scrum.
+Questo documento definisce un codice di condotta a cui mi impegno ad attenermi in un team Scrum.
 
 
 ### Partecipazione del Team
@@ -29,7 +29,7 @@ Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in
 - Fornirò codice comprensibile e chiaro;
 
 - Aggiungerò commenti al codice solo se non sono riuscito a esprimermi attraverso esso;
-- Scriverò codice che aderisce alle convenzioni di formattazione e stile del mio team;
+- Scriverò codice che aderisce alle convenzioni di formattazione e stile della mia squadra;
 - Non invierò codice di produzione senza adeguati unit test in-memory;
 - Non invierò codice che causa l'emissione di un avviso da parte di uno strumento.
 
