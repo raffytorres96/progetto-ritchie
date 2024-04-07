@@ -13,13 +13,13 @@ Questo documeto definisce un codice di condotta a cui mi impegno ad attenermi in
 
 - Non arriverò in ritardo alle riunioni della mia squadra.
 
-- Chiederò aiuto quando ne avrò bisogno.
+- Chiederò aiuto quando si presenta un problema che non sono in grado di risolvere.
 
 - Fornirò aiuto quando richiesto.
 
 -   Sarò onesto in ogni momento.
 
-- Se crederò che qualcosa non sia possibile, lo dirò senza esitazione.
+- Esprimerò i miei limiti nelle mie abilità se questi si presenteranno nell'assegnazione di un compito.
 ### Revisione paritaria
 - Sarò professionale e pieno di tatto quando fornirò commenti di revisione.
 
