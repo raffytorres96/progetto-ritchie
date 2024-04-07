@@ -1,36 +1,36 @@
-## Scrum team member code of conduct
-by Kyle Blaney 
+## Codice di Condotta per i membri del team Scrum
+da Kyle Blaney 
 
-This post defines a code of conduct that I try to adhere to on a Scrum team.
+Questo documento definisce un codice di condotta a cui cercherò di aderire in un team Scrum.
 
 
-### Team participation
-- Fixing my team's broken builds is my highest priority.
+### Partecipazione del Team
+- Riparare le build difettose della mia squadra è la mia massima priorità.
 
-- Participating in my team's code reviews is my second highest priority.
+- Partecipare alle revisioni del codice della mia squadra è la mia seconda priorità.
 
-- Improving my team's velocity is more important than improving my individual velocity.
+- Migliorare la velocità della mia squadra è più importante che migliorare la mia velocità individuale.
 
-- I will not be late for team meetings.
+- Non arriverò in ritardo alle riunioni della mia squadra.
 
-- I will ask for help when I need it.
+- Chiederò aiuto quando ne avrò bisogno.
 
-- I will provide help when asked.
+- Fornirò aiuto quando richiesto.
 
-- I will be honest at all times.
+-   Sarò onesto in ogni momento.
 
-- If I don't believe something is possible I will say so without hesitation.
-### Peer reviews
-- I will be professional and tactful when providing review comments.
+- Se crederò che qualcosa non sia possibile, lo dirò senza esitazione.
+### Revisione paritaria
+- Sarò professionale e pieno di tatto quando fornirò commenti di revisione.
 
-- I will be open to receiving feedback when others review my work.
+- Sarò aperto a ricevere feedback quando altri esamineranno il mio lavoro.
 
-### Writing code
-- I will express myself through code.
+### Scrittura del codice
+- Fornirò codice comprensibile e chiaro.
 
-- I will add comments to code only if I have failed to express myself through code.
-- I will write code that adheres to my team's formatting and style conventions.
-- I will not submit production code without thorough in-memory unit tests.
-- I will not submit code that causes any tool to emit a warning.
+- Aggiungerò commenti al codice solo se non sono riuscito a esprimermi attraverso esso.
+- Scriverò codice che aderisce alle convenzioni di formattazione e stile del mio team.
+- Non invierò codice di produzione senza adeguati unit test in-memory.
+- Non invierò codice che causa l'emissione di un avviso da parte di uno strumento.
 
   
