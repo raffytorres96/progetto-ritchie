@@ -1,4 +1,4 @@
-## Codice di Condotta per i membri del team Scrum
+## CODE OF CONDUCT 
 da Kyle Blaney 
 
 Questo documento definisce un codice di condotta a cui cercherò di aderire in un team Scrum.
