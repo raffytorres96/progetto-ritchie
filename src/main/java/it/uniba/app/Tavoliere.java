@@ -23,4 +23,16 @@ public class Tavoliere
 	    }
 	    System.out.println(ETICHETTA_RIGHE);
     }
+    public void stampaTavoliereVuoto(){
+        System.out.println(ETICHETTA_RIGHE);
+	    for(int i=0;i<7;i++){
+            System.out.print(ETICHETTA_COLONNE[i]+"  ");
+	        for(int j=0;j<7;j++){
+	            System.out.print(Cella.ICONA_CELLA_VUOTA+"  ");
+	        }
+	        System.out.print(" "+ETICHETTA_COLONNE[i]);
+	        System.out.println("");
+	    }
+	    System.out.println(ETICHETTA_RIGHE);
+    }
 }
