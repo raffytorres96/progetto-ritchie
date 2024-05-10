@@ -67,6 +67,16 @@ public class GestoreStampa {
   }
 
   /**
+   * Metodo statico che si occupa di stampare messaggi a video.
+   * 
+   * @param messaggio
+   */
+  public static void stampaMessaggio(final String messaggio) {
+    System.out.print(messaggio);
+  }
+  
+  
+  /**
    * Metodo statico che si occupa di stampare
    * in AsciiArt il titolo del gioco.
    *
