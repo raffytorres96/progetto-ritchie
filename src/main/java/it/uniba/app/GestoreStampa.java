@@ -51,5 +51,12 @@ public class GestoreStampa {
    */
   public static final String ANSI_PINK = "\u001B[38;2;255;105;180m";
 
+  /**
+   * Costruttore di GestioneStampa.
+   */
+  private GestoreStampa() {
+}
+
+
     
 }
