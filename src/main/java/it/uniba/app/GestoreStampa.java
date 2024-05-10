@@ -57,7 +57,14 @@ public class GestoreStampa {
   private GestoreStampa() {
 }
 
-
+/**
+   * Metodo statico che stampa
+   * il titolo del gioco.
+   */
+  public static void stampareTitoloGioco() {
+    stampareScritteInAsciiArt("ATAXX ", ANSI_RED);
+   
+  }
 
   /**
    * Metodo statico che si occupa di stampare
