@@ -58,5 +58,626 @@ public class GestoreStampa {
 }
 
 
+
+  /**
+   * Metodo statico che si occupa di stampare
+   * in AsciiArt il titolo del gioco.
+   *
+   * @param input
+   * @param color
+   */
+  public static void stampareScritteInAsciiArt(final String input,
+                                               final String color) {
+
+    System.out.println(color);
+
+    stamparePrimaRiga(input);
+    System.out.println();
+    stampareSecondaRiga(input);
+    System.out.println();
+    stampareTerzaRiga(input);
+    System.out.println();
+    stampareQuartaRiga(input);
+    System.out.println();
+    stampareQuintaRiga(input);
+    System.out.println();
+    stampareSestaRiga(input);
+
+    System.out.println(ANSI_RESET + "\n");
+  }
+
+  /**
+   * Metodo statico che si occupa di convertire
+   * la prima riga del titolo in AsciiArt.
+   *
+   * @param input
+   */
+  private static void stamparePrimaRiga(final String input) {
+    int posizione;
+
+    posizione = 0;
+    while (posizione < input.length()) {
+      if (input.charAt(posizione) == 'A'
+              || input.charAt(posizione) == 'a') {
+        System.out.printf("  ___   ");
+      } else if (input.charAt(posizione) == 'B'
+              || input.charAt(posizione) == 'b') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'C'
+              || input.charAt(posizione) == 'c') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'D'
+              || input.charAt(posizione) == 'd') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'E'
+              || input.charAt(posizione) == 'e') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'F'
+              || input.charAt(posizione) == 'f') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'G'
+              || input.charAt(posizione) == 'g') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'H'
+              || input.charAt(posizione) == 'h') {
+        System.out.printf(" _   _  ");
+      } else if (input.charAt(posizione) == 'I'
+              || input.charAt(posizione) == 'i') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'J'
+              || input.charAt(posizione) == 'j') {
+        System.out.printf("   ___  ");
+      } else if (input.charAt(posizione) == 'K'
+              || input.charAt(posizione) == 'k') {
+        System.out.printf(" _   __ ");
+      } else if (input.charAt(posizione) == 'L'
+              || input.charAt(posizione) == 'l') {
+        System.out.printf(" _      ");
+      } else if (input.charAt(posizione) == 'M'
+              || input.charAt(posizione) == 'm') {
+        System.out.printf(" __  __  ");
+      } else if (input.charAt(posizione) == 'N'
+              || input.charAt(posizione) == 'n') {
+        System.out.printf(" _   _  ");
+      } else if (input.charAt(posizione) == 'O'
+              || input.charAt(posizione) == 'o') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'P'
+              || input.charAt(posizione) == 'p') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'Q'
+              || input.charAt(posizione) == 'q') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'R'
+              || input.charAt(posizione) == 'r') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'S'
+              || input.charAt(posizione) == 's') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'T'
+              || input.charAt(posizione) == 't') {
+        System.out.printf(" _____  ");
+      } else if (input.charAt(posizione) == 'U'
+              || input.charAt(posizione) == 'u') {
+        System.out.printf(" _   _  ");
+      } else if (input.charAt(posizione) == 'V'
+              || input.charAt(posizione) == 'v') {
+        System.out.printf(" _   _  ");
+      } else if (input.charAt(posizione) == 'W'
+              || input.charAt(posizione) == 'w') {
+        System.out.printf(" _    _  ");
+      } else if (input.charAt(posizione) == 'X'
+              || input.charAt(posizione) == 'x') {
+        System.out.printf("__   __ ");
+      } else if (input.charAt(posizione) == 'Y'
+              || input.charAt(posizione) == 'y') {
+        System.out.printf("__   __ ");
+      } else if (input.charAt(posizione) == 'Z'
+              || input.charAt(posizione) == 'z') {
+        System.out.printf(" ______ ");
+      } else if (input.charAt(posizione) == '!') {
+        System.out.printf(" _  ");
+      } else if (input.charAt(posizione) == '\'') {
+        System.out.printf(" _  ");
+      }
+
+      posizione++;
+    }
+  }
+
+  /**
+   * Metodo statico che si occupa di convertire
+   * la seconda riga del titolo in AsciiArt.
+   *
+   * @param input
+   */
+  private static void stampareSecondaRiga(final String input) {
+    int posizione;
+    posizione = 0;
+    while (posizione < input.length()) {
+      if (input.charAt(posizione) == 'A'
+              || input.charAt(posizione) == 'a') {
+        System.out.printf(" / _ \\  ");
+      } else if (input.charAt(posizione) == 'B'
+              || input.charAt(posizione) == 'b') {
+        System.out.printf("| ___ \\ ");
+      } else if (input.charAt(posizione) == 'C'
+              || input.charAt(posizione) == 'c') {
+        System.out.printf("/  __ \\ ");
+      } else if (input.charAt(posizione) == 'D'
+              || input.charAt(posizione) == 'd') {
+        System.out.printf("|  _  \\ ");
+      } else if (input.charAt(posizione) == 'E'
+              || input.charAt(posizione) == 'e') {
+        System.out.printf("|  ___| ");
+      } else if (input.charAt(posizione) == 'F'
+              || input.charAt(posizione) == 'f') {
+        System.out.printf("|  ___| ");
+      } else if (input.charAt(posizione) == 'G'
+              || input.charAt(posizione) == 'g') {
+        System.out.printf("|  __ \\ ");
+      } else if (input.charAt(posizione) == 'H'
+              || input.charAt(posizione) == 'h') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'I'
+              || input.charAt(posizione) == 'i') {
+        System.out.printf("|_   _| ");
+      } else if (input.charAt(posizione) == 'J'
+              || input.charAt(posizione) == 'j') {
+        System.out.printf("  |_  | ");
+      } else if (input.charAt(posizione) == 'K'
+              || input.charAt(posizione) == 'k') {
+        System.out.printf("| | / / ");
+      } else if (input.charAt(posizione) == 'L'
+              || input.charAt(posizione) == 'l') {
+        System.out.printf("| |     ");
+      } else if (input.charAt(posizione) == 'M'
+              || input.charAt(posizione) == 'm') {
+        System.out.printf("|  \\/  | ");
+      } else if (input.charAt(posizione) == 'N'
+              || input.charAt(posizione) == 'n') {
+        System.out.printf("| \\ | | ");
+      } else if (input.charAt(posizione) == 'O'
+              || input.charAt(posizione) == 'o') {
+        System.out.printf("|  _  | ");
+      } else if (input.charAt(posizione) == 'P'
+              || input.charAt(posizione) == 'p') {
+        System.out.printf("| ___ \\ ");
+      } else if (input.charAt(posizione) == 'Q'
+              || input.charAt(posizione) == 'q') {
+        System.out.printf("|  _  | ");
+      } else if (input.charAt(posizione) == 'R'
+              || input.charAt(posizione) == 'r') {
+        System.out.printf("| ___ \\ ");
+      } else if (input.charAt(posizione) == 'S'
+              || input.charAt(posizione) == 's') {
+        System.out.printf("/  ___| ");
+      } else if (input.charAt(posizione) == 'T'
+              || input.charAt(posizione) == 't') {
+        System.out.printf("|_   _| ");
+      } else if (input.charAt(posizione) == 'U'
+              || input.charAt(posizione) == 'u') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'V'
+              || input.charAt(posizione) == 'v') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'W'
+              || input.charAt(posizione) == 'w') {
+        System.out.printf("| |  | | ");
+      } else if (input.charAt(posizione) == 'X'
+              || input.charAt(posizione) == 'x') {
+        System.out.printf("\\ \\ / / ");
+      } else if (input.charAt(posizione) == 'Y'
+              || input.charAt(posizione) == 'y') {
+        System.out.printf("\\ \\ / / ");
+      } else if (input.charAt(posizione) == 'Z'
+              || input.charAt(posizione) == 'z') {
+        System.out.printf("|___  / ");
+      } else if (input.charAt(posizione) == '!') {
+        System.out.printf("| | ");
+      } else if (input.charAt(posizione) == '\'') {
+        System.out.printf("( ) ");
+      }
+      posizione++;
+    }
+  }
+
+  /**
+   * Metodo statico che si occupa di convertire
+   * la terza riga del titolo in AsciiArt.
+   *
+   * @param input
+   */
+  private static void stampareTerzaRiga(final String input) {
+    int posizione;
+
+    posizione = 0;
+    while (posizione < input.length()) {
+      if (input.charAt(posizione) == 'A'
+              || input.charAt(posizione) == 'a') {
+        System.out.printf("/ /_\\ \\ ");
+      } else if (input.charAt(posizione) == 'B'
+              || input.charAt(posizione) == 'b') {
+        System.out.printf("| |_/ / ");
+      } else if (input.charAt(posizione) == 'C'
+              || input.charAt(posizione) == 'c') {
+        System.out.printf("| /  \\/ ");
+      } else if (input.charAt(posizione) == 'D'
+              || input.charAt(posizione) == 'd') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'E'
+              || input.charAt(posizione) == 'e') {
+        System.out.printf("| |__   ");
+      } else if (input.charAt(posizione) == 'F'
+              || input.charAt(posizione) == 'f') {
+        System.out.printf("| |_    ");
+      } else if (input.charAt(posizione) == 'G'
+              || input.charAt(posizione) == 'g') {
+        System.out.printf("| |  \\/ ");
+      } else if (input.charAt(posizione) == 'H'
+              || input.charAt(posizione) == 'h') {
+        System.out.printf("| |_| | ");
+      } else if (input.charAt(posizione) == 'I'
+              || input.charAt(posizione) == 'i') {
+        System.out.printf("  | |   ");
+      } else if (input.charAt(posizione) == 'J'
+              || input.charAt(posizione) == 'j') {
+        System.out.printf("    | | ");
+      } else if (input.charAt(posizione) == 'K'
+              || input.charAt(posizione) == 'k') {
+        System.out.printf("| |/ /  ");
+      } else if (input.charAt(posizione) == 'L'
+              || input.charAt(posizione) == 'l') {
+        System.out.printf("| |     ");
+      } else if (input.charAt(posizione) == 'M'
+              || input.charAt(posizione) == 'm') {
+        System.out.printf("| .  . | ");
+      } else if (input.charAt(posizione) == 'N'
+              || input.charAt(posizione) == 'n') {
+        System.out.printf("|  \\| | ");
+      } else if (input.charAt(posizione) == 'O'
+              || input.charAt(posizione) == 'o') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'P'
+              || input.charAt(posizione) == 'p') {
+        System.out.printf("| |_/ / ");
+      } else if (input.charAt(posizione) == 'Q'
+              || input.charAt(posizione) == 'q') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'R'
+              || input.charAt(posizione) == 'r') {
+        System.out.printf("| |_/ / ");
+      } else if (input.charAt(posizione) == 'S'
+              || input.charAt(posizione) == 's') {
+        System.out.printf("\\ `--.  ");
+      } else if (input.charAt(posizione) == 'T'
+              || input.charAt(posizione) == 't') {
+        System.out.printf("  | |   ");
+      } else if (input.charAt(posizione) == 'U'
+              || input.charAt(posizione) == 'u') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'V'
+              || input.charAt(posizione) == 'v') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'W'
+              || input.charAt(posizione) == 'w') {
+        System.out.printf("| |  | | ");
+      } else if (input.charAt(posizione) == 'X'
+              || input.charAt(posizione) == 'x') {
+        System.out.printf(" \\ V /  ");
+      } else if (input.charAt(posizione) == 'Y'
+              || input.charAt(posizione) == 'y') {
+        System.out.printf(" \\ V /  ");
+      } else if (input.charAt(posizione) == 'Z'
+              || input.charAt(posizione) == 'z') {
+        System.out.printf("   / /  ");
+      } else if (input.charAt(posizione) == '!') {
+        System.out.printf("| | ");
+      } else if (input.charAt(posizione) == '\'') {
+        System.out.printf("|/  ");
+      }
+      posizione++;
+    }
+  }
+
+  /**
+   * Metodo statico che si occupa di convertire
+   * la quarta riga del titolo in AsciiArt.
+   *
+   * @param input
+   */
+  private static void stampareQuartaRiga(final String input) {
+    int posizione;
+
+    posizione = 0;
+    while (posizione < input.length()) {
+      if (input.charAt(posizione) == 'A'
+              || input.charAt(posizione) == 'a') {
+        System.out.printf("|  _  | ");
+      } else if (input.charAt(posizione) == 'B'
+              || input.charAt(posizione) == 'b') {
+        System.out.printf("| ___ \\ ");
+      } else if (input.charAt(posizione) == 'C'
+              || input.charAt(posizione) == 'c') {
+        System.out.printf("| |     ");
+      } else if (input.charAt(posizione) == 'D'
+              || input.charAt(posizione) == 'd') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'E'
+              || input.charAt(posizione) == 'e') {
+        System.out.printf("|  __|  ");
+      } else if (input.charAt(posizione) == 'F'
+              || input.charAt(posizione) == 'f') {
+        System.out.printf("|  _|   ");
+      } else if (input.charAt(posizione) == 'G'
+              || input.charAt(posizione) == 'g') {
+        System.out.printf("| | __  ");
+      } else if (input.charAt(posizione) == 'H'
+              || input.charAt(posizione) == 'h') {
+        System.out.printf("|  _  | ");
+      } else if (input.charAt(posizione) == 'I'
+              || input.charAt(posizione) == 'i') {
+        System.out.printf("  | |   ");
+      } else if (input.charAt(posizione) == 'J'
+              || input.charAt(posizione) == 'j') {
+        System.out.printf("    | | ");
+      } else if (input.charAt(posizione) == 'K'
+              || input.charAt(posizione) == 'k') {
+        System.out.printf("|    \\  ");
+      } else if (input.charAt(posizione) == 'L'
+              || input.charAt(posizione) == 'l') {
+        System.out.printf("| |     ");
+      } else if (input.charAt(posizione) == 'M'
+              || input.charAt(posizione) == 'm') {
+        System.out.printf("| |\\/| | ");
+      } else if (input.charAt(posizione) == 'N'
+              || input.charAt(posizione) == 'n') {
+        System.out.printf("| . ` | ");
+      } else if (input.charAt(posizione) == 'O'
+              || input.charAt(posizione) == 'o') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'P'
+              || input.charAt(posizione) == 'p') {
+        System.out.printf("|  __/  ");
+      } else if (input.charAt(posizione) == 'Q'
+              || input.charAt(posizione) == 'q') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'R'
+              || input.charAt(posizione) == 'r') {
+        System.out.printf("|    /  ");
+      } else if (input.charAt(posizione) == 'S'
+              || input.charAt(posizione) == 's') {
+        System.out.printf(" `--. \\ ");
+      } else if (input.charAt(posizione) == 'T'
+              || input.charAt(posizione) == 't') {
+        System.out.printf("  | |   ");
+      } else if (input.charAt(posizione) == 'U'
+              || input.charAt(posizione) == 'u') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'V'
+              || input.charAt(posizione) == 'v') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'W'
+              || input.charAt(posizione) == 'w') {
+        System.out.printf("| |/\\| | ");
+      } else if (input.charAt(posizione) == 'X'
+              || input.charAt(posizione) == 'x') {
+        System.out.printf(" / ^ \\  ");
+      } else if (input.charAt(posizione) == 'Y'
+              || input.charAt(posizione) == 'y') {
+        System.out.printf("  \\ /   ");
+      } else if (input.charAt(posizione) == 'Z'
+              || input.charAt(posizione) == 'z') {
+        System.out.printf("  / /   ");
+      } else if (input.charAt(posizione) == '!') {
+        System.out.printf("| | ");
+      } else if (input.charAt(posizione) == '\'') {
+        System.out.printf("    ");
+      }
+
+      posizione++;
+    }
+  }
+
+  /**
+   * Metodo statico che si occupa di convertire
+   * la quarta riga del titolo in AsciiArt.
+   *
+   * @param input
+   */
+  private static void stampareQuintaRiga(final String input) {
+    int posizione;
+    posizione = 0;
+    while (posizione < input.length()) {
+      if (input.charAt(posizione) == 'A'
+              || input.charAt(posizione) == 'a') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'B'
+              || input.charAt(posizione) == 'b') {
+        System.out.printf("| |_/ / ");
+      } else if (input.charAt(posizione) == 'C'
+              || input.charAt(posizione) == 'c') {
+        System.out.printf("| \\__/\\ ");
+      } else if (input.charAt(posizione) == 'D'
+              || input.charAt(posizione) == 'd') {
+        System.out.printf("| |/ /  ");
+      } else if (input.charAt(posizione) == 'E'
+              || input.charAt(posizione) == 'e') {
+        System.out.printf("| |___  ");
+      } else if (input.charAt(posizione) == 'F'
+              || input.charAt(posizione) == 'f') {
+        System.out.printf("| |     ");
+      } else if (input.charAt(posizione) == 'G'
+              || input.charAt(posizione) == 'g') {
+        System.out.printf("| |_\\ \\ ");
+      } else if (input.charAt(posizione) == 'H'
+              || input.charAt(posizione) == 'h') {
+        System.out.printf("| | | | ");
+      } else if (input.charAt(posizione) == 'I'
+              || input.charAt(posizione) == 'i') {
+        System.out.printf(" _| |_  ");
+      } else if (input.charAt(posizione) == 'J'
+              || input.charAt(posizione) == 'j') {
+        System.out.printf("/\\__/ / ");
+      } else if (input.charAt(posizione) == 'K'
+              || input.charAt(posizione) == 'k') {
+        System.out.printf("| |\\  \\ ");
+      } else if (input.charAt(posizione) == 'L'
+              || input.charAt(posizione) == 'l') {
+        System.out.printf("| |____ ");
+      } else if (input.charAt(posizione) == 'M'
+              || input.charAt(posizione) == 'm') {
+        System.out.printf("| |  | | ");
+      } else if (input.charAt(posizione) == 'N'
+              || input.charAt(posizione) == 'n') {
+        System.out.printf("| |\\  | ");
+      } else if (input.charAt(posizione) == 'O'
+              || input.charAt(posizione) == 'o') {
+        System.out.printf("\\ \\_/ / ");
+      } else if (input.charAt(posizione) == 'P'
+              || input.charAt(posizione) == 'p') {
+        System.out.printf("| |     ");
+      } else if (input.charAt(posizione) == 'Q'
+              || input.charAt(posizione) == 'q') {
+        System.out.printf("\\ \\/' / ");
+      } else if (input.charAt(posizione) == 'R'
+              || input.charAt(posizione) == 'r') {
+        System.out.printf("| |\\ \\  ");
+      } else if (input.charAt(posizione) == 'S'
+              || input.charAt(posizione) == 's') {
+        System.out.printf("/\\__/ / ");
+      } else if (input.charAt(posizione) == 'T'
+              || input.charAt(posizione) == 't') {
+        System.out.printf("  | |   ");
+      } else if (input.charAt(posizione) == 'U'
+              || input.charAt(posizione) == 'u') {
+        System.out.printf("| |_| | ");
+      } else if (input.charAt(posizione) == 'V'
+              || input.charAt(posizione) == 'v') {
+        System.out.printf("\\ \\_/ / ");
+      } else if (input.charAt(posizione) == 'W'
+              || input.charAt(posizione) == 'w') {
+        System.out.printf("\\  /\\  / ");
+      } else if (input.charAt(posizione) == 'X'
+              || input.charAt(posizione) == 'x') {
+        System.out.printf("/ / \\ \\ ");
+      } else if (input.charAt(posizione) == 'Y'
+              || input.charAt(posizione) == 'y') {
+        System.out.printf("  | |   ");
+      } else if (input.charAt(posizione) == 'Z'
+              || input.charAt(posizione) == 'z') {
+        System.out.printf("./ /___ ");
+      } else if (input.charAt(posizione) == '!') {
+        System.out.printf("|_| ");
+      } else if (input.charAt(posizione) == '\'') {
+        System.out.printf("    ");
+      }
+
+      posizione++;
+    }
+  }
+
+  /**
+   * Metodo statico che si occupa di convertire
+   * la sesta riga del titolo in AsciiArt.
+   *
+   * @param input
+   */
+  private static void stampareSestaRiga(final String input) {
+    int posizione;
+
+    posizione = 0;
+    while (posizione < input.length()) {
+      if (input.charAt(posizione) == 'A'
+              || input.charAt(posizione) == 'a') {
+        System.out.printf("\\_| |_/ ");
+      } else if (input.charAt(posizione) == 'B'
+              || input.charAt(posizione) == 'b') {
+        System.out.printf("\\____/  ");
+      } else if (input.charAt(posizione) == 'C'
+              || input.charAt(posizione) == 'c') {
+        System.out.printf(" \\____/ ");
+      } else if (input.charAt(posizione) == 'D'
+              || input.charAt(posizione) == 'd') {
+        System.out.printf("|___/   ");
+      } else if (input.charAt(posizione) == 'E'
+              || input.charAt(posizione) == 'e') {
+        System.out.printf("\\____/  ");
+      } else if (input.charAt(posizione) == 'F'
+              || input.charAt(posizione) == 'f') {
+        System.out.printf("\\_|     ");
+      } else if (input.charAt(posizione) == 'G'
+              || input.charAt(posizione) == 'g') {
+        System.out.printf(" \\____/ ");
+      } else if (input.charAt(posizione) == 'H'
+              || input.charAt(posizione) == 'h') {
+        System.out.printf("\\_| |_/ ");
+      } else if (input.charAt(posizione) == 'I'
+              || input.charAt(posizione) == 'i') {
+        System.out.printf(" \\___/  ");
+      } else if (input.charAt(posizione) == 'J'
+              || input.charAt(posizione) == 'j') {
+        System.out.printf("\\____/  ");
+      } else if (input.charAt(posizione) == 'K'
+              || input.charAt(posizione) == 'k') {
+        System.out.printf("\\_| \\_/ ");
+      } else if (input.charAt(posizione) == 'L'
+              || input.charAt(posizione) == 'l') {
+        System.out.printf("\\_____/ ");
+      } else if (input.charAt(posizione) == 'M'
+              || input.charAt(posizione) == 'm') {
+        System.out.printf("\\_|  |_/ ");
+      } else if (input.charAt(posizione) == 'N'
+              || input.charAt(posizione) == 'n') {
+        System.out.printf("\\_| \\_/ ");
+      } else if (input.charAt(posizione) == 'O'
+              || input.charAt(posizione) == 'o') {
+        System.out.printf(" \\___/  ");
+      } else if (input.charAt(posizione) == 'P'
+              || input.charAt(posizione) == 'p') {
+        System.out.printf("\\_|     ");
+      } else if (input.charAt(posizione) == 'Q'
+              || input.charAt(posizione) == 'q') {
+        System.out.printf(" \\_/\\_\\ ");
+      } else if (input.charAt(posizione) == 'R'
+              || input.charAt(posizione) == 'r') {
+        System.out.printf("\\_| \\_| ");
+      } else if (input.charAt(posizione) == 'S'
+              || input.charAt(posizione) == 's') {
+        System.out.printf("\\____/  ");
+      } else if (input.charAt(posizione) == 'T'
+              || input.charAt(posizione) == 't') {
+        System.out.printf("  \\_/   ");
+      } else if (input.charAt(posizione) == 'U'
+              || input.charAt(posizione) == 'u') {
+        System.out.printf(" \\___/  ");
+      } else if (input.charAt(posizione) == 'V'
+              || input.charAt(posizione) == 'v') {
+        System.out.printf(" \\___/  ");
+      } else if (input.charAt(posizione) == 'W'
+              || input.charAt(posizione) == 'w') {
+        System.out.printf(" \\/  \\/  ");
+      } else if (input.charAt(posizione) == 'X'
+              || input.charAt(posizione) == 'x') {
+        System.out.printf("\\/   \\/ ");
+      } else if (input.charAt(posizione) == 'Y'
+              || input.charAt(posizione) == 'y') {
+        System.out.printf("  \\_/   ");
+      } else if (input.charAt(posizione) == 'Z'
+              || input.charAt(posizione) == 'z') {
+        System.out.printf("\\_____/ ");
+      } else if (input.charAt(posizione) == '!') {
+        System.out.printf("(_) ");
+      } else if (input.charAt(posizione) == '\'') {
+        System.out.printf("    ");
+      }
+
+      posizione++;
+    }
+  }
+
     
-}
+    
+ }
+    
+
