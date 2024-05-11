@@ -47,7 +47,7 @@ public class Tavoliere
    * Metodo che restituisce l'intera matrice tavoliere.
    * @return tavoliere
    */
-    public Tavoliere getTavoliere(){
+    public Cella[][] getTavoliere(){
         return tavoliere;
     }
      /**
