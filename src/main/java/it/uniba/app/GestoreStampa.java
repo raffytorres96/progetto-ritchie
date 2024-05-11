@@ -71,7 +71,7 @@ public class GestoreStampa {
    * 
    * @param messaggio
    */
-  public static void stampaMessaggio(final String messaggio) {
+  public static void stampareMessaggio(final String messaggio) {
     System.out.print(messaggio);
   }
   
