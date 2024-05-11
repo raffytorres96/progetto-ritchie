@@ -43,26 +43,23 @@ public class Tavoliere
 	        }
 	    }
     }
+     /**
+   * Metodo che restituisce l'intera matrice tavoliere.
+   * @return tavoliere
+   */
     public Tavoliere getTavoliere(){
         return tavoliere;
     }
+     /**
+   * Metodo che scrive l'attributo stato della cella individuata dai parametri
+   * riga e colonna nella matrice tavoliere
+   * @param riga
+   * @param colonna
+   * @param stato
+   * @return restituisce true se lo stato viene modificato correttamente.
+   */
     public boolean setTavoliere(int riga, int colonna, int stato){
         tavoliere[riga][colonna].setStato(stato);
         return true;
-    }
-    public void stampaT(int riga,int colonna){
-        System.out.println(tavoliere[riga][colonna].getStato());
-    }
-    public void stampaTavoliere(){
-        System.out.println(ETICHETTA_RIGHE);
-	    for(int i=0;i<7;i++){
-            System.out.print(ETICHETTA_COLONNE[i]+"  ");
-	        for(int j=0;j<7;j++){
-	            System.out.print(tavoliere[i][j].getStato()+"  ");
-	        }
-	        System.out.print(" "+ETICHETTA_COLONNE[i]);
-	        System.out.println("");
-	    }
-	    System.out.println(ETICHETTA_RIGHE);
     }
 }
