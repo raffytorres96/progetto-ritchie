@@ -26,8 +26,5 @@ public final class App {
         t.setTavoliere(1,5,1);
         GestoreStampa.stampareTavoliereVuoto();
         GestoreStampa.stampareTavoliere(t);
-        Cella c = t.getCella(0,2);
-        int sc = t.getStatoCella(c);
-        System.out.println(c+" "+sc);
     }
 }

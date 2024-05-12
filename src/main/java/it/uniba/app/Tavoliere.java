@@ -72,13 +72,4 @@ public class Tavoliere
         Cella cella = tavoliere[riga][colonna];
         return cella;
     }
-    /**
-   * Metodo che restituisce lo stato di una specifica cella.
-   * @param cel, cella da esaminare
-   * @return stato, stato della cella esaminata
-   */
-    public int getStatoCella(Cella cel){
-        int stato=Cella.getStato(cel);
-        return stato;
-    }
 }
