@@ -22,7 +22,7 @@ public final class App {
     public static void main(final String[] args) {
         System.out.println(new App().getGreeting());
         Tavoliere t = new Tavoliere();
-        GestoreStampa.stampaTavoliereVuoto();
-        GestoreStampa.stampaTavoliere(t);
+        GestoreStampa.stampareTavoliereVuoto();
+        GestoreStampa.stampareTavoliere(t);
     }
 }
