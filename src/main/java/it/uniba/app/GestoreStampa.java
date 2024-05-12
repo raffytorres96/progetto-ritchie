@@ -710,31 +710,31 @@ public class GestoreStampa {
    * @param tavoliere
    */
   public static void stampareTavoliere(Tavoliere tavoliere){
-    System.out.println(Tavoliere.ETICHETTA_RIGHE);
+    System.out.println(ETICHETTA_RIGHE);
     for(int i=0;i<7;i++){
-      System.out.print(Tavoliere.ETICHETTA_COLONNE[i]+"  ");
+      System.out.print(ETICHETTA_COLONNE[i]+"  ");
       for(int j=0;j<7;j++){
         System.out.print(tavoliere.tavoliere[i][j].getIcona()+"  ");
       }
-      System.out.print(" "+Tavoliere.ETICHETTA_COLONNE[i]);
+      System.out.print(" "+ETICHETTA_COLONNE[i]);
       System.out.println("");
     }
-    System.out.println(Tavoliere.ETICHETTA_RIGHE);
+    System.out.println(ETICHETTA_RIGHE);
 }
  /**
    * Metodo che si occupa di stampare il tavoliere vuoto
    */
 public static void stampareTavoliereVuoto(){
-  System.out.println(Tavoliere.ETICHETTA_RIGHE);
+  System.out.println(ETICHETTA_RIGHE);
   for(int i=0;i<7;i++){
-    System.out.print(Tavoliere.ETICHETTA_COLONNE[i]+"  ");
+    System.out.print(ETICHETTA_COLONNE[i]+"  ");
     for(int j=0;j<7;j++){
       System.out.print(Cella.ICONA_CELLA_VUOTA+"  ");
     }
-    System.out.print(" "+Tavoliere.ETICHETTA_COLONNE[i]);
+    System.out.print(" "+ETICHETTA_COLONNE[i]);
     System.out.println("");
   }
-  System.out.println(Tavoliere.ETICHETTA_RIGHE);
+  System.out.println(ETICHETTA_RIGHE);
 }
 
 

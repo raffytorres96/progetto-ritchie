@@ -22,6 +22,8 @@ public final class App {
     public static void main(final String[] args) {
         System.out.println(new App().getGreeting());
         Tavoliere t = new Tavoliere();
+        t.setTavoliere(0,0,2);
+        t.setTavoliere(1,5,1);
         GestoreStampa.stampareTavoliereVuoto();
         GestoreStampa.stampareTavoliere(t);
     }

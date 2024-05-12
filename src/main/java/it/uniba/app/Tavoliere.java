@@ -15,6 +15,16 @@ package it.uniba.app;
 public class Tavoliere
 {
 	 /**
+   * Attributo statico che contiene l'etichetta delle colonne 
+   * della griglia di gioco.
+   */
+    private static final char [] ETICHETTA_COLONNE = {'1','2','3','4','5','6','7'};
+	 /**
+   * Attributo statico che contiene l'etichetta delle righe
+   * della griglia di gioco.
+   */
+    private static final String ETICHETTA_RIGHE = "   A  B  C  D  E  F  G";
+	 /**
    * Attributo statico che contiene il numero di righe e colonne.
    */
     private static final short N_RIGHE_COLONNE = 7;
@@ -34,19 +44,19 @@ public class Tavoliere
 	    }
     }
      /**
-   * Metodo che restituisce l'intera matrice tavoliere.
-   * @return tavoliere
+   * Metodo d'accesso al tavoliere, restituisce la griglia di gioco.
+   * @return tavoliere intera matrice di celle
    */
-    public Cella[][] getTavoliere(){
+    public Tavoliere getTavoliere(){
         return tavoliere;
     }
      /**
-   * Metodo che scrive l'attributo stato della cella individuata dai parametri
-   * riga e colonna nella matrice tavoliere
-   * @param riga
-   * @param colonna
-   * @param stato
-   * @return restituisce true se lo stato viene modificato correttamente.
+   * Metodo d'accesso al tavoliere, modifica un attributo di una specifica
+   * cella.
+   * @param riga indice della riga della matrice tavoliere
+   * @param colonna indice della colonna della matrice tavoliere
+   * @param stato stato da scrivere nella cella del tavoliere selezionata
+   * @return boolean restituisce true se il metodo viene eseguito senza problemi
    */
     public boolean setTavoliere(int riga, int colonna, int stato){
         tavoliere[riga][colonna].setStato(stato);
