@@ -51,6 +51,18 @@ public class GestoreStampa {
    */
   public static final String ANSI_PINK = "\u001B[38;2;255;105;180m";
 
+	 /**
+   * Attributo statico che contiene l'etichetta delle colonne 
+   * della griglia di gioco.
+   */
+
+  private static final char [] ETICHETTA_COLONNE = {'1','2','3','4','5','6','7'};
+  /**
+  * Attributo statico che contiene l'etichetta delle righe
+  * della griglia di gioco.
+  */
+
+   private static final String ETICHETTA_RIGHE = "   A  B  C  D  E  F  G";
   /**
    * Costruttore di GestioneStampa.
    */
@@ -71,7 +83,7 @@ public class GestoreStampa {
    * 
    * @param messaggio
    */
-  public static void stampaMessaggio(final String messaggio) {
+  public static void stampareMessaggio(final String messaggio) {
     System.out.print(messaggio);
   }
   
@@ -692,6 +704,39 @@ public class GestoreStampa {
       posizione++;
     }
   }
+   /**
+   * Metodo che si occupa di stampare a videoil tavoliere con le 
+   * pedine posizionate secondo la partita in corso
+   * @param tavoliere
+   */
+  public static void stampareTavoliere(Tavoliere tavoliere){
+    System.out.println(ETICHETTA_RIGHE);
+    for(int i=0;i<7;i++){
+      System.out.print(ETICHETTA_COLONNE[i]+"  ");
+      for(int j=0;j<7;j++){
+        System.out.print(tavoliere.tavoliere[i][j].getIcona()+"  ");
+      }
+      System.out.print(" "+ETICHETTA_COLONNE[i]);
+      System.out.println("");
+    }
+    System.out.println(ETICHETTA_RIGHE);
+}
+ /**
+   * Metodo che si occupa di stampare il tavoliere vuoto
+   */
+public static void stampareTavoliereVuoto(){
+  System.out.println(ETICHETTA_RIGHE);
+  for(int i=0;i<7;i++){
+    System.out.print(ETICHETTA_COLONNE[i]+"  ");
+    for(int j=0;j<7;j++){
+      System.out.print(Cella.ICONA_CELLA_VUOTA+"  ");
+    }
+    System.out.print(" "+ETICHETTA_COLONNE[i]);
+    System.out.println("");
+  }
+  System.out.println(ETICHETTA_RIGHE);
+}
+
 
     
     
