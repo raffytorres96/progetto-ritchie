@@ -47,7 +47,7 @@ public class Tavoliere
    * Metodo d'accesso al tavoliere, restituisce la griglia di gioco.
    * @return tavoliere intera matrice di celle
    */
-    public Tavoliere getTavoliere(){
+    public Cella[][] getTavoliere(){
         return tavoliere;
     }
      /**
