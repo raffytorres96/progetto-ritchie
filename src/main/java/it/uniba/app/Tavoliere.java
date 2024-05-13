@@ -2,9 +2,7 @@ package it.uniba.app;
 /**
  * <<Entity>>
  * Responsabilità: Descrive la griglia di gioco.
- */
-
- /**
+ *
  * Classe che si occupa di descrivere la griglia di gioco come
  * matrice di 49 celle. Sono state inserite delle costanti che
  * descrivono il nome di righe e colonne, insieme al loro
@@ -12,42 +10,41 @@ package it.uniba.app;
  *
  * @author GruppoRitchie
  */
-public class Tavoliere
-{
-	 /**
-   * Attributo statico che contiene l'etichetta delle colonne 
+public class Tavoliere {
+   /**
+   * Attributo statico che contiene l'etichetta delle colonne
    * della griglia di gioco.
    */
-    private static final char [] ETICHETTA_COLONNE = {'1','2','3','4','5','6','7'};
-	 /**
+    private static final char[] ETICHETTA_COLONNE = {'1', '2', '3', '4', '5', '6', '7'};
+   /**
    * Attributo statico che contiene l'etichetta delle righe
    * della griglia di gioco.
    */
     private static final String ETICHETTA_RIGHE = "   A  B  C  D  E  F  G";
-	 /**
+   /**
    * Attributo statico che contiene il numero di righe e colonne.
    */
     private static final short N_RIGHE_COLONNE = 7;
-	 /**
+   /**
    * Attributo che descrive il tavoliere come una matrice 7x7
    * di istanze di Cella (variabili tipo Cella).
    */
-    public Cella [][] tavoliere = new Cella [N_RIGHE_COLONNE][N_RIGHE_COLONNE];
-	 /**
+    private Cella[][] tavoliere = new Cella[N_RIGHE_COLONNE][N_RIGHE_COLONNE];
+   /**
    * Costruttore che inizializza la matrice tavoliere.
    */
-    public Tavoliere(){
-        for(int i=0;i<7;i++){
-	        for(int j=0;j<7;j++){
-                tavoliere[i][j]=new Cella();
-	        }
-	    }
+    public Tavoliere() {
+        for (int i = 0; i < N_RIGHE_COLONNE; i++) {
+            for (int j = 0; j < N_RIGHE_COLONNE; j++) {
+                tavoliere[i][j] = new Cella();
+            }
+        }
     }
      /**
    * Metodo d'accesso al tavoliere, restituisce lintera griglia di gioco.
    * @return tavoliere intera matrice di celle
    */
-    public Cella[][] getTavoliere(){
+    public Cella[][] getTavoliere() {
         return tavoliere;
     }
      /**
@@ -58,7 +55,7 @@ public class Tavoliere
    * @param stato stato da scrivere nella cella del tavoliere selezionata
    * @return boolean restituisce true se il metodo viene eseguito senza problemi
    */
-    public boolean setTavoliere(int riga, int colonna, int stato){
+    public boolean setTavoliere(final int riga, final int colonna, final int stato) {
         tavoliere[riga][colonna].setStato(stato);
         return true;
     }
@@ -68,7 +65,7 @@ public class Tavoliere
    * @param colonna
    * @return cella
    */
-    public Cella getCella(int riga, int colonna){
+    public Cella getCella(final int riga, final int colonna) {
         Cella cella = tavoliere[riga][colonna];
         return cella;
     }

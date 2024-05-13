@@ -1,33 +1,39 @@
 /**
- * 
+ *
  * <<Control>>
- * Responsabilità: gestisce il comportamento 
+ * Responsabilità: gestisce il comportamento
  * dell'applicazione in gioco
  */
 
 package it.uniba.app;
-public class Comandi {
-   
-    /**
+/**
+ * Classe che si occupa di descrivere i comandi del gioco.
+ */
+
+public final class Comandi {
+
+    private Comandi() {
+    }
+   /**
     * Metodo statico che stampa le regole e i comandi del gioco.
     */
-    public static void help() {
+public static void help() {
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBENVENUTI IN ATAXX\n\n"
-
-        // INTRODUZIONE E DESCIZIONE DEI GIOCO
-                + GestoreStampa.ANSI_RESET + "Ataxx è un gioco di strategia in cui due giocatori"
-                + "si sfidano su una griglia di 7x7 caselle.\n"
-                + "L\'obiettivo è che un giocatore abbia la maggioranza delle pedine sulla scacchiera alla fine della partita\n"
-                + "convertendo il maggior numero possibile di pedine dell\'avversario.\n\n"
-                + GestoreStampa.ANSI_BLUE + "REGOLE DEL GIOCO\n\n"
-                + GestoreStampa.ANSI_GREEN + "1 PEDINE E INIZIO\n\n"
-                + GestoreStampa.ANSI_RESET
-                + "- Ogni giocatore, inizialmente, ha due pedine in due angoli opposti della scacchiera.\n\n"
-                + GestoreStampa.ANSI_RESET
-                + "- Le quattro pedine iniziali sono posizionate agli angoli della scacchiera\n"
-                + GestoreStampa.ANSI_RESET + "  con il rosso nell\'angolo in alto a sinistra e in basso a destra\n"
-                + GestoreStampa.ANSI_RESET + "  e il blu negli altri due angoli.\n\n"
-                + GestoreStampa.ANSI_GREEN + "2 TURNI E MOSSE\n\n"
+            // INTRODUZIONE E DESCIZIONE DEI GIOCO
+            + GestoreStampa.ANSI_RESET + "Ataxx è un gioco di strategia in cui due giocatori"
+            + "si sfidano su una griglia di 7x7 caselle.\n"
+            + "L\'obiettivo è che un giocatore abbia la maggioranza delle pedine sulla scacchiera"
+            + "alla fine della partita\n"
+            + "convertendo il maggior numero possibile di pedine dell\'avversario.\n\n"
+            + GestoreStampa.ANSI_BLUE + "REGOLE DEL GIOCO\n\n"
+            + GestoreStampa.ANSI_GREEN + "1 PEDINE E INIZIO\n\n"
+            + GestoreStampa.ANSI_RESET
+            + "- Ogni giocatore, inizialmente, ha due pedine in due angoli opposti della scacchiera.\n\n"
+            + GestoreStampa.ANSI_RESET
+            + "- Le quattro pedine iniziali sono posizionate agli angoli della scacchiera\n"
+            + GestoreStampa.ANSI_RESET + "  con il rosso nell\'angolo in alto a sinistra e in basso a destra\n"
+            + GestoreStampa.ANSI_RESET + "  e il blu negli altri due angoli.\n\n"
+            + GestoreStampa.ANSI_GREEN + "2 TURNI E MOSSE\n\n"
                 + GestoreStampa.ANSI_RESET + "- Il rosso muove per primo.\n\n"
                 + GestoreStampa.ANSI_RESET
                 + "- Durante il primo turno i giocatori possono spostare in una o due caselle\n"
@@ -111,7 +117,5 @@ public class Comandi {
                 + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_RED + "/esci:"
                 + GestoreStampa.ANSI_RESET + " Chiude l'applicazione.\n\n");
 
-    } 
-
-
+    }
 }
