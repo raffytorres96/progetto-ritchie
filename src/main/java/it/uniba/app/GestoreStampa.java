@@ -1,11 +1,9 @@
 package it.uniba.app;
+
 /**
  * <<Boundary>>
  * Responsabilità: Gestisce la stampa a video di messaggi.
- */
-
-
-/**
+ *
  * Classe che si occupa gestire la stampa a video dei messaggi
  * del gioco. Per migliorare l'interfaccia e la UX dell'utente
  * sono stati inseriti i colori e una particolare formattazione
@@ -14,7 +12,7 @@ package it.uniba.app;
  * @author GrruppoRitchie
  */
 
-public class GestoreStampa {
+public final class GestoreStampa {
 
      /**
    * Attributo statico che contiene il colore di default.
@@ -51,12 +49,12 @@ public class GestoreStampa {
    */
   public static final String ANSI_PINK = "\u001B[38;2;255;105;180m";
 
-	 /**
-   * Attributo statico che contiene l'etichetta delle colonne 
-   * della griglia di gioco.
-   */
+/**
+  * Attributo statico contiene le etichette delle colonne
+  * della griglia di gioco.
+ */
 
-  private static final char [] ETICHETTA_COLONNE = {'1','2','3','4','5','6','7'};
+  private static final char[] ETICHETTA_COLONNE = {'1', '2', '3', '4', '5', '6', '7'};
   /**
   * Attributo statico che contiene l'etichetta delle righe
   * della griglia di gioco.
@@ -75,19 +73,19 @@ public class GestoreStampa {
    */
   public static void stampareTitoloGioco() {
     stampareScritteInAsciiArt("ATAXX ", ANSI_RED);
-   
+
   }
 
   /**
    * Metodo statico che si occupa di stampare messaggi a video.
-   * 
+   *
    * @param messaggio
    */
   public static void stampareMessaggio(final String messaggio) {
     System.out.print(messaggio);
   }
-  
-  
+
+
   /**
    * Metodo statico che si occupa di stampare
    * in AsciiArt il titolo del gioco.
@@ -704,42 +702,39 @@ public class GestoreStampa {
       posizione++;
     }
   }
-   /**
-   * Metodo che si occupa di stampare a videoil tavoliere con le 
-   * pedine posizionate secondo la partita in corso
+public static final int SIZE = 7;
+  /**
+   * Metodo che si occupa di stampare a video il tavoliere con le
+   * pedine posizionate secondo la partita in corso.
    * @param tavoliere
    */
-  public static void stampareTavoliere(Tavoliere tavoliere){
+  public static void stampareTavoliere(final Tavoliere tavoliere) {
     System.out.println(ETICHETTA_RIGHE);
-    for(int i=0;i<7;i++){
-      System.out.print(ETICHETTA_COLONNE[i]+"  ");
-      for(int j=0;j<7;j++){
-        System.out.print(tavoliere.tavoliere[i][j].getIcona()+"  ");
+    for (int i = 0; i < SIZE; i++) {
+      System.out.print(ETICHETTA_COLONNE[i] + "  ");
+      for (int j = 0; j < SIZE; j++) {
+        System.out.print(tavoliere.getCella(i, j).getIcona() + "  ");
       }
-      System.out.print(" "+ETICHETTA_COLONNE[i]);
+      System.out.print(" " + ETICHETTA_COLONNE[i]);
       System.out.println("");
     }
     System.out.println(ETICHETTA_RIGHE);
 }
+
  /**
-   * Metodo che si occupa di stampare il tavoliere vuoto
+   * Metodo che si occupa di stampare il tavoliere vuoto.
    */
-public static void stampareTavoliereVuoto(){
+public static void stampareTavoliereVuoto() {
   System.out.println(ETICHETTA_RIGHE);
-  for(int i=0;i<7;i++){
-    System.out.print(ETICHETTA_COLONNE[i]+"  ");
-    for(int j=0;j<7;j++){
-      System.out.print(Cella.ICONA_CELLA_VUOTA+"  ");
+  for (int i = 0; i < SIZE; i++) {
+    System.out.print(ETICHETTA_COLONNE[i] + "  ");
+    for (int j = 0; j < SIZE; j++) {
+      System.out.print(Cella.ICONA_CELLA_VUOTA + "  ");
     }
-    System.out.print(" "+ETICHETTA_COLONNE[i]);
+    System.out.print(" " + ETICHETTA_COLONNE[i]);
     System.out.println("");
   }
   System.out.println(ETICHETTA_RIGHE);
 }
 
-
-    
-    
- }
-    
-
+}
