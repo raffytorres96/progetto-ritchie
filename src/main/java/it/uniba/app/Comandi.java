@@ -12,7 +12,7 @@ public class Comandi {
     * Metodo statico che stampa le regole e i comandi del gioco.
     */
     public static void help() {
-        GestoreStampa.stampaMessaggio(GestoreStampa.ANSI_BLUE + "\nBENVENUTI IN ATAXX\n\n"
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBENVENUTI IN ATAXX\n\n"
 
         // INTRODUZIONE E DESCIZIONE DEI GIOCO
                 + GestoreStampa.ANSI_RESET + "Ataxx è un gioco di strategia in cui due giocatori"
