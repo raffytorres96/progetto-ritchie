@@ -5,7 +5,11 @@ import java.util.Scanner;
  * Main class of the application.
  */
 public final class App {
-
+    /**
+     * Creazione dello scanner per l'input, usabile 
+     * in tutti i metodi
+     */
+    private static Scanner scanner = null;
     /**
      * Get a greeting sentence.
      *
@@ -28,7 +32,7 @@ public static final int GIOCATORE2 = 2;
  * @param args
  */
      public static void main(final String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         System.out.println("Inserisci la riga: ");
         int riga = scanner.nextInt();
         System.out.println(new App().getGreeting());
