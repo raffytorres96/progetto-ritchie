@@ -69,16 +69,16 @@ public class Comandi {
                 + " Mostra il tavolgliere con le pedine in posizione iniziale e attende la prima mossa"
                 + GestoreStampa.ANSI_RESET + " del giocatore rosso o altri comandi.\n\n"
 
-                + GestoreStampa.ANSI_RESET + "Per mostrare il tavogliere vuoto" + GestoreStampa.ANSI_GREEN
+                + GestoreStampa.ANSI_RESET + "Per mostrare il tavoliere vuoto" + GestoreStampa.ANSI_GREEN
                 + " (SCHERMATA PRINCIPALE)\n"
                 + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_GREEN + "/vuoto:"
-                + GestoreStampa.ANSI_RESET + " Mostra il tavogliere vuoto.\n\n"
+                + GestoreStampa.ANSI_RESET + " Mostra il tavoliere vuoto.\n\n"
 
-                + GestoreStampa.ANSI_RESET + "Per mostrare il tavogliere durante la partita" + GestoreStampa.ANSI_BLUE
+                + GestoreStampa.ANSI_RESET + "Per mostrare il tavoliere durante la partita" + GestoreStampa.ANSI_BLUE
                 + " (SCHERMATA DI GIOCO)\n"
-                + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_BLUE + "/tavogliere:"
+                + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_BLUE + "/tavoliere:"
                 + GestoreStampa.ANSI_RESET
-                + " Mostra il tavogliere con le pedine in posizione attuale e attende la mossa del giocatore.\n\n"
+                + " Mostra il tavoliere con le pedine in posizione attuale e attende la mossa del giocatore.\n\n"
 
                 + GestoreStampa.ANSI_RESET + "Per mostrare le mosse possibili in game" + GestoreStampa.ANSI_BLUE
                 + " (SCHERMATA DI GIOCO)\n"
@@ -95,7 +95,7 @@ public class Comandi {
                 + GestoreStampa.ANSI_RESET + " In"
                 + GestoreStampa.ANSI_ORANGE + " Arancione"
                 + GestoreStampa.ANSI_RESET + " le caselle raggiungibili con mosse"
-                + GestoreStampa.ANSI_RESET + " che cosentonoil salto.\n"
+                + GestoreStampa.ANSI_RESET + " che cosentono il salto.\n"
 
                 + GestoreStampa.ANSI_RESET + "c)"
                 + GestoreStampa.ANSI_RESET + " In"
