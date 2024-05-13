@@ -12,16 +12,6 @@ package it.uniba.app;
  */
 public class Tavoliere {
    /**
-   * Attributo statico che contiene l'etichetta delle colonne
-   * della griglia di gioco.
-   */
-    private static final char[] ETICHETTA_COLONNE = {'1', '2', '3', '4', '5', '6', '7'};
-   /**
-   * Attributo statico che contiene l'etichetta delle righe
-   * della griglia di gioco.
-   */
-    private static final String ETICHETTA_RIGHE = "   A  B  C  D  E  F  G";
-   /**
    * Attributo statico che contiene il numero di righe e colonne.
    */
     private static final short N_RIGHE_COLONNE = 7;
