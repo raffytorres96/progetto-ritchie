@@ -13,17 +13,17 @@ package it.uniba.app;
      /**
    * Attributo statico che contiene l'icona della cella vuota.
    */
-    static final char ICONA_CELLA_VUOTA = '\u25A1';
+    static final String ICONA_CELLA_VUOTA = Character.toString(0x25A1);
      /**
    * Attributo statico che contiene l'icona delle pedine del
    * giocatore 1.
    */
-    static final char ICONA_GIOCATORE1 = '\u26C0';
+    static final String ICONA_GIOCATORE1 = Character.toString(0x26C0);
      /**
    * Attributo statico che contiene l'icona delle pedine del
    * giocatore 2.
    */
-    static final char ICONA_GIOCATORE2 = '\u26C2';
+    static final String ICONA_GIOCATORE2 = Character.toString(0x26C2);
      /**
    * Attributo che contiene lo stato della cella: 0 se vuota,
    * 1 se occupata da una pedina del giocatore 1, 2 se
