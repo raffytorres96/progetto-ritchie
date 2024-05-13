@@ -25,6 +25,22 @@ package it.uniba.app;
    */
     static final String ICONA_GIOCATORE2 = Character.toString(0x26C2);
      /**
+   * Attributo statico che contiene l'icona delle celle nelle
+   * quali è possibile effettuare una mossa che generi una
+   * pedina
+   */
+    static final String ICONA_CELLA_GIALLA=Character.toString(0x1F7E8);
+     /**
+   * Attributo statico che contiene l'icona delle celle nelle
+   * quali è possibile spostare una pedina
+   */
+    static final String ICONA_CELLA_ARANCIONE=Character.toString(0x1F7E7);
+     /**
+   * Attributo statico che contiene l'icona delle celle nelle
+   * quali è possibile spostare una pedina o generarne una
+   */
+    static final String ICONA_CELLA_ROSA=Character.toString(0x1F7EA);
+     /**
    * Attributo che contiene lo stato della cella: 0 se vuota,
    * 1 se occupata da una pedina del giocatore 1, 2 se
    * occupata da una pedina del giocatore 2.
