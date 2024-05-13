@@ -30,5 +30,76 @@ public class Regola {
 	
 	/** Attributo d'istanza di controllo per verificare che la regola selezionata è corretta  */
 	private boolean regolaEsatta=false;
+
+    /**
+	* Costruttore della classe Regola 
+	  che inizializza il tipo di regola selezionata.
+	
+	* @param tipoRegola String, il tipo di regola selezionata
+	*/
+	public Regola(String tipoRegola) {
+		
+		if (tipoRegola.equals(CLASSICA)) {
+			regolaEsatta=true;
+		}
+			
+		
+		if (tipoRegola.equals(THOMAS)) {
+			regolaEsatta=true;
+		}
+				
+		
+		if (tipoRegola.equals(ASSIMILATION)) {
+			regolaEsatta=true;
+		}
+				
+		
+		if (tipoRegola.equals(VARIANTE_PERDERE)) {
+			regolaEsatta=true;
+		}
+		
+		if (regolaEsatta) {
+			this.tipoRegola = tipoRegola;
+		}else {
+			this.tipoRegola = CLASSICA;
+		}
+		
+			
+	}
+   
+	/**
+    * Metodo d'istanza get dell'attributo tipo tipo regola.
+    *
+    * @return tipoRegola String, 
+    */
+    public String getTipoRegola() {
+		return tipoRegola;
+	}
+
+	/**
+	* Metodo d'istanza set dell'attributo tipo tipo regola.
+	*
+	* @param tipoRegola String, 
+	*/
+	public void setTipoRegola(String tipoRegola) {
+		this.tipoRegola = tipoRegola;
+	}
+	
+	/**
+	* Metodo d'istanza get dell'attributo regolaEsatta.
+	*
+	* @return regolaEsatta boolean, 
+	*/
+	public boolean getRegolaEsatta() {
+		return regolaEsatta;
+	}
+	
+	/**
+	 * Metodo d'istanza set dell'attributo regolaEsatta.
+	 * @param regolaEsatta
+	 */
+	public void setRegolaEsatta(boolean regolaEsatta) {
+		this.regolaEsatta = regolaEsatta;
+	}
     
 }
