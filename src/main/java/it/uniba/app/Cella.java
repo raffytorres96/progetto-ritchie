@@ -41,20 +41,22 @@ public class Cella
         stato=0;
     }
      /**
-   * Metodo d'accesso che restituisce lo stato della cella.
+   * Metodo d'accesso che restituisce lo stato della cella in input.
+   * @param cel
+   * @return stato
    */
-    public int getStato(){
-        return stato;
+    public static int getStato(Cella cel){
+        return cel.stato;
     }
      /**
    * Metodo d'accesso che restituisce l'icona della cella
    * in base al suo stato.
    */
     public char getIcona(){
-        if(this.getStato()==1){
+        if(getStato(this)==1){
             return ICONA_GIOCATORE1;
         }
-        else if(this.getStato()==2){
+        else if(getStato(this)==2){
             return ICONA_GIOCATORE2;
         }
         else{

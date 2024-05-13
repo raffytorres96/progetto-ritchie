@@ -44,7 +44,7 @@ public class Tavoliere
 	    }
     }
      /**
-   * Metodo d'accesso al tavoliere, restituisce la griglia di gioco.
+   * Metodo d'accesso al tavoliere, restituisce lintera griglia di gioco.
    * @return tavoliere intera matrice di celle
    */
     public Cella[][] getTavoliere(){
@@ -61,5 +61,15 @@ public class Tavoliere
     public boolean setTavoliere(int riga, int colonna, int stato){
         tavoliere[riga][colonna].setStato(stato);
         return true;
+    }
+    /**
+   * Metodo d'accesso al tavoliere, restituisce una specifica cella.
+   * @param riga
+   * @param colonna
+   * @return cella
+   */
+    public Cella getCella(int riga, int colonna){
+        Cella cella = tavoliere[riga][colonna];
+        return cella;
     }
 }
