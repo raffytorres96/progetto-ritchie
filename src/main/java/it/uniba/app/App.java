@@ -1,4 +1,5 @@
 package it.uniba.app;
+import java.util.Scanner;
 
 /**
  * Main class of the application.
@@ -19,11 +20,25 @@ public final class App {
      *
      * @param args command line arguments
      */
-    public static void main(final String[] args) {
+
+public static final int GIOCATORE1 = 1;
+public static final int GIOCATORE2 = 2;
+/**
+ * Main della classe app.
+ * @param args
+ */
+     public static void main(final String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Inserisci la riga: ");
+        int riga = scanner.nextInt();
         System.out.println(new App().getGreeting());
         Tavoliere t = new Tavoliere();
-        t.setTavoliere(0,0,2);
-        t.setTavoliere(1,5,1);
+        //int riga = 0;
+        int colonna = 0;
+        t.setTavoliere(riga, colonna, GIOCATORE2);
+        int riga1 = 1;
+        int colonna1 = 0; //da pari qui
+        t.setTavoliere(riga1, colonna1, GIOCATORE1);
         GestoreStampa.stampareTavoliereVuoto();
         GestoreStampa.stampareTavoliere(t);
     }
