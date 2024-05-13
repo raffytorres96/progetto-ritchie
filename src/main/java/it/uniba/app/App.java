@@ -6,8 +6,8 @@ import java.util.Scanner;
  */
 public final class App {
     /**
-     * Creazione dello scanner per l'input, usabile 
-     * in tutti i metodi
+     * Creazione dello scanner per l'input, usabile
+     * in tutti i metodi.
      */
     private static Scanner scanner = null;
     /**
@@ -19,30 +19,26 @@ public final class App {
         return "Hello World!!!";
     }
 
-    /**
-     * Entrypoint of the application.
-     *
-     * @param args command line arguments
-     */
-
-public static final int GIOCATORE1 = 1;
-public static final int GIOCATORE2 = 2;
 /**
  * Main della classe app.
  * @param args
  */
      public static void main(final String[] args) {
         scanner = new Scanner(System.in);
-        System.out.println("Inserisci la riga: ");
-        int riga = scanner.nextInt();
         System.out.println(new App().getGreeting());
         Tavoliere t = new Tavoliere();
-        //int riga = 0;
-        int colonna = 0;
-        t.setTavoliere(riga, colonna, GIOCATORE2);
-        int riga1 = 1;
-        int colonna1 = 0; //da pari qui
-        t.setTavoliere(riga1, colonna1, GIOCATORE1);
+        System.out.println("PRIMA MOSSA - giocatore1");
+        System.out.println("Inserisci la riga: ");
+        int riga = scanner.nextInt();
+        System.out.println("Inserisci la colonna: ");
+        int colonna = scanner.nextInt();
+        t.setTavoliere(riga, colonna, Cella.STATO_GIOCATORE2);
+        System.out.println("SECONDA MOSSA - giocatore2");
+        System.out.println("Inserisci la riga: ");
+        riga = scanner.nextInt();
+        System.out.println("Inserisci la colonna: ");
+        colonna = scanner.nextInt();
+        t.setTavoliere(riga, colonna, Cella.STATO_GIOCATORE1);
         GestoreStampa.stampareTavoliereVuoto();
         GestoreStampa.stampareTavoliere(t);
     }

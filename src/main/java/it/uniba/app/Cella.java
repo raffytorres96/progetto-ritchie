@@ -11,6 +11,35 @@ package it.uniba.app;
 
 public class Cella {
   /**
+* Attributo statico che contiene lo stato relativo alla cella vuota.
+*/
+static final int STATO_CELLA_VUOTA = 0;
+/**
+* Attributo statico che contiene lo stato relativo alla cella occupata
+* da una pedina del giocatore 1.
+*/
+static final int STATO_GIOCATORE1 = 1;
+/**
+* Attributo statico che contiene lo stato relativo alla cella occupata
+* da una pedina del giocatore 2.
+*/
+static final int STATO_GIOCATORE2 = 2;
+/**
+* Attributo statico che contiene lo stato relativo ad una cella in cui
+* è possibile generare una pedina.
+*/
+static final int STATO_CELLA_GIALLA = 3;
+/**
+* Attributo statico che contiene lo stato relativo ad una cella in cui
+* è possibile spostare una pedina.
+*/
+static final int STATO_CELLA_ARANCIONE = 4;
+/**
+* Attributo statico che contiene lo stato relativo ad una cella in cui
+* è possibile sia spostare una pedina che generarla.
+*/
+static final int STATO_CELLA_ROSA = 5;
+  /**
 * Attributo statico che contiene l'icona della cella vuota.
 */
   static final String ICONA_CELLA_VUOTA = Character.toString(0x25A1);
@@ -74,18 +103,18 @@ public class Cella {
  * @return costante dell'icona relativa allo stato o null nel
  * caso lo stato sia invalid.
  */
-  public char getIcona() {
-      if (getStato(this) == 1) {
+  public String getIcona() {
+      if (getStato(this) == STATO_CELLA_VUOTA) {
+          return ICONA_CELLA_VUOTA;
+      } else if (getStato(this) == STATO_GIOCATORE1) {
           return ICONA_GIOCATORE1;
-      } else if (getStato(this) == 2) {
-          return ICONA_GIOCATORE2;
-      } else if (getStato(this) == 0) {
-        return ICONA_CELLA_VUOTA;
-      } else if (getStato(this) == 3) {
+      } else if (getStato(this) == STATO_GIOCATORE2) {
+        return ICONA_GIOCATORE2;
+      } else if (getStato(this) == STATO_CELLA_GIALLA) {
         return ICONA_CELLA_GIALLA;
-      } else if (getStato(this) == 4) {
+      } else if (getStato(this) == STATO_CELLA_ARANCIONE) {
         return ICONA_CELLA_ARANCIONE;
-      } else if (getStato(this) == 5) {
+      } else if (getStato(this) == STATO_CELLA_ROSA) {
         return ICONA_CELLA_ROSA;
       }
       return null;
