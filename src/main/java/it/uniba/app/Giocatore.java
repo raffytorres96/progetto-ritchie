@@ -10,13 +10,14 @@ package it.uniba.app;
  *  del gioco.
  */
 public class Giocatore {
- /** Attributo d'istanza contenente il nome del Giocatore.  */
+ /** Attributo d'istanza contenente il nome del giocatore.  */
 private String nome;
- /** Attributo d'istanza contenente il nome del Giocatore.  */
+ /** Attributo d'istanza contenente lo stato del giocatore.  */
 private int statoGiocatore;
 
 /**
 * Costruttore di Giocatore.
+* @param nomeInit variabile contenente il nome del giocatore.
 */
 Giocatore(final String nomeInit, final int statoGiocatoreInit) {
     nome = nomeInit;
