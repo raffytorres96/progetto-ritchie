@@ -18,6 +18,7 @@ private int statoGiocatore;
 /**
 * Costruttore di Giocatore.
 * @param nomeInit variabile contenente il nome del giocatore.
+* @param statoGiocatoreInit variabile contenente lo stato del giocatore.
 */
 Giocatore(final String nomeInit, final int statoGiocatoreInit) {
     nome = nomeInit;
