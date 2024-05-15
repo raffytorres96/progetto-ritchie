@@ -71,8 +71,10 @@ public class Mossa {
         this.giocatoreCorrente = newGiocatoreCorrente;
         }
         /**
-         * Metodo che restituisce le mosse possibili.
+         * Metodo che restituisce le mosse possibili sulla cella scelta.
          * @param newgiocatoreCorrente
+         * @param rigaSelezionata
+         * @param colonnaSelezionata
          */
         public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
          final int colonnaSelezionata) {
