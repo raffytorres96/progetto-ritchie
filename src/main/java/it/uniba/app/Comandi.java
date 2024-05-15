@@ -7,7 +7,6 @@
 
 package it.uniba.app;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -122,4 +121,19 @@ public static void help() {
                 + GestoreStampa.ANSI_RESET + " Chiude l'applicazione.\n\n");
 
     }
+
+/**
+* Metodo statico che legge l'input inserito dall'utente.
+*
+* @return String, stringa contentente l'input dell'utente
+*/
+
+public static String input() {
+    Scanner keyboard = new Scanner(System.in, "UTF_8");
+    String userInput = keyboard.nextLine();
+    return userInput.toLowerCase();
 }
+}
+
+
+
