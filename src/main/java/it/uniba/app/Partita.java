@@ -103,7 +103,7 @@ this.giocatore2 = new Giocatore(nome2, GIOCATORE2);
     * @param isGiocoFinito
     */
     public void setGiocoFinito(final boolean isGiocoFinito) {
-        this.giocoFinito = giocoFinito;
+        this.giocoFinito = isGiocoFinito;
     }
 
 }
