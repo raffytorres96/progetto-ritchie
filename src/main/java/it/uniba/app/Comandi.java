@@ -6,6 +6,10 @@
  */
 
 package it.uniba.app;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
 /**
  * Classe che si occupa di descrivere i comandi del gioco.
  */
