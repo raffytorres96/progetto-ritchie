@@ -9,7 +9,7 @@ package it.uniba.app;
  * Classe che modella la mossa.
  */
 public class Mossa {
-    /**
+ /**
      * Attributo di istanza che rappresenta la coordinata di riga
      * che identifica la cella su cui applicare
      * la mossa.
@@ -74,30 +74,28 @@ public class Mossa {
          * Metodo che restituisce le mosse possibili.
          * @param newgiocatoreCorrente
          */
-        public void qualiMosse(final int newgiocatoreCorrente) {
+        public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
+         final int colonnaSelezionata) {
 
-                if (newgiocatoreCorrente == 1) {
-                    puliziaTavoliere();
-                    for (int i = 0; i < SIZE; i++) {
-                        for (int j = 0; j < SIZE; j++) {
-                            if (Cella.getStato(tavoliere.getCella(i, j)) == 1) {
-                                visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
-                            }
-                        }
+          if (newgiocatoreCorrente == 1) {
+            puliziaTavoliere();
+            if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
+                        visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
                     }
                 }
-                if (newgiocatoreCorrente == 2) {
-                    puliziaTavoliere();
-                    for (int i = 0; i < SIZE; i++) {
-                        for (int j = 0; j < SIZE; j++) {
-                            if (Cella.getStato(tavoliere.getCella(i, j)) == 1) {
-                                visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
-                            }
-                        }
-                    }
-                }
-                GestoreStampa.stampareTavoliere(this.tavoliere);
-            }
+
+
+          if (newgiocatoreCorrente == 2) {
+              puliziaTavoliere();
+              if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
+                        visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
+              }
+          }
+         GestoreStampa.stampareTavoliere(this.tavoliere);
+
+        }
+
+
             /**
              * Metodo privato che effettua un controllo se la riga e la colanna selazionata
              * non siano cordinate che non rientrano nelle dimandione del tavoliere
@@ -269,9 +267,16 @@ public class Mossa {
                         }
                     }
                 }
+            }
 
-    }
 }
+
+
+
+
+
+
+
 
 
 
