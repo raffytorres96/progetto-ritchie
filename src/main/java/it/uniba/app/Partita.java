@@ -23,7 +23,7 @@ private static final int GIOCATORE2 = 2;
 private static final int POSIZIONE0 = 0;
 
 /** attributo statico per identificare la cordinata da dare a setTavoliere.  */
-private static final int POSIZIONE7 = 7;
+private static final int POSIZIONE6 = 6;
 
 /** attributo che indica se il gioco è finito o meno.  */
 private boolean giocoFinito = false;
@@ -49,9 +49,9 @@ public Partita(final String regolaGioco, final String nome1, final String nome2)
 
 this.tavoliere = new Tavoliere();
 this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE0, GIOCATORE1);
-this.tavoliere.setTavoliere(POSIZIONE7, POSIZIONE7, GIOCATORE1);
-this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE7, GIOCATORE2);
-this.tavoliere.setTavoliere(POSIZIONE7, POSIZIONE0, GIOCATORE2);
+this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE6, GIOCATORE1);
+this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE6, GIOCATORE2);
+this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE0, GIOCATORE2);
 this.regola = new Regola(regolaGioco);
 this.giocatore1 = new Giocatore(nome1, GIOCATORE1);
 this.giocatore2 = new Giocatore(nome2, GIOCATORE2);
