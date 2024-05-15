@@ -133,7 +133,46 @@ public static String input() {
     String userInput = keyboard.nextLine();
     return userInput.toLowerCase();
 }
+
+/**
+     * Metodo statico che si occupa di uscire dal gioco.
+     */
+    public static void esci() {
+        String conferma;
+
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                + ": Sei sicuro di uscire dal gioco? [" + GestoreStampa.ANSI_GREEN
+                + "si" + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
+                + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
+        GestoreStampa.stampareMessaggio("Conferma: ");
+
+        conferma = input();
+
+        while (!(conferma.equals("si") || conferma.equals("no"))) {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX"
+                    + GestoreStampa.ANSI_RESET + ": Non hai inserito una risposta valida\n"
+                    + "Sei sicuro di uscire dal gioco? [" + GestoreStampa.ANSI_GREEN + "si"
+                    + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
+                    + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
+            GestoreStampa.stampareMessaggio("Conferma: ");
+            conferma = input();
+
+        }
+
+        if (conferma.equals("si")) {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                    + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ": L'applicazione si chiuderà ... \n");
+            System.exit(0);
+        } else {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                    + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ": OK \n\n");
+        }
+    }
 }
+
 
 
 
