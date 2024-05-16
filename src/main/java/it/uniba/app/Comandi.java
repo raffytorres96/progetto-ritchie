@@ -9,6 +9,8 @@ package it.uniba.app;
 
 import java.util.Scanner;
 
+import main.java.it.uniba.app.Utils;
+
 /**
  * Classe che si occupa di descrivere i comandi del gioco.
  */
@@ -227,10 +229,15 @@ public final class Comandi {
         String nomeGiocatore2;
         String regolaGioco;
         Partita partita;
-
-        GestoreStampa.stampareMessaggio(
-                "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");
-        regolaGioco = Comandi.input();
+        Utils utils = new Utils();
+        do {
+            GestoreStampa.stampareMessaggio(
+                    "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");
+            regolaGioco = Comandi.input();
+            if (!utils.analizzatoreInput(regolaGioco)) {
+                GestoreStampa.stampareMessaggio("Regola non valida, riprova\n");
+            }
+        } while (!utils.analizzatoreInput(regolaGioco));
 
         GestoreStampa.stampareMessaggio("Inserisci il nome del giocatore 1: ");
         nomeGiocatore1 = Comandi.input();
