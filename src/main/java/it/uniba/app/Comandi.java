@@ -6,6 +6,9 @@
  */
 
 package it.uniba.app;
+
+import java.util.Scanner;
+
 /**
  * Classe che si occupa di descrivere i comandi del gioco.
  */
@@ -118,4 +121,58 @@ public static void help() {
                 + GestoreStampa.ANSI_RESET + " Chiude l'applicazione.\n\n");
 
     }
+
+/**
+* Metodo statico che legge l'input inserito dall'utente.
+*
+* @return String, stringa contentente l'input dell'utente
+*/
+
+public static String input() {
+    Scanner keyboard = new Scanner(System.in, "UTF_8");
+    String userInput = keyboard.nextLine();
+    return userInput.toLowerCase();
 }
+
+/**
+     * Metodo statico che si occupa di uscire dal gioco.
+     */
+    public static void esci() {
+        String conferma;
+
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                + ": Sei sicuro di uscire dal gioco? [" + GestoreStampa.ANSI_GREEN
+                + "si" + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
+                + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
+        GestoreStampa.stampareMessaggio("Conferma: ");
+
+        conferma = input();
+
+        while (!(conferma.equals("si") || conferma.equals("no"))) {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX"
+                    + GestoreStampa.ANSI_RESET + ": Non hai inserito una risposta valida\n"
+                    + "Sei sicuro di uscire dal gioco? [" + GestoreStampa.ANSI_GREEN + "si"
+                    + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
+                    + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
+            GestoreStampa.stampareMessaggio("Conferma: ");
+            conferma = input();
+
+        }
+
+        if (conferma.equals("si")) {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                    + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ": L'applicazione si chiuderà ... \n");
+            System.exit(0);
+        } else {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                    + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ": OK \n\n");
+        }
+    }
+}
+
+
+
+
