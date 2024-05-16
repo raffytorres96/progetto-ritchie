@@ -171,8 +171,51 @@ public static String input() {
                     + ": OK \n\n");
         }
     }
+
+/**
+     * Metodo d'istanza che si occupa di abbandonare una partita.
+     *
+     * @param partita Istanza della classe partita
+     * @return boolean, true se la conferma è andata a buon fine, false altrimenti
+     */
+    public boolean abbandona(final Partita partita) {
+
+        String conferma;
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                + ": Sei sicuro di abbandonare la partita? [" + GestoreStampa.ANSI_GREEN
+                + "si" + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
+                + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
+        GestoreStampa.stampareMessaggio("Conferma: ");
+        conferma = input();
+
+        while (!(conferma.equals("si") || conferma.equals("no"))) {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX"
+                    + GestoreStampa.ANSI_RESET + ": Non hai inserito una risposta valida\n"
+                    + "Sei sicuro di voler abbandonare la partita? [" + GestoreStampa.ANSI_GREEN + "si"
+                    + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
+                    + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
+            GestoreStampa.stampareMessaggio("Conferma: ");
+            conferma = input();
+        }
+
+        if (conferma.equals("si") && partita.getGiocatore1().getStatoGiocatore() == 1) {
+          GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                    + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ":" + partita.getGiocatore2().getNome() + " Vince per abbandono per 2 a 0 \n");
+
+            return true;
+        }
+
+        if (conferma.equals("si") && partita.getGiocatore1().getStatoGiocatore() == 2) {
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                + "Bnevenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                + ":" + partita.getGiocatore2().getNome() + "Vince per abbandono per 2 a 0 \n");
+
+            return true;
+        }
+
+        return false;
+    }
+
 }
-
-
-
-
