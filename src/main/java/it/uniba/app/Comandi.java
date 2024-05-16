@@ -17,26 +17,27 @@ public final class Comandi {
 
     private Comandi() {
     }
-   /**
-    * Metodo statico che stampa le regole e i comandi del gioco.
-    */
-public static void help() {
+
+    /**
+     * Metodo statico che stampa le regole e i comandi del gioco.
+     */
+    public static void help() {
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBENVENUTI IN ATAXX\n\n"
-            // INTRODUZIONE E DESCIZIONE DEI GIOCO
-            + GestoreStampa.ANSI_RESET + "Ataxx è un gioco di strategia in cui due giocatori"
-            + "si sfidano su una griglia di 7x7 caselle.\n"
-            + "L\'obiettivo è che un giocatore abbia la maggioranza delle pedine sulla scacchiera"
-            + "alla fine della partita\n"
-            + "convertendo il maggior numero possibile di pedine dell\'avversario.\n\n"
-            + GestoreStampa.ANSI_BLUE + "REGOLE DEL GIOCO\n\n"
-            + GestoreStampa.ANSI_GREEN + "1 PEDINE E INIZIO\n\n"
-            + GestoreStampa.ANSI_RESET
-            + "- Ogni giocatore, inizialmente, ha due pedine in due angoli opposti della scacchiera.\n\n"
-            + GestoreStampa.ANSI_RESET
-            + "- Le quattro pedine iniziali sono posizionate agli angoli della scacchiera\n"
-            + GestoreStampa.ANSI_RESET + "  con il rosso nell\'angolo in alto a sinistra e in basso a destra\n"
-            + GestoreStampa.ANSI_RESET + "  e il blu negli altri due angoli.\n\n"
-            + GestoreStampa.ANSI_GREEN + "2 TURNI E MOSSE\n\n"
+        // INTRODUZIONE E DESCIZIONE DEI GIOCO
+                + GestoreStampa.ANSI_RESET + "Ataxx è un gioco di strategia in cui due giocatori"
+                + "si sfidano su una griglia di 7x7 caselle.\n"
+                + "L\'obiettivo è che un giocatore abbia la maggioranza delle pedine sulla scacchiera"
+                + "alla fine della partita\n"
+                + "convertendo il maggior numero possibile di pedine dell\'avversario.\n\n"
+                + GestoreStampa.ANSI_BLUE + "REGOLE DEL GIOCO\n\n"
+                + GestoreStampa.ANSI_GREEN + "1 PEDINE E INIZIO\n\n"
+                + GestoreStampa.ANSI_RESET
+                + "- Ogni giocatore, inizialmente, ha due pedine in due angoli opposti della scacchiera.\n\n"
+                + GestoreStampa.ANSI_RESET
+                + "- Le quattro pedine iniziali sono posizionate agli angoli della scacchiera\n"
+                + GestoreStampa.ANSI_RESET + "  con il rosso nell\'angolo in alto a sinistra e in basso a destra\n"
+                + GestoreStampa.ANSI_RESET + "  e il blu negli altri due angoli.\n\n"
+                + GestoreStampa.ANSI_GREEN + "2 TURNI E MOSSE\n\n"
                 + GestoreStampa.ANSI_RESET + "- Il rosso muove per primo.\n\n"
                 + GestoreStampa.ANSI_RESET
                 + "- Durante il primo turno i giocatori possono spostare in una o due caselle\n"
@@ -122,19 +123,19 @@ public static void help() {
 
     }
 
-/**
-* Metodo statico che legge l'input inserito dall'utente.
-*
-* @return String, stringa contentente l'input dell'utente
-*/
+    /**
+     * Metodo statico che legge l'input inserito dall'utente.
+     *
+     * @return String, stringa contentente l'input dell'utente
+     */
 
-public static String input() {
-    Scanner keyboard = new Scanner(System.in, "UTF_8");
-    String userInput = keyboard.nextLine();
-    return userInput.toLowerCase();
-}
+    public static String input() {
+        Scanner keyboard = new Scanner(System.in, "UTF_8");
+        String userInput = keyboard.nextLine();
+        return userInput.toLowerCase();
+    }
 
-/**
+    /**
      * Metodo statico che si occupa di uscire dal gioco.
      */
     public static void esci() {
@@ -172,7 +173,7 @@ public static String input() {
         }
     }
 
-/**
+    /**
      * Metodo d'istanza che si occupa di abbandonare una partita.
      *
      * @param partita Istanza della classe partita
@@ -200,7 +201,7 @@ public static String input() {
         }
 
         if (conferma.equals("si") && partita.getGiocatore1().getStatoGiocatore() == 1) {
-          GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
                     + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
                     + ":" + partita.getGiocatore2().getNome() + " Vince per abbandono per 2 a 0 \n");
 
@@ -208,14 +209,38 @@ public static String input() {
         }
 
         if (conferma.equals("si") && partita.getGiocatore1().getStatoGiocatore() == 2) {
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
-                + "Bnevenuti in ATAXX" + GestoreStampa.ANSI_RESET
-                + ":" + partita.getGiocatore2().getNome() + "Vince per abbandono per 2 a 0 \n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
+                    + "Bnevenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ":" + partita.getGiocatore2().getNome() + "Vince per abbandono per 2 a 0 \n");
 
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Metodo d'istanza che si occupa di iniziare una nuova partita.
+     */
+    public void gioca() {
+        String nomeGiocatore1;
+        String nomeGiocatore2;
+        String regolaGioco;
+        Partita partita;
+
+        GestoreStampa.stampareMessaggio(
+                "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");
+        regolaGioco = Comandi.input();
+
+        GestoreStampa.stampareMessaggio("Inserisci il nome del giocatore 1: ");
+        nomeGiocatore1 = Comandi.input();
+
+        GestoreStampa.stampareMessaggio("Inserisci il nome del giocatore 2: ");
+        nomeGiocatore2 = Comandi.input();
+
+        partita = new Partita(regolaGioco, nomeGiocatore1, nomeGiocatore2);
+
+        GestoreStampa.stampareTavoliere(partita.getTavoliere());
     }
 
 }
