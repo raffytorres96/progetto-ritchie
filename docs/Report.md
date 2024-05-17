@@ -93,6 +93,30 @@ _________
         • Se la conferma è positiva, l'app si chiude restituendo il controllo al sistema operativo
         • Se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi
 
+### **3.2 Requisiti non funzionali**
+
+Il container docker dell’app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
+
+       Elenco di terminali supportati
+      
+      Linux:
+      - terminal
+
+      Windows:
+      - Powershell
+      - Git Bash (in questo caso il comando Docker ha come prefisso winpty; es: winpty docker -it ....)
+
+      Comando per l’esecuzione del container
+      
+      Dopo aver eseguito il comando docker pull copiandolo da GitHub Packages, Il comando Docker da usare per
+      eseguire il container contenente l’applicazione è:
+
+      docker run --rm -it ghcr.io/softeng2324-inf-uniba/ataxx-base:latest
+
+      dove base sarà sostituito con il nome del gruppo.
+
+
+
 
 
 
