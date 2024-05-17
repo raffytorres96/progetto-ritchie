@@ -122,6 +122,21 @@ __________
 
 
 
+## **9. Analisi retrospettiva**    
+__________
+ ### **9.1 Sprint 0**
+
+ La seguente immagine riporta l' analisi retrospettiva dello sprint 0, utilizzando il modello "ARRABBIATO,TRISTE,FELICE".
+
+ ![Analisi_retrospettiva_sprint0](./img/Analisi_retrospettiva_sprint0.png)
+
+
+
+
+
+
+
+
 
 
         
