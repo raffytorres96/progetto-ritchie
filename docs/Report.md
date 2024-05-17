@@ -35,6 +35,69 @@ _________
             come in figura e si predispone a ricevere la prima mossa di gioco del nero o altri comandi.
 
   ![Immagina_tavoliere_comando_gioca](./img/Immagina_tavoliere_comando_gioca.png)
+  
+- **RF3**: Come giocatore voglio mostrare il tavoliere vuoto con la numerazione.
+
+        Al comando /vuoto
+        
+        L'app mostra il tavoliere vuoto di 49 caselle quadrate (7 per lato) con le righe numerate da 1 a 7 e
+        le colonne numerate da ‘a’ a ‘g’.
+
+- **RF4**: Come giocatore voglio mostrare il tavoliere con le pedine e la numerazione.
+        
+        Al comando /tavoliere
+
+        • se il gioco non è iniziato l'app suggerisce il comando gioca
+        • se il gioco è iniziato l'app mostra la posizione di tutte le pedine sul tavoliere; le pedine sono
+        mostrate in formato Unicode https://en.wikipedia.org/wiki/English_draughts#Unicode
+
+- **RF5**: Come giocatore voglio mostrare il tavoliere con le pedine e la numerazione.
+        
+        Al comando /tavoliere
+
+        • se il gioco non è iniziato l'app suggerisce il comando gioca
+        • se il gioco è iniziato l'app mostra la posizione di tutte le pedine sul tavoliere; le pedine sono
+        mostrate in formato Unicode https://en.wikipedia.org/wiki/English_draughts#Unicode
+
+- **RF5**: Come giocatore voglio visualizzare le mosse possibili di una pedina.
+        
+        All comando /qualimosse
+        
+        • Se il gioco non è iniziato l'app suggerisce il comando gioca
+        • Se il gioco è iniziato l'app mostra quali mosse sono disponibili per il giocatore di turno,
+        evidenziando
+        
+        a) in giallo le caselle raggiungibili con mosse che generano una nuova pedina
+        b) in arancione raggiungibili con mosse che consentono un salto
+        c) in rosa le caselle raggiungibili con mosse di tipo a) o b)
+
+  ![Quali_mosse](./img/Quali_mosse.png)
+
+
+- **RF6**: Come giocatore voglio abbandonare la partita.
+
+        Al comando /abbandona
+        l'applicazione chiede conferma
+        
+        • se la conferma è positiva, l'app comunica che il Bianco (o Nero) ha vinto per abbandono e dichiara
+        come vincitore l’avversario per x a 0 dove x è il numero di pedine rimaste dell’avversario.
+        
+        • se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi.
+
+- **RF7**: Come giocatore voglio chiudere il gioco.
+        
+        Al comando /esci
+        l'applicazione chiede conferma
+        
+        
+        • Se la conferma è positiva, l'app si chiude restituendo il controllo al sistema operativo
+        • Se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi
+
+
+
+
+        
+
 
 
 
