@@ -10,3 +10,5 @@ Il software è una versione semplificata che rispetta specifici requisiti funzio
 ## **2. Il modello di dominio**
 __________
 
+![Modello_di_dominio](./img/Modello_di_dominio.png)
+
