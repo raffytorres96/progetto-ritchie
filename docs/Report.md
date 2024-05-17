@@ -1,9 +1,25 @@
 # Report
 
+## Indice
+- [1. Introduzione]( #1-introduzione)
+- [2. Modello di dominio](#2-il-modello-di-dominio)
+- [3. Requisiti specifici](#3-requisiti-specifici)
+    - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
+    - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
+   
+- [7. Manuale utente](#7-manuale-utente) 
+- [9. Analisi retrospettiva](#9-analisi-retrospettiva)
+    - [9.1 Sprint 0](#91-sprint-0)
+    
+
+
 ## **1. Introduzione**
 
 ---------
-**Ataxx** è un gioco astratto di strategia che coinvolge due giocatori su una griglia di sette per sette caselle. L’obiettivo del gioco è che un giocatore abbia la maggioranza delle pedine sulla scacchiera alla fine della partita, convertendo il maggior numero possibile di pedine dell’avversario. Ogni giocatore inizia con due pedine, di colore appartenete alla propria squadra, generalmente si ha una squadra rossa e una blu, che corrisponderanno ai colori delle pedine. Durante il proprio turno, i giocatori possono scegliere di compiere una di due mosse consentite. Le distanze diagonali sono equivalenti alle distanze ortogonali, quindi è possibile spostarsi su una casella la cui posizione relativa sia a due caselle di distanza sia verticalmente che orizzontalmente e in obliquo. Se la destinazione è adiacente alla casella di partenza, viene creata una nuova pedina sulla casella di partenza vuota. Dopo la mossa, tutte le pedine dell’avversario adiacenti alla casella di destinazione vengono convertite nel colore del giocatore che si è mosso. I giocatori devono muovere a meno che non sia possibile effettuare una mossa legale, in tal caso devono passare. La partita termina quando tutte le caselle sono state riempite o uno dei giocatori non ha più pedine.
+**Ataxx** è un gioco astratto di strategia che coinvolge due giocatori su una griglia di sette per sette caselle. L’obiettivo del gioco è che un giocatore abbia la maggioranza delle pedine sulla scacchiera alla fine della partita, convertendo il maggior numero possibile di pedine dell’avversario. 
+
+Ogni giocatore inizia con due pedine, di colore appartenete alla propria squadra, generalmente si ha una squadra rossa e una blu, che corrisponderanno ai colori delle pedine. Durante il proprio turno, i giocatori possono scegliere di compiere una di due mosse consentite. Le distanze diagonali sono equivalenti alle distanze ortogonali, quindi è possibile spostarsi su una casella la cui posizione relativa sia a due caselle di distanza sia verticalmente che
+orizzontalmente e in obliquo. Se la destinazione è adiacente alla casella di partenza, viene creata una nuova pedina sulla casella di partenza vuota. Dopo la mossa, tutte le pedine dell’avversario adiacenti alla casella di destinazione vengono convertite nel colore del giocatore che si è mosso. I giocatori devono muovere a meno che non sia possibile effettuare una mossa legale, in tal caso devono passare. La partita termina quando tutte le caselle sono state riempite o uno dei giocatori non ha più pedine.
 
 Il software è una versione semplificata che rispetta specifici requisiti funzionali.
 
@@ -128,7 +144,7 @@ __________
 
  La seguente immagine riporta l' analisi retrospettiva dello sprint 0, utilizzando il modello "ARRABBIATO,TRISTE,FELICE".
 
- ![Analisi_retrospettiva_sprint0](./img/Analisi_retrospettiva_sprint0.png)
+ ![Analisi_retrospettiva_sprint0_2](./img/Analisi_retrospettiva_sprint0_2.png)
 
 
 
