@@ -12,3 +12,23 @@ __________
 
 ![Modello_di_dominio](./img/Modello_di_dominio.png)
 
+## **3. Requisiti specifici**
+_________
+
+### **3.1 Requisiti funzionali**
+
+- **RF1**: Come giocatore voglio mostrare l'help con elenco comandi.
+
+        Al comando /help o invocando l'app con flag --help o -h 
+        
+        Il risultato è una descrizione concisa che normalmente appare all'avvio del programma, seguita
+        dalla lista di comandi disponibili, uno per riga come da esempio successivo:
+       
+        • gioca
+        • esci
+        • ..
+
+
+
+
+            
