@@ -27,6 +27,16 @@ _________
         • gioca
         • esci
         • ..
+- **RF2**: Come giocatore voglio iniziare una nuova partita.
+
+            Al comando /gioca 
+            
+            Se nessuna partita è in corso l'app mostra il tavoliere con le pedine in posizione iniziale
+            come in figura e si predispone a ricevere la prima mossa di gioco del nero o altri comandi.
+
+  ![Immagina_tavoliere_comando_gioca](./img/Immagina_tavoliere_comando_gioca.png)
+
+
 
 
 
