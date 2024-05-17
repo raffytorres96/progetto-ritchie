@@ -116,6 +116,10 @@ _________
       dove base sarà sostituito con il nome del gruppo.
 
 
+## **7. Manuale utente**
+__________
+
+
 
 
 
