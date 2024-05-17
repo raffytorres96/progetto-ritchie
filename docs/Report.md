@@ -95,7 +95,7 @@ _________
 
 ### **3.2 Requisiti non funzionali**
 
-Il container docker dell’app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
+- **RNF1**:Il container docker dell’app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
 
        Elenco di terminali supportati
       
