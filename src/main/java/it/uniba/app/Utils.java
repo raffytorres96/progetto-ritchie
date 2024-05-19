@@ -6,6 +6,10 @@ package it.uniba.app;
  */
 public class Utils {
 
+/** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
+      * prima di iniziare una partita. */
+      private boolean inGame = false;
+
     /**
     * Metodo che analizza l'input dell'utente
     * per conotrollare la correttezza dei comandi
@@ -43,6 +47,13 @@ public class Utils {
         }
         return false;
     }
-
+    /** Metodo che restituisce il valore dell'attributo inGame. */
+    public boolean isInGame() {
+        return inGame;
+    }
+    /**Metodo che setta il valore dell'attributo inGame. */
+    public void setInGame(final boolean setInGame) {
+        this.inGame = setInGame;
+}
 
 }
