@@ -1,17 +1,130 @@
 
-package main.java.it.uniba.app;
+package it.uniba.app;
 /**
- * <<Control>> 
+ * <<Control>>
  * Responsabilità: Contiene metodi per l'analisi dell'input.
  */
 public class Utils {
+
+    /** attributo statico usato per mappare la prima colonna. */
+    public static final int COLONNA0 = 0;
+
+    /** attributo statico usato per mappare la seconda colonna . */
+    public static final int COLONNA1 = 1;
+
+    /** attributo statico usato per mappare la terza colonna. */
+    public static final int COLONNA2 = 2;
+
+    /** attributo statico usato per mappare la quarta colonna. */
+    public static final int COLONNA3 = 3;
+
+    /** attributo statico usato per mappare la quinta colonna. */
+    public static final int COLONNA4 = 4;
+
+    /** attributo statico usato per mappare la sesta colonna. */
+    public static final int COLONNA5 = 5;
+
+    /** attributo statico usato per mappare la settima colonna. */
+    public static final int COLONNA6 = 6;
+
+
+
+    /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
+      * prima di iniziare una partita. */
+      private boolean inGame = false;
+
+    /** Analizzatore utilizzato per separare la stringa delle coordinate date in input
+     *  per passare ai meotodi di mapping righe e colonne.
+     * @param inputCoordinate
+     * */
+      public boolean analizzatoreInputCoordinate(final String inputCoordinate) {
+        boolean errore = false;
+        if (inputCoordinate.length() == 2 && Character.isLetter(inputCoordinate.charAt(0))
+        && Character.isDigit(inputCoordinate.charAt(1))) {
+        char coordinataColonnaCodificata = inputCoordinate.charAt(0);
+        char coordinataRigaCodificata = inputCoordinate.charAt(1);
+        int coordinataColonna = 0;
+        int coordinataRiga = 0;
+
+        if (coordinataColonnaCodificata >= 'a' && coordinataColonnaCodificata <= 'f'
+            && coordinataRigaCodificata >= '1' && coordinataRigaCodificata <= '7') {
+
+            coordinataRiga = mappingRighe(Character.toString(coordinataRigaCodificata));
+            coordinataColonna = mappingColonne(Character.toString(coordinataColonnaCodificata));
+
+            return true;
+        } else {
+            errore = true;
+
+        }
+      } else {
+          errore = true;
+      }
+if (errore) {
+    GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->   XY "
+    + " <-con X=lettera della colonna e Y=numero della riga.");
+    return false;
+
+    } else {
+            return true;
+        }
+    }
+
+
     /**
-     * Metodo che analizza l'input dell'utente.
-     * @param input stringa inserita dall'utente
-     * @return boolean true se l'input è valido, false altrimenti
+    *  Metodo che mappa le coordinate delle righe inserite da tastiera.
+    * @param riga
+    * @return
+    */
+    public int mappingRighe(final String riga) {
+
+        return Integer.valueOf(riga) - 1;
+
+    }
+
+    /**
+     * Metodo che mappa le coordinate delle colonne inserite da tastiera.
+     * @param colonna
      */
-    public boolean analizzatoreInput(String input){
-        switch (input){
+    public int mappingColonne(final String colonna) {
+        int colonnaInt = -1;
+        switch (colonna) {
+            case "a":
+                colonnaInt = COLONNA0;
+                break;
+            case "b":
+                colonnaInt = COLONNA1;
+                break;
+            case "c":
+                colonnaInt = COLONNA2;
+                break;
+            case "d":
+                colonnaInt = COLONNA3;
+                break;
+            case "e":
+                colonnaInt = COLONNA4;
+                break;
+            case "f":
+                colonnaInt = COLONNA5;
+                break;
+            case "g":
+                colonnaInt = COLONNA6;
+                break;
+            default:
+                break;
+        }
+        return colonnaInt;
+    }
+
+    /**
+    * Metodo che analizza l'input dell'utente
+    * per conotrollare la correttezza dei comandi
+    * inseriti.
+    * @param input
+    * @return
+    */
+    public boolean analizzatoreInput(final String input) {
+        switch (input) {
             case "/help":
                 return true;
             case "/esci":
@@ -26,15 +139,27 @@ public class Utils {
                 return true;
             case "/tavoliere":
                 return true;
-            case "Classica":
+            case "classica":
                 return true;
-            case "Thomas":
+            case "thomas":
                 return true;
-            case "Assimilation":
+            case "assimilation":
                 return true;
-            case "Variante a Perdere":
+            case "variante a perdere":
                 return true;
+
+                default:
+                    break;
         }
         return false;
     }
+    /** Metodo che restituisce il valore dell'attributo inGame. */
+    public boolean isInGame() {
+        return inGame;
+    }
+    /**Metodo che setta il valore dell'attributo inGame. */
+    public void setInGame(final boolean setInGame) {
+        this.inGame = setInGame;
+    }
+
 }
