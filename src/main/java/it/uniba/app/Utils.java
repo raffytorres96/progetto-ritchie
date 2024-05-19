@@ -1,17 +1,20 @@
 
-package main.java.it.uniba.app;
+package it.uniba.app;
 /**
- * <<Control>> 
+ * <<Control>>
  * Responsabilità: Contiene metodi per l'analisi dell'input.
  */
 public class Utils {
+
     /**
-     * Metodo che analizza l'input dell'utente.
-     * @param input stringa inserita dall'utente
-     * @return boolean true se l'input è valido, false altrimenti
-     */
-    public boolean analizzatoreInput(String input){
-        switch (input){
+    * Metodo che analizza l'input dell'utente
+    * per conotrollare la correttezza dei comandi
+    * inseriti.
+    * @param input
+    * @return
+    */
+    public boolean analizzatoreInput(final String input) {
+        switch (input) {
             case "/help":
                 return true;
             case "/esci":
@@ -26,15 +29,20 @@ public class Utils {
                 return true;
             case "/tavoliere":
                 return true;
-            case "Classica":
+            case "classica":
                 return true;
-            case "Thomas":
+            case "thomas":
                 return true;
-            case "Assimilation":
+            case "assimilation":
                 return true;
-            case "Variante a Perdere":
+            case "variante a perdere":
                 return true;
+
+                default:
+                    break;
         }
         return false;
     }
+
+
 }
