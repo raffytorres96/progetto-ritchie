@@ -183,7 +183,7 @@ public final class Comandi {
      * @param partita Istanza della classe partita
      * @return boolean, true se la conferma è andata a buon fine, false altrimenti
      */
-    public boolean abbandona(final Partita partita) {
+    public static boolean abbandona(final Partita partita) {
 
         String conferma;
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
@@ -204,19 +204,25 @@ public final class Comandi {
             conferma = input();
         }
 
-        if (conferma.equals("si") && partita.getGiocatore1().getStatoGiocatore() == 1) {
+        if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 1) {
+            int numeroPedine = partita.getTavoliere().getContaPedine(1);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
                     + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore2().getNome() + " Vince per abbandono per 2 a 0 \n");
+                    + ":" + partita.getGiocatore2().getNome() + " Vince per abbandono per " + numeroPedine + " a 0 \n");
 
-            return true;
+                    partita.setPartitaIniziata(false);
+                    partita.setGiocoFinito(true);
+                    return true;
         }
 
-        if (conferma.equals("si") && partita.getGiocatore1().getStatoGiocatore() == 2) {
+        if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
+            int numeroPedine = partita.getTavoliere().getContaPedine(2);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
-                    + "Bnevenuti in ATAXX" + GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore2().getNome() + "Vince per abbandono per 2 a 0 \n");
+                    + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
+                    + ":" + partita.getGiocatore1().getNome() + "Vince per abbandono per " + numeroPedine + " a 0 \n");
 
+            partita.setPartitaIniziata(false);
+            partita.setGiocoFinito(true);
             return true;
         }
 
