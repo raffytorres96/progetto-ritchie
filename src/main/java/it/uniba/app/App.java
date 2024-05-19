@@ -1,45 +1,61 @@
 package it.uniba.app;
-import java.util.Scanner;
+
 
 /**
  * Main class of the application.
  */
 public final class App {
+
+
     /**
-     * Creazione dello scanner per l'input, usabile
-     * in tutti i metodi.
+     * Costruttore.
      */
-    private static Scanner scanner = null;
-    /**
-     * Get a greeting sentence.
-     *
-     * @return the "Hello World!" string.
-     */
-    public String getGreeting() {
-        return "Hello World!!!";
+    private App() {
     }
+
 
 /**
  * Main della classe app.
  * @param args
  */
      public static void main(final String[] args) {
-        scanner = new Scanner(System.in);
-        System.out.println(new App().getGreeting());
-        Tavoliere t = new Tavoliere();
-        System.out.println("PRIMA MOSSA - giocatore1");
-        System.out.println("Inserisci la riga: ");
-        int riga = scanner.nextInt();
-        System.out.println("Inserisci la colonna: ");
-        int colonna = scanner.nextInt();
-        t.setTavoliere(riga, colonna, Cella.STATO_GIOCATORE2);
-        System.out.println("SECONDA MOSSA - giocatore2");
-        System.out.println("Inserisci la riga: ");
-        riga = scanner.nextInt();
-        System.out.println("Inserisci la colonna: ");
-        colonna = scanner.nextInt();
-        t.setTavoliere(riga, colonna, Cella.STATO_GIOCATORE1);
-        GestoreStampa.stampareTavoliereVuoto();
-        GestoreStampa.stampareTavoliere(t);
+        GestoreStampa.stampareTitoloGioco();
+        Utils utils = new Utils();
+        String input;
+        do {
+            do {
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "inserisci un comando: ");
+                input = Comandi.input();
+                if (!utils.analizzatoreInput(input)) {
+                    GestoreStampa.stampareMessaggio("Il comando inserito non è corretto\n\n");
+
+                }
+            } while (!utils.analizzatoreInput(input));
+            if (input.equals("/help")) {
+                Comandi.help();
+
+            } else if (input.equals("/gioca") && utils.isInGame()) {
+                GestoreStampa.clearTerminale();
+                Comandi.gioca();
+            } else if (input.equals("/vuoto") && utils.isInGame()) {
+                GestoreStampa.stampareTavoliereVuoto();
+            } else if (input.equals("/tavoliere") && utils.isInGame()) {
+                Tavoliere tavoliere = new Tavoliere();
+                //creare i metodo inizializza tavoliere e usarlo
+
+            } else if (input.equals("/qualimosse") && utils.isInGame()) {
+                GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
+            }  else if (input.equals("/abbandona") && utils.isInGame()) {
+                GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
+            } else if (input.equals("/esci") && utils.isInGame()) {
+                Comandi.esci();
+            }
+
+        } while (true);
+
+
+
+
+        }
     }
-}
+
