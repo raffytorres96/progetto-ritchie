@@ -65,9 +65,9 @@ public void controlloPartita() {
 
         if (input.equals("/qualimosse")) {
             GestoreStampa.stampareMessaggio("inserisci la colonna: ");
-            int riga = utils.mappingColonne(Comandi.input());
+            int colonna = utils.mappingColonne(Comandi.input());
             GestoreStampa.stampareMessaggio("inserisci la riga: ");
-            int colonna = utils.mappingRighe(Comandi.input());
+            int riga = utils.mappingRighe(Comandi.input());
             mossa.qualiMosse(getGiocatoreCorrente(), riga, colonna);
         } else if (input.equals("/abbandona")) {
             Comandi.abbandona(this);
