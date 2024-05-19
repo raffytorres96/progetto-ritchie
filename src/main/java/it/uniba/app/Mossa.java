@@ -57,16 +57,11 @@ public class Mossa {
     /**
      * Costruttore che inizializza la mossa.
      *
-     * @param rigaSelezionata
-     * @param colonnaSelezionata
      * @param tavoliereCorrente
      * @param newGiocatoreCorrente
      */
-    Mossa(final int rigaSelezionata, final int colonnaSelezionata,
-          final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
+    Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
 
-        this.riga = rigaSelezionata;
-        this.colonna = colonnaSelezionata;
         this.tavoliere = tavoliereCorrente;
         this.giocatoreCorrente = newGiocatoreCorrente;
         }
@@ -270,7 +265,76 @@ public class Mossa {
                     }
                 }
             }
+/**
+    * Metodo che restituisce la riga.
+    *
+    * @return riga
+    */
+    public int getRiga() {
+      return riga;
 
+   }
+
+/**
+    * Metodo che restituisce la colonna.
+    *
+    * @return colonna
+    */
+    public int getColonna() {
+      return colonna;
+   }
+
+    /**
+    * Metodo che restituisce il tavoliere.
+    *
+    * @return tavoliere
+    */
+    public Tavoliere getTavoliere() {
+      return tavoliere;
+   }
+
+   /**
+    * Metodo che restituisce al stato del giocatore corrente.
+    *
+    * @return giocatoreCorrente
+    */
+    public int getGiocatoreCorrente() {
+      return giocatoreCorrente;
+   }
+ /**
+    * Metodo che setta l'attributo riga.
+    *
+    * @param newRiga
+    */
+   public void setRiga(final int newRiga) {
+      this.riga = newRiga;
+   }
+ /**
+    * Metodo che setta l'attributo colonne.
+    *
+    * @param newColonna
+    */
+   public void setColonna(final int newColonna) {
+      this.colonna = newColonna;
+   }
+ /**
+    * Metodo che setta il tavoliere passato a mossa.
+    *
+    * @param newTavoliere
+    */
+   public void setTavoliere(final Tavoliere newTavoliere) {
+      this.tavoliere = newTavoliere;
+   }
+ /**
+    * Metodo che setta lo stato del giocatore corrente.
+    *
+    * @param newGiocatoreCorrente
+    */
+   public void setGiocatoreCorrente(final int newGiocatoreCorrente) {
+      this.giocatoreCorrente = newGiocatoreCorrente;
+
+
+ }
 }
 
 
