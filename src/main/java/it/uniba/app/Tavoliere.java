@@ -55,7 +55,7 @@ public class Tavoliere {
    /**
    * Attributo statico che contiene il numero di righe e colonne.
    */
-    private static final short N_RIGHE_COLONNE = 7;
+    public static final short N_RIGHE_COLONNE = 7;
    /**
    * Attributo che descrive il tavoliere come una matrice 7x7
    * di istanze di Cella (variabili tipo Cella).

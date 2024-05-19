@@ -35,11 +35,6 @@ public class Mossa {
     private int giocatoreCorrente;
 
     /**
-     * Attributo statico che rappresenta la dimensione del tavoliere.
-     */
-    public static final  int SIZE = 7;
-
-    /**
      * Attributo statico che rappresenta la cella
      * su cui è possibile fare una mossa di tipo
      * generativa.
@@ -106,145 +101,145 @@ public class Mossa {
             private void visualizzaMossePossibili(final int rigaSelezionata, final int colonnaSelezionata,
              final Tavoliere tavoliereCorrente, final int newgiocatoreCorrente) {
 
-                if (rigaSelezionata + 1 < SIZE && colonnaSelezionata  + 1 < SIZE && rigaSelezionata + 1 > 0
+                if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata  + 1 < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata + 1 > 0
                  && colonnaSelezionata + 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 1,
                     Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata - 1 < SIZE && colonnaSelezionata  - 1 < SIZE && rigaSelezionata - 1 > 0
+                if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata  - 1 < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata - 1 > 0
                  && colonnaSelezionata - 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 1,
                     Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata - 1 < SIZE && colonnaSelezionata < SIZE && rigaSelezionata - 1 > 0
+                if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata - 1 > 0
                  && colonnaSelezionata > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata,
                      Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata < SIZE && colonnaSelezionata - 1 < SIZE && rigaSelezionata > 0
+                if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata > 0
                  && colonnaSelezionata - 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 1,
                      Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata + 1 < SIZE && colonnaSelezionata < SIZE && rigaSelezionata + 1 > 0
+                if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata + 1 > 0
                  && colonnaSelezionata > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata,
                      Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata < SIZE && colonnaSelezionata + 1 < SIZE && rigaSelezionata > 0
+                if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata > 0
                  && colonnaSelezionata + 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 1,
                      Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata + 1 < SIZE && colonnaSelezionata - 1 < SIZE && rigaSelezionata + 1 > 0
+                if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata + 1 > 0
                  && colonnaSelezionata - 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 1,
                      Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata - 1 < SIZE && colonnaSelezionata + 1 < SIZE && rigaSelezionata - 1 > 0
+                if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && rigaSelezionata - 1 > 0
                  && colonnaSelezionata + 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 1,
                      colonnaSelezionata + 1,  Cella.STATO_CELLA_GIALLA);
                 }
 
-                if (rigaSelezionata + 2 < SIZE && colonnaSelezionata + 2 < SIZE
+                if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 2 > 0 && colonnaSelezionata + 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 2 < SIZE && colonnaSelezionata - 2 < SIZE
+                if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 2 > 0 && colonnaSelezionata - 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 2 < SIZE && colonnaSelezionata < SIZE
+                if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 2 > 0 && colonnaSelezionata > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata < SIZE && colonnaSelezionata - 2 < SIZE
+                if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata > 0 && colonnaSelezionata - 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata + 2 < SIZE && colonnaSelezionata < SIZE
+                if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 2 > 0 && colonnaSelezionata > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata < SIZE && colonnaSelezionata + 2 < SIZE
+                if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata > 0 && colonnaSelezionata + 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata + 2 < SIZE && colonnaSelezionata - 2 < SIZE
+                if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 2 > 0 && colonnaSelezionata - 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 2 < SIZE && colonnaSelezionata + 2 < SIZE
+                if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 2 > 0 && colonnaSelezionata + 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata + 2 < SIZE && colonnaSelezionata + 1 < SIZE
+                if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 2 > 0 && colonnaSelezionata + 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 1,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata + 2 < SIZE && colonnaSelezionata - 1 < SIZE
+                if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 2 > 0 && colonnaSelezionata - 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 1,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 2 < SIZE && colonnaSelezionata + 1 < SIZE
+                if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 2 > 0 && colonnaSelezionata + 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 1,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 2 < SIZE && colonnaSelezionata - 1 < SIZE
+                if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 2 > 0 && colonnaSelezionata - 1 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 1,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata + 1 < SIZE && colonnaSelezionata + 2 < SIZE
+                if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 1 > 0 && colonnaSelezionata + 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata + 1 < SIZE && colonnaSelezionata - 2 < SIZE
+                if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata + 1 > 0 && colonnaSelezionata - 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 1 < SIZE && colonnaSelezionata + 2 < SIZE
+                if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 1 > 0 && colonnaSelezionata + 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 2,
                       Cella.STATO_CELLA_ARANCIONE);
                 }
 
-                if (rigaSelezionata - 1 < SIZE && colonnaSelezionata - 2 < SIZE
+                if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
                  && rigaSelezionata - 1 > 0 && colonnaSelezionata - 2 > 0) {
                     tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 2,
                       Cella.STATO_CELLA_ARANCIONE);
@@ -255,8 +250,8 @@ public class Mossa {
              * dalle mosse possibili.
              */
             private void puliziaTavoliere() {
-                for (int i = 0; i < SIZE; i++) {
-                    for (int j = 0; j < SIZE; j++) {
+                for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+                    for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
                         if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
                         || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE) {
 
