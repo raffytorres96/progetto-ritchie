@@ -737,4 +737,11 @@ public static void stampareTavoliereVuoto() {
   System.out.println(ETICHETTA_RIGHE);
 }
 
+/**
+ * Metodo per pulire lo schermo.
+ */
+public static void clearTerminale() {
+  System.out.print("\033[H\033[2J");
+  System.out.flush();
+}
 }
