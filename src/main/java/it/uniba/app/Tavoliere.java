@@ -11,6 +11,47 @@ package it.uniba.app;
  * @author GruppoRitchie
  */
 public class Tavoliere {
+    /** attributo statico usato per mappare la prima colonna. */
+    public static final int COLONNA0 = 0;
+
+    /** attributo statico usato per mappare la seconda colonna . */
+    public static final int COLONNA1 = 1;
+
+    /** attributo statico usato per mappare la terza colonna. */
+    public static final int COLONNA2 = 2;
+
+    /** attributo statico usato per mappare la quarta colonna. */
+    public static final int COLONNA3 = 3;
+
+    /** attributo statico usato per mappare la quinta colonna. */
+    public static final int COLONNA4 = 4;
+
+    /** attributo statico usato per mappare la sesta colonna. */
+    public static final int COLONNA5 = 5;
+
+    /** attributo statico usato per mappare la settima colonna. */
+    public static final int COLONNA6 = 6;
+
+    /** attributo statico usato per mappare la prima riga. */
+    public static final int RIGA0 = 0;
+
+    /** attributo statico usato per mappare la seconda riga . */
+    public static final int RIGA1 = 1;
+
+    /** attributo statico usato per mappare la terza riga. */
+    public static final int RIGA2 = 2;
+
+    /** attributo statico usato per mappare la quarta riga. */
+    public static final int RIGA3 = 3;
+
+    /** attributo statico usato per mappare la quinta riga. */
+    public static final int RIGA4 = 4;
+
+    /** attributo statico usato per mappare la sesta riga. */
+    public static final int RIGA5 = 5;
+
+    /** attributo statico usato per mappare la settima riga. */
+    public static final int RIGA6 = 6;
    /**
    * Attributo statico che contiene il numero di righe e colonne.
    */
@@ -83,11 +124,11 @@ public class Tavoliere {
  * @param t tavoliere da inizializzare per l'inizio di una nuova partita
  * @return t tavoliere inizializzato
  */
-    public Tavoliere inizializzaTavolierePartita (Tavoliere t){
-        t.setTavoliere(POSIZIONE0, POSIZIONE0, GIOCATORE1);
-        t.setTavoliere(POSIZIONE6, POSIZIONE6, GIOCATORE1);
-        t.setTavoliere(POSIZIONE0, POSIZIONE6, GIOCATORE2);
-        t.setTavoliere(POSIZIONE6, POSIZIONE0, GIOCATORE2);
+    public Tavoliere inizializzaTavolierePartita(final Tavoliere t) {
+        t.setTavoliere(RIGA0, COLONNA0, Giocatore.GIOCATORE1);
+        t.setTavoliere(RIGA6, COLONNA6, Giocatore.GIOCATORE1);
+        t.setTavoliere(RIGA0, COLONNA6, Giocatore.GIOCATORE2);
+        t.setTavoliere(RIGA6, COLONNA0, Giocatore.GIOCATORE2);
         return t;
     }
 
