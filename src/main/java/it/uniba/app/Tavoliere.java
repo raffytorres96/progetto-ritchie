@@ -59,4 +59,22 @@ public class Tavoliere {
         Cella cella = tavoliere[riga][colonna];
         return cella;
     }
+
+/**
+ * Metodo che conta le pedine del giocatore corrente nel Tavoliere.
+ * @param giocatoreCorrente
+ * @return
+ */
+    public int getContaPedine(final int giocatoreCorrente) {
+        int contaPedine = 0;
+        for (int i = 0; i < N_RIGHE_COLONNE; i++) {
+            for (int j = 0; j < N_RIGHE_COLONNE; j++) {
+                if (Cella.getStato(getCella(i, j)) == giocatoreCorrente) {
+                    contaPedine++;
+                }
+            }
+
+        }
+        return contaPedine;
+    }
 }
