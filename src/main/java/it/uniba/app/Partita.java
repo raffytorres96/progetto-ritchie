@@ -54,6 +54,8 @@ private int giocatoreCorrente;
  */
 public Partita(final String regolaGioco, final String nome1, final String nome2) {
 
+this.partitaIniziata = true;
+this.giocatoreCorrente = GIOCATORE1;
 this.tavoliere = new Tavoliere();
 this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE0, GIOCATORE1);
 this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE6, GIOCATORE1);
