@@ -77,4 +77,18 @@ public class Tavoliere {
         }
         return contaPedine;
     }
+
+/**
+ * Metodo che conta le pedine del giocatore corrente nel Tavoliere.
+ * @param t tavoliere da inizializzare per l'inizio di una nuova partita
+ * @return t tavoliere inizializzato
+ */
+    public Tavoliere inizializzaTavolierePartita (Tavoliere t){
+        t.setTavoliere(POSIZIONE0, POSIZIONE0, GIOCATORE1);
+        t.setTavoliere(POSIZIONE6, POSIZIONE6, GIOCATORE1);
+        t.setTavoliere(POSIZIONE0, POSIZIONE6, GIOCATORE2);
+        t.setTavoliere(POSIZIONE6, POSIZIONE0, GIOCATORE2);
+        return t;
+    }
+
 }
