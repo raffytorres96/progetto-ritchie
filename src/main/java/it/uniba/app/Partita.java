@@ -11,20 +11,6 @@ package it.uniba.app;
  */
 public class Partita {
 
-    /** attributo statico per identificare lo stato della cella occupata
- * nel tavoliere dalla pedina che corrisponde al giocatore1.  */
-private static final int GIOCATORE1 = 1;
-
-/** attributo statico per identificare lo stato della cella occupata
- * nel tavoliere dalla pedina che corrisponde al giocatore2.  */
-private static final int GIOCATORE2 = 2;
-
-/** attributo statico per identificare la cordinata da dare a setTavoliere.  */
-private static final int POSIZIONE0 = 0;
-
-/** attributo statico per identificare la cordinata da dare a setTavoliere.  */
-private static final int POSIZIONE6 = 6;
-
 /** attributo che indica se il gioco è finito o meno.  */
 private boolean giocoFinito = false;
 
@@ -56,15 +42,12 @@ private int giocatoreCorrente;
 public Partita(final String regolaGioco, final String nome1, final String nome2) {
 
 this.partitaIniziata = true;
-this.giocatoreCorrente = GIOCATORE1;
+this.giocatoreCorrente = Giocatore.GIOCATORE1;
 this.tavoliere = new Tavoliere();
-this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE0, GIOCATORE1);
-this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE6, GIOCATORE1);
-this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE6, GIOCATORE2);
-this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE0, GIOCATORE2);
+this.tavoliere = this.tavoliere.inizializzaTavolierePartita(this.tavoliere);
 this.regola = new Regola(regolaGioco);
-this.giocatore1 = new Giocatore(nome1, GIOCATORE1);
-this.giocatore2 = new Giocatore(nome2, GIOCATORE2);
+this.giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
+this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 }
 
 

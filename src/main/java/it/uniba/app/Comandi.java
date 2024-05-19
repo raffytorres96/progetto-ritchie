@@ -260,5 +260,13 @@ public final class Comandi {
         GestoreStampa.stampareTavoliere(partita.getTavoliere());
         partita.controlloPartita();
     }
+    /**
+     * Metodo che si occupa di gestire il comando /tavoliere, stampa cioè un tavoliere con due pedine
+     * per giocatore agli angoli della griglia di gioco.
+     */
+    public static void comandoTavoliere(Tavoliere t){
+        t=t.inizializzaTavolierePartita(t);
+        GestoreStampa.stampareTavoliere(t);
+    }
 
 }

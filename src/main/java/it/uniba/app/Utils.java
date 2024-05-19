@@ -1,34 +1,9 @@
-
 package it.uniba.app;
 /**
  * <<Control>>
  * Responsabilità: Contiene metodi per l'analisi dell'input.
  */
 public class Utils {
-
-    /** attributo statico usato per mappare la prima colonna. */
-    public static final int COLONNA0 = 0;
-
-    /** attributo statico usato per mappare la seconda colonna . */
-    public static final int COLONNA1 = 1;
-
-    /** attributo statico usato per mappare la terza colonna. */
-    public static final int COLONNA2 = 2;
-
-    /** attributo statico usato per mappare la quarta colonna. */
-    public static final int COLONNA3 = 3;
-
-    /** attributo statico usato per mappare la quinta colonna. */
-    public static final int COLONNA4 = 4;
-
-    /** attributo statico usato per mappare la sesta colonna. */
-    public static final int COLONNA5 = 5;
-
-    /** attributo statico usato per mappare la settima colonna. */
-    public static final int COLONNA6 = 6;
-
-
-
     /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
       * prima di iniziare una partita. */
       private boolean inGame = false;
@@ -90,25 +65,25 @@ if (errore) {
         int colonnaInt = -1;
         switch (colonna) {
             case "a":
-                colonnaInt = COLONNA0;
+                colonnaInt = Tavoliere.COLONNA0;
                 break;
             case "b":
-                colonnaInt = COLONNA1;
+                colonnaInt = Tavoliere.COLONNA1;
                 break;
             case "c":
-                colonnaInt = COLONNA2;
+                colonnaInt = Tavoliere.COLONNA2;
                 break;
             case "d":
-                colonnaInt = COLONNA3;
+                colonnaInt = Tavoliere.COLONNA3;
                 break;
             case "e":
-                colonnaInt = COLONNA4;
+                colonnaInt = Tavoliere.COLONNA4;
                 break;
             case "f":
-                colonnaInt = COLONNA5;
+                colonnaInt = Tavoliere.COLONNA5;
                 break;
             case "g":
-                colonnaInt = COLONNA6;
+                colonnaInt = Tavoliere.COLONNA6;
                 break;
             default:
                 break;

@@ -10,8 +10,17 @@ package it.uniba.app;
  *  del gioco.
  */
 public class Giocatore {
+/** attributo statico per identificare lo stato della cella occupata
+ * nel tavoliere dalla pedina che corrisponde al giocatore1.  */
+public static final int GIOCATORE1 = 1;
+
+/** attributo statico per identificare lo stato della cella occupata
+ * nel tavoliere dalla pedina che corrisponde al giocatore2.  */
+public static final int GIOCATORE2 = 2;
+
  /** Attributo d'istanza contenente il nome del giocatore.  */
 private String nome;
+
  /** Attributo d'istanza contenente lo stato del giocatore.  */
 private int statoGiocatore;
 
