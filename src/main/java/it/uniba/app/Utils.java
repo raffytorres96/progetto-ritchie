@@ -33,8 +33,10 @@ public class Utils {
       * prima di iniziare una partita. */
       private boolean inGame = false;
 
-    /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
-      * prima di iniziare una partita. */
+    /** Analizzatore utilizzato per separare la stringa delle coordinate date in input
+     *  per passare ai meotodi di mapping righe e colonne.
+     * @param inputCoordinate
+     * */
       public boolean analizzatoreInputCoordinate(final String inputCoordinate) {
         boolean errore = false;
         if (inputCoordinate.length() == 2 && Character.isLetter(inputCoordinate.charAt(0))
