@@ -34,12 +34,12 @@ public final class App {
             if (input.equals("/help")) {
                 Comandi.help();
 
-            } else if (input.equals("/gioca") && utils.isInGame()) {
+            } else if (input.equals("/gioca") && !utils.isInGame()) {
                 GestoreStampa.clearTerminale();
                 Comandi.gioca();
-            } else if (input.equals("/vuoto") && utils.isInGame()) {
+            } else if (input.equals("/vuoto") && !utils.isInGame()) {
                 GestoreStampa.stampareTavoliereVuoto();
-            } else if (input.equals("/tavoliere") && utils.isInGame()) {
+            } else if (input.equals("/tavoliere") && !utils.isInGame()) {
                 Tavoliere tavoliere = new Tavoliere();
                 //creare i metodo inizializza tavoliere e usarlo
 
