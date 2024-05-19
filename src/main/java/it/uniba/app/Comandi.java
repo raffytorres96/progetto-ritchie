@@ -19,7 +19,7 @@ public final class Comandi {
 /**
  * Costruttore della classe comandi.
  */
-    public Comandi() {
+    private Comandi() {
     }
 
     /**
