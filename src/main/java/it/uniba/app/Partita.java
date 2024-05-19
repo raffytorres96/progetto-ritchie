@@ -39,6 +39,13 @@ private Giocatore giocatore1;
 
 /** attributo che rappresenta il giocatore2.  */
 private Giocatore giocatore2;
+
+/** attributo che imposta la partita a false non chimato il cotruttore dipartita.  */
+private boolean partitaIniziata = false;
+
+/** attributo che rappresenta il giocatore corrente.  */
+private int giocatoreCorrente;
+
 /**
  * Costruttore della classe Partita.
  * @param regolaGioco
@@ -47,6 +54,8 @@ private Giocatore giocatore2;
  */
 public Partita(final String regolaGioco, final String nome1, final String nome2) {
 
+this.partitaIniziata = true;
+this.giocatoreCorrente = GIOCATORE1;
 this.tavoliere = new Tavoliere();
 this.tavoliere.setTavoliere(POSIZIONE0, POSIZIONE0, GIOCATORE1);
 this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE6, GIOCATORE1);
@@ -105,6 +114,38 @@ this.giocatore2 = new Giocatore(nome2, GIOCATORE2);
     public void setGiocoFinito(final boolean isGiocoFinito) {
         this.giocoFinito = isGiocoFinito;
     }
+    /**
+    * Metodo che restituisce se l apartita è iniziata oppure no.
+    * @return
+    */
+    public boolean isPartitaIniziata() {
+        return this.partitaIniziata;
+    }
+
+    /**
+    * Metodo che setta l'attributo partita iniziata.
+    * @param newpartitaIniziata
+    */
+    public void setPartitaIniziata(final boolean newpartitaIniziata) {
+        this.partitaIniziata = newpartitaIniziata;
+    }
+
+    /**
+    * Metodo che restituisce il giorcatore corente.
+    * @return
+    */
+    public int getGiocatoreCorrente() {
+        return this.giocatoreCorrente;
+    }
+
+    /**
+    * Metodo che setta il giocatore corrente.
+    * @param newgiocatoreCorrente
+    */
+    public void setGiocatoreCorrente(final int newgiocatoreCorrente) {
+        this.giocatoreCorrente = newgiocatoreCorrente;
+    }
+
 
 }
 
