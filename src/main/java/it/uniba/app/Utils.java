@@ -6,6 +6,29 @@ package it.uniba.app;
  */
 public class Utils {
 
+    /** attributo statico usato per mappare la prima colonna. */
+    public static final int COLONNA0 = 0;
+
+    /** attributo statico usato per mappare la seconda colonna . */
+    public static final int COLONNA1 = 1;
+
+    /** attributo statico usato per mappare la terza colonna. */
+    public static final int COLONNA2 = 2;
+
+    /** attributo statico usato per mappare la quarta colonna. */
+    public static final int COLONNA3 = 3;
+
+    /** attributo statico usato per mappare la quinta colonna. */
+    public static final int COLONNA4 = 4;
+
+    /** attributo statico usato per mappare la sesta colonna. */
+    public static final int COLONNA5 = 5;
+
+    /** attributo statico usato per mappare la settima colonna. */
+    public static final int COLONNA6 = 6;
+
+
+
 /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
       * prima di iniziare una partita. */
       private boolean inGame = false;
