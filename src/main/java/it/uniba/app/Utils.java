@@ -33,6 +33,42 @@ public class Utils {
       * prima di iniziare una partita. */
       private boolean inGame = false;
 
+    /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
+      * prima di iniziare una partita. */
+      public boolean analizzatoreInputCoordinate(final String inputCoordinate) {
+        boolean errore = false;
+        if (inputCoordinate.length() == 2 && Character.isLetter(inputCoordinate.charAt(0))
+        && Character.isDigit(inputCoordinate.charAt(1))) {
+        char coordinataColonnaCodificata = inputCoordinate.charAt(0);
+        char coordinataRigaCodificata = inputCoordinate.charAt(1);
+        int coordinataColonna = 0;
+        int coordinataRiga = 0;
+
+        if (coordinataColonnaCodificata >= 'a' && coordinataColonnaCodificata <= 'f'
+            && coordinataRigaCodificata >= '1' && coordinataRigaCodificata <= '7') {
+
+            coordinataRiga = mappingRighe(Character.toString(coordinataRigaCodificata));
+            coordinataColonna = mappingColonne(Character.toString(coordinataColonnaCodificata));
+
+            return true;
+        } else {
+            errore = true;
+
+        }
+      } else {
+          errore = true;
+      }
+if (errore) {
+    GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->   XY "
+    + " <-con X=lettera della colonna e Y=numero della riga.");
+    return false;
+
+    } else {
+            return true;
+        }
+    }
+
+
     /**
     *  Metodo che mappa le coordinate delle righe inserite da tastiera.
     * @param riga
