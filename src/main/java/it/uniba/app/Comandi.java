@@ -9,7 +9,7 @@ package it.uniba.app;
 
 import java.util.Scanner;
 
-import main.java.it.uniba.app.Utils;
+
 
 /**
  * Classe che si occupa di descrivere i comandi del gioco.
