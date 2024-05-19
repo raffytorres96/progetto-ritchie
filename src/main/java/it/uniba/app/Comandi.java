@@ -232,7 +232,7 @@ public final class Comandi {
     /**
      * Metodo d'istanza che si occupa di iniziare una nuova partita.
      */
-    public void gioca() {
+    public static void gioca() {
         String nomeGiocatore1;
         String nomeGiocatore2;
         String regolaGioco;
@@ -252,10 +252,13 @@ public final class Comandi {
 
         GestoreStampa.stampareMessaggio("Inserisci il nome del giocatore 2: ");
         nomeGiocatore2 = Comandi.input();
+        GestoreStampa.clearTerminale();
 
         partita = new Partita(regolaGioco, nomeGiocatore1, nomeGiocatore2);
-
+        Mossa mossa = new Mossa(partita.getTavoliere(), partita.getGiocatoreCorrente());
+        GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareTavoliere(partita.getTavoliere());
+        partita.controlloPartita();
     }
 
 }
