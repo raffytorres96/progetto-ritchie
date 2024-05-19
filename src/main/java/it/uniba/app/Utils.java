@@ -33,6 +33,43 @@ public class Utils {
       * prima di iniziare una partita. */
       private boolean inGame = false;
 
+
+
+
+    /**
+     * Metodo che mappa le coordinate delle colonne inserite da tastiera.
+     * @param colonna
+     */
+    public int mappingColonne(final String colonna) {
+        int colonnaInt = -1;
+        switch (colonna) {
+            case "a":
+                colonnaInt = COLONNA0;
+                break;
+            case "b":
+                colonnaInt = COLONNA1;
+                break;
+            case "c":
+                colonnaInt = COLONNA2;
+                break;
+            case "d":
+                colonnaInt = COLONNA3;
+                break;
+            case "e":
+                colonnaInt = COLONNA4;
+                break;
+            case "f":
+                colonnaInt = COLONNA5;
+                break;
+            case "g":
+                colonnaInt = COLONNA6;
+                break;
+            default:
+                break;
+        }
+        return colonnaInt;
+    }
+
     /**
     * Metodo che analizza l'input dell'utente
     * per conotrollare la correttezza dei comandi
