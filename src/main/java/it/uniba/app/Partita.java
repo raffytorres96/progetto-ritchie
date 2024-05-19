@@ -46,6 +46,7 @@ private boolean partitaIniziata = false;
 /** attributo che rappresenta il giocatore corrente.  */
 private int giocatoreCorrente;
 
+
 /**
  * Costruttore della classe Partita.
  * @param regolaGioco
@@ -64,6 +65,41 @@ this.tavoliere.setTavoliere(POSIZIONE6, POSIZIONE0, GIOCATORE2);
 this.regola = new Regola(regolaGioco);
 this.giocatore1 = new Giocatore(nome1, GIOCATORE1);
 this.giocatore2 = new Giocatore(nome2, GIOCATORE2);
+}
+
+
+/**
+ * Metodo per il controllo dei comandi in partita. */
+public void controlloPartita() {
+    Utils utils = new Utils();
+
+    GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
+            + " solo /qualiMosse.\n\n");
+    GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+    do {
+        Mossa mossa = new Mossa(getTavoliere(), getGiocatoreCorrente());
+        String input = Comandi.input();
+
+        if (input.equals("/qualimosse")) {
+            GestoreStampa.stampareMessaggio("inserisci la colonna: ");
+            int riga = utils.mappingColonne(Comandi.input());
+            GestoreStampa.stampareMessaggio("inserisci la riga: ");
+            int colonna = utils.mappingRighe(Comandi.input());
+            mossa.qualiMosse(getGiocatoreCorrente(), riga, colonna);
+        } else if (input.equals("/abbandona")) {
+            Comandi.abbandona(this);
+        } else if (input.equals("/esci")) {
+            Comandi.esci();
+        } else {
+            GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
+            GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+        }
+
+
+
+
+    } while (true);
+
 }
     /**
     * Metodo che restituisce il giocatore1.
