@@ -10,14 +10,16 @@ package it.uniba.app;
 import java.util.Scanner;
 
 
-
 /**
  * Classe che si occupa di descrivere i comandi del gioco.
  */
 
 public final class Comandi {
 
-    private Comandi() {
+/**
+ * Costruttore della classe comandi.
+ */
+    public Comandi() {
     }
 
     /**
@@ -132,7 +134,7 @@ public final class Comandi {
      */
 
     public static String input() {
-        Scanner keyboard = new Scanner(System.in, "UTF_8");
+        Scanner keyboard = new Scanner(System.in, "UTF-8");
         String userInput = keyboard.nextLine();
         return userInput.toLowerCase();
     }
