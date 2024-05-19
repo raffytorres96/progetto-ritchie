@@ -41,8 +41,7 @@ public final class App {
                 GestoreStampa.stampareTavoliereVuoto();
             } else if (input.equals("/tavoliere") && !utils.isInGame()) {
                 Tavoliere tavoliere = new Tavoliere();
-                tavoliere=tavoliere.inizializzaTavolierePartita(tavoliere);
-                GestoreStampa.stampareTavoliere(tavoliere);
+                Comandi.comandoTavoliere(tavoliere);
             } else if (input.equals("/qualimosse") && utils.isInGame()) {
                 GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
             }  else if (input.equals("/abbandona") && utils.isInGame()) {
