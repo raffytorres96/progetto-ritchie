@@ -29,12 +29,20 @@ public class Utils {
 
 
 
-/** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
+    /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
       * prima di iniziare una partita. */
       private boolean inGame = false;
 
+    /**
+    *  Metodo che mappa le coordinate delle righe inserite da tastiera.
+    * @param riga
+    * @return
+    */
+    public int mappingRighe(final String riga) {
 
+        return Integer.valueOf(riga) - 1;
 
+    }
 
     /**
      * Metodo che mappa le coordinate delle colonne inserite da tastiera.
@@ -114,6 +122,6 @@ public class Utils {
     /**Metodo che setta il valore dell'attributo inGame. */
     public void setInGame(final boolean setInGame) {
         this.inGame = setInGame;
-}
+    }
 
 }
