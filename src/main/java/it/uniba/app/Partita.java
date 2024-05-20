@@ -67,11 +67,27 @@ public void controlloPartita() {
 
         Mossa mossa = new Mossa(getTavoliere(), getGiocatoreCorrente());
         String input = Comandi.input();
+        int colonna;
+        int riga;
         if (input.equals("/qualimosse")) {
-            GestoreStampa.stampareMessaggio("inserisci la colonna: ");
-            int colonna = utils.mappingColonne(Comandi.input());
+            do {
+                GestoreStampa.stampareMessaggio("inserisci la colonna: ");
+                 colonna = utils.mappingColonne(Comandi.input());
+                 if (colonna == -1) {
+                    GestoreStampa.stampareMessaggio("\nInserisci una lettera valida tra A e G\n");
+                    GestoreStampa.stampareMessaggio("solo lettere sono accettate.\n\n ");
+                }
+            } while (colonna == -1);
+
+            do {
+
             GestoreStampa.stampareMessaggio("inserisci la riga: ");
-            int riga = utils.mappingRighe(Comandi.input());
+            riga = utils.mappingRighe(Comandi.input());
+            GestoreStampa.stampareMessaggio("\nInserisci una cifra valida tra 1 e 7\n");
+            GestoreStampa.stampareMessaggio("Solo le cifre sono accettate.\n\n ");
+
+        } while (riga == -1);
+
             mossa.qualiMosse(getGiocatoreCorrente(), riga, colonna);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
