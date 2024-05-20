@@ -257,6 +257,8 @@ public final class Comandi {
         partita = new Partita(regolaGioco, nomeGiocatore1, nomeGiocatore2);
         Mossa mossa = new Mossa(partita.getTavoliere(), partita.getGiocatoreCorrente());
         GestoreStampa.stampareTitoloGioco();
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
+        + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
         GestoreStampa.stampareTavoliere(partita.getTavoliere());
         partita.controlloPartita();
     }
