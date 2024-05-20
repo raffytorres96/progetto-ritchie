@@ -4,24 +4,18 @@
  * Responsabilità: gestisce il comportamento
  * dell'applicazione in gioco
  */
-
 package it.uniba.app;
-
 import java.util.Scanner;
-
 
 /**
  * Classe che si occupa di descrivere i comandi del gioco.
  */
 
 public final class Comandi {
-
 /**
  * Costruttore della classe comandi.
  */
-    private Comandi() {
-    }
-
+    private Comandi() { }
     /**
      * Metodo statico che stampa le regole e i comandi del gioco.
      */
@@ -136,6 +130,7 @@ public final class Comandi {
     public static String input() {
         Scanner keyboard = new Scanner(System.in, "UTF-8");
         String userInput = keyboard.nextLine();
+        keyboard.close();
         return userInput.toLowerCase();
     }
 

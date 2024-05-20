@@ -47,7 +47,7 @@ public class Utils {
     * @return
     */
     public static int mappingRighe(final String riga) {
-        return Integer.valueOf(riga) - 1;
+        return Integer.parseInt(riga) - 1;
     }
 
     /**

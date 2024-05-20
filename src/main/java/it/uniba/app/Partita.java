@@ -122,7 +122,8 @@ public void controlloPartita() {
     * @return
     */
     public Regola getRegola() {
-        return this.regola;
+        Regola reg = regola;
+        return reg;
     }
     /**
     * Metodo che restituisce se il gioco è finito o meno.
