@@ -65,22 +65,132 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    * @param rigaSelezionata
    * @param colonnaSelezionata
    */
-   public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
-   final int colonnaSelezionata) {
-      if (newgiocatoreCorrente == 1) {
-         puliziaTavoliere();
-         if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
-            visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
-         }
-      }
-      if (newgiocatoreCorrente == 2) {
-         puliziaTavoliere();
-         if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
-            visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
-         }
-      }
-      GestoreStampa.stampareTavoliere(this.tavoliere);
-   }
+  public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
+  final int colonnaSelezionata) {
+     if (newgiocatoreCorrente == 1) {
+        puliziaTavoliere();
+        if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
+         GestoreStampa.clearTerminale();
+         GestoreStampa.stampareTitoloGioco();
+         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+         + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+         visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
+
+           GestoreStampa.stampareTavoliere(this.tavoliere);
+           String input = Comandi.input();
+           do {
+              GestoreStampa.stampareMessaggio("Se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
+              GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+              input = Comandi.input();
+              if (!input.equals("ok")) {
+                 GestoreStampa.stampareMessaggio("Comando non valido\n\n");
+              }
+              } while (!input.equals("ok"));
+              puliziaTavoliere();
+              GestoreStampa.clearTerminale();
+              GestoreStampa.stampareTitoloGioco();
+              GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+                    + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+              GestoreStampa.stampareTavoliere(this.tavoliere);
+              GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
+                    + " solo /qualiMosse.\n\n");
+              GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+              GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+
+            } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 0) {
+               GestoreStampa.clearTerminale();
+               GestoreStampa.stampareTitoloGioco();
+               GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+                     + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+
+               GestoreStampa.stampareTavoliere(this.tavoliere);
+               GestoreStampa.stampareMessaggio("La cella è vuota, non puoi visualizzare le mosse possibili\n");
+               GestoreStampa.stampareMessaggio("digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
+                     + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
+               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandaona' "
+                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+
+        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
+         GestoreStampa.clearTerminale();
+         GestoreStampa.stampareTitoloGioco();
+         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+         GestoreStampa.stampareTavoliere(this.tavoliere);
+         GestoreStampa.stampareMessaggio("La cella è occupata da un avversario, devi selezionare una tua cella\n");
+         GestoreStampa.stampareMessaggio("Digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
+               + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
+         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+               + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+               + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+        }
+     }
+     if (newgiocatoreCorrente == 2) {
+        puliziaTavoliere();
+        if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
+         GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+            + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+         visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
+           GestoreStampa.stampareTavoliere(this.tavoliere);
+           String input = Comandi.input();
+           do {
+              GestoreStampa.stampareMessaggio("Se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
+              GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+              input = Comandi.input();
+              if (!input.equals("ok")) {
+                 GestoreStampa.stampareMessaggio("\nComando non valido\n\n");
+              }
+           } while (!input.equals("ok"));
+           puliziaTavoliere();
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+                  + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+            GestoreStampa.stampareTavoliere(this.tavoliere);
+            GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
+                  + " solo /qualiMosse.\n\n");
+            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                  + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                  + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+
+        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 0) {
+         GestoreStampa.clearTerminale();
+         GestoreStampa.stampareTitoloGioco();
+         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+
+         GestoreStampa.stampareTavoliere(this.tavoliere);
+         GestoreStampa.stampareMessaggio("La cella è vuota, non puoi visualizzare le mosse possibili\n");
+         GestoreStampa.stampareMessaggio("digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
+               + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
+         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandaona' "
+               + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+               + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+
+     } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
+      GestoreStampa.clearTerminale();
+      GestoreStampa.stampareTitoloGioco();
+       GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+      + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+      GestoreStampa.stampareMessaggio("La cella è occupata da un avversario, devi selezionare una tua cella\n");
+      GestoreStampa.stampareMessaggio("Digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
+            + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
+      GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+            + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+      GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+            + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+     }
+
+  }
+}
 
 /**
  * Metodo privato che effettua un controllo se la riga e la colanna selazionata

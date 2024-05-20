@@ -58,8 +58,13 @@ public void controlloPartita() {
 
     GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
             + " solo /qualiMosse.\n\n");
-    do {
+        GestoreStampa.stampareMessaggio("Oppure puoi usare"
+        + GestoreStampa.ANSI_BLUE + " '/Abbandona' " + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+        GestoreStampa.stampareMessaggio("Oppure puoi usare"
+        + GestoreStampa.ANSI_RED + " '/Esci' " + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
         GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+    do {
+
         Mossa mossa = new Mossa(getTavoliere(), getGiocatoreCorrente());
         String input = Comandi.input();
         if (input.equals("/qualimosse")) {
@@ -68,6 +73,7 @@ public void controlloPartita() {
             GestoreStampa.stampareMessaggio("inserisci la riga: ");
             int riga = utils.mappingRighe(Comandi.input());
             mossa.qualiMosse(getGiocatoreCorrente(), riga, colonna);
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
             Comandi.abbandona(this);
         } else if (input.equals("/esci")) {
