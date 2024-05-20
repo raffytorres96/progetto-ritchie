@@ -60,7 +60,7 @@ public final class GestoreStampa {
   * della griglia di gioco.
   */
 
-   private static final String ETICHETTA_RIGHE = "   A  B  C  D  E  F  G";
+   private static final String ETICHETTA_RIGHE = "    A   B   C   D   E   F   G";
   /**
    * Costruttore di GestioneStampa.
    */
