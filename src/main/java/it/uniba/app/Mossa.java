@@ -206,145 +206,145 @@ private void visualizzaMossePossibili(final int rigaSelezionata, final int colon
    final Tavoliere tavoliereCorrente, final int newgiocatoreCorrente) {
 
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 > 0 && colonnaSelezionata + 1 > 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 1,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata  - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 > 0 && colonnaSelezionata - 1 > 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 1,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 > 0 && colonnaSelezionata > 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata > 0 && colonnaSelezionata - 1 > 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata - 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 1,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 > 0 && colonnaSelezionata > 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata > 0 && colonnaSelezionata + 1 > 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata + 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 1,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 > 0 && colonnaSelezionata - 1 > 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 1,
          Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 > 0 && colonnaSelezionata + 1 > 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1,
          colonnaSelezionata + 1,  Cella.STATO_CELLA_GIALLA);
       }
 
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 > 0 && colonnaSelezionata + 2 > 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 > 0 && colonnaSelezionata - 2 > 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 > 0 && colonnaSelezionata > 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata > 0 && colonnaSelezionata - 2 > 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata - 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 > 0 && colonnaSelezionata > 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata > 0 && colonnaSelezionata + 2 > 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata + 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 > 0 && colonnaSelezionata - 2 > 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 > 0 && colonnaSelezionata + 2 > 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 > 0 && colonnaSelezionata + 1 > 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 > 0 && colonnaSelezionata - 1 > 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 > 0 && colonnaSelezionata + 1 > 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 > 0 && colonnaSelezionata - 1 > 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 1 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 > 0 && colonnaSelezionata + 2 > 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 > 0 && colonnaSelezionata - 2 > 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 > 0 && colonnaSelezionata + 2 > 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
 
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 > 0 && colonnaSelezionata - 2 > 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 2 >= 0) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
