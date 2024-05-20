@@ -12,56 +12,49 @@ public class Utils {
      *  per passare ai meotodi di mapping righe e colonne.
      * @param inputCoordinate
      * */
-      public boolean analizzatoreInputCoordinate(final String inputCoordinate) {
+    public static boolean analizzatoreInputCoordinate(final String inputCoordinate) {
         boolean errore = false;
         if (inputCoordinate.length() == 2 && Character.isLetter(inputCoordinate.charAt(0))
         && Character.isDigit(inputCoordinate.charAt(1))) {
-        char coordinataColonnaCodificata = inputCoordinate.charAt(0);
-        char coordinataRigaCodificata = inputCoordinate.charAt(1);
-        int coordinataColonna = 0;
-        int coordinataRiga = 0;
-
-        if (coordinataColonnaCodificata >= 'a' && coordinataColonnaCodificata <= 'f'
-            && coordinataRigaCodificata >= '1' && coordinataRigaCodificata <= '7') {
-
-            coordinataRiga = mappingRighe(Character.toString(coordinataRigaCodificata));
-            coordinataColonna = mappingColonne(Character.toString(coordinataColonnaCodificata));
-
-            return true;
+            char coordinataColonnaCodificata = inputCoordinate.charAt(0);
+            char coordinataRigaCodificata = inputCoordinate.charAt(1);
+            int coordinataColonna = 0;
+            int coordinataRiga = 0;
+            if (coordinataColonnaCodificata >= 'a' && coordinataColonnaCodificata <= 'g'
+                && coordinataRigaCodificata >= '1' && coordinataRigaCodificata <= '7') {
+                coordinataRiga = mappingRighe(Character.toString(coordinataRigaCodificata));
+                coordinataColonna = mappingColonne(Character.toString(coordinataColonnaCodificata));
+                //passare coordinataRiga e coordinataColonna al metodo di Mossa che controlla se è valida
+                return true;
+            } else {
+                errore = true;
+            }
         } else {
             errore = true;
-
         }
-      } else {
-          errore = true;
-      }
-if (errore) {
-    GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->   XY "
-    + " <-con X=lettera della colonna e Y=numero della riga.");
-    return false;
-
-    } else {
+        if (errore) {
+            GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->  XY "
+            + " <-con X=lettera della colonna e Y=numero della riga.\n");
+            return false;
+        } else {
             return true;
         }
     }
-
 
     /**
     *  Metodo che mappa le coordinate delle righe inserite da tastiera.
     * @param riga
     * @return
     */
-    public int mappingRighe(final String riga) {
-
+    public static int mappingRighe(final String riga) {
         return Integer.valueOf(riga) - 1;
-
     }
 
     /**
      * Metodo che mappa le coordinate delle colonne inserite da tastiera.
      * @param colonna
      */
-    public int mappingColonne(final String colonna) {
+    public static int mappingColonne(final String colonna) {
         int colonnaInt = -1;
         switch (colonna) {
             case "a":
