@@ -77,7 +77,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
          visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
 
            GestoreStampa.stampareTavoliere(this.tavoliere);
-           String input = Comandi.input();
+           String input;
            do {
               GestoreStampa.stampareMessaggio("Se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
               GestoreStampa.stampareMessaggio("Inserisci un comando: ");
@@ -138,7 +138,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
             + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
          visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
            GestoreStampa.stampareTavoliere(this.tavoliere);
-           String input = Comandi.input();
+           String input;
            do {
               GestoreStampa.stampareMessaggio("Se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
               GestoreStampa.stampareMessaggio("Inserisci un comando: ");
