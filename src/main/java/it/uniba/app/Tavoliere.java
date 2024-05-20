@@ -76,7 +76,8 @@ public class Tavoliere {
    * @return tavoliere intera matrice di celle
    */
     public Cella[][] getTavoliere() {
-        return tavoliere;
+        Cella[][] tav = tavoliere;
+        return tav;
     }
      /**
    * Metodo d'accesso al tavoliere, modifica un attributo di una specifica

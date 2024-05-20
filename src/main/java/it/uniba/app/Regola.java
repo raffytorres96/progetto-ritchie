@@ -38,36 +38,23 @@ che inizializza il tipo di regola selezionata.
 * @param regolaScelta String, il tipo di regola selezionata
 */
 public Regola(final String regolaScelta) {
-
-if (regolaScelta.equals(CLASSICA)) {
-regolaEsatta = true;
-
-}
-
-
-if (regolaScelta.equals(THOMAS)) {
-regolaEsatta = true;
-
-}
-
-
-if (regolaScelta.equals(ASSIMILATION)) {
-regolaEsatta = true;
-
-}
-
-
-if (regolaScelta.equals(VARIANTE_PERDERE)) {
-regolaEsatta = true;
-
-}
-
-if (regolaEsatta) {
-this.tipoRegola = regolaScelta;
-} else {
-this.tipoRegola = CLASSICA;
-}
-
+    if (regolaScelta.equals(CLASSICA)) {
+        regolaEsatta = true;
+    }
+    if (regolaScelta.equals(THOMAS)) {
+        regolaEsatta = true;
+    }
+    if (regolaScelta.equals(ASSIMILATION)) {
+        regolaEsatta = true;
+    }
+    if (regolaScelta.equals(VARIANTE_PERDERE)) {
+        regolaEsatta = true;
+    }
+    if (regolaEsatta) {
+        this.tipoRegola = regolaScelta;
+    } else {
+        this.tipoRegola = CLASSICA;
+    }
 }
 
 /**
@@ -76,7 +63,7 @@ this.tipoRegola = CLASSICA;
 * @return tipoRegola String.
 */
 public String getTipoRegola() {
-return tipoRegola;
+    return tipoRegola;
 }
 
 /**
@@ -85,16 +72,16 @@ return tipoRegola;
 * @param regolaScelta String.
 */
 public void setTipoRegola(final String regolaScelta) {
-this.tipoRegola = regolaScelta;
+    this.tipoRegola = regolaScelta;
 }
 
 /**
-* Mtodo d'istanza get dell'attributo regolaEsatta.
+* Metodo d'istanza get dell'attributo regolaEsatta.
 *
 * @return regolaEsatta boolean,
 */
 public boolean getRegolaEsatta() {
-return regolaEsatta;
+    return regolaEsatta;
 }
 
 /**
@@ -102,7 +89,7 @@ return regolaEsatta;
 * @param newRegolaEsatta
 */
 public void setRegolaEsatta(final boolean newRegolaEsatta) {
-this.regolaEsatta = newRegolaEsatta;
+    this.regolaEsatta = newRegolaEsatta;
 }
 
 }
