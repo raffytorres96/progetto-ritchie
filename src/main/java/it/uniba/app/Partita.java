@@ -58,11 +58,10 @@ public void controlloPartita() {
 
     GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
             + " solo /qualiMosse.\n\n");
-    GestoreStampa.stampareMessaggio("Inserisci un comando: ");
     do {
+        GestoreStampa.stampareMessaggio("Inserisci un comando: ");
         Mossa mossa = new Mossa(getTavoliere(), getGiocatoreCorrente());
         String input = Comandi.input();
-
         if (input.equals("/qualimosse")) {
             GestoreStampa.stampareMessaggio("inserisci la colonna: ");
             int colonna = utils.mappingColonne(Comandi.input());
@@ -73,9 +72,10 @@ public void controlloPartita() {
             Comandi.abbandona(this);
         } else if (input.equals("/esci")) {
             Comandi.esci();
+        } else if (!input.startsWith("/")) {
+            Utils.analizzatoreInputCoordinate(input);
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
-            GestoreStampa.stampareMessaggio("Inserisci un comando: ");
         }
 
 

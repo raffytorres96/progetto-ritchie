@@ -263,9 +263,10 @@ public final class Comandi {
     /**
      * Metodo che si occupa di gestire il comando /tavoliere, stampa cioè un tavoliere con due pedine
      * per giocatore agli angoli della griglia di gioco.
+     * @param t tavoliere da inizializzare
      */
-    public static void comandoTavoliere(Tavoliere t){
-        t=t.inizializzaTavolierePartita(t);
+    public static void comandoTavoliere(Tavoliere t) {
+        t = t.inizializzaTavolierePartita(t);
         GestoreStampa.stampareTavoliere(t);
     }
 
