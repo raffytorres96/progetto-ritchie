@@ -65,22 +65,54 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    * @param rigaSelezionata
    * @param colonnaSelezionata
    */
-   public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
-   final int colonnaSelezionata) {
-      if (newgiocatoreCorrente == 1) {
-         puliziaTavoliere();
-         if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
-            visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
-         }
-      }
-      if (newgiocatoreCorrente == 2) {
-         puliziaTavoliere();
-         if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
-            visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
-         }
-      }
-      GestoreStampa.stampareTavoliere(this.tavoliere);
-   }
+  public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
+  final int colonnaSelezionata) {
+     if (newgiocatoreCorrente == 1) {
+        puliziaTavoliere();
+        if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
+           visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
+           GestoreStampa.stampareTavoliere(this.tavoliere);
+           String input = Comandi.input();
+           do {
+              GestoreStampa.stampareMessaggio("se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
+              GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+              input = Comandi.input();
+              if (!input.equals("ok")) {
+                 GestoreStampa.stampareMessaggio("Comando non valido\n\n");
+              }
+              } while (!input.equals("ok"));
+        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 0) {
+           GestoreStampa.stampareMessaggio("Cella vuota");
+        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
+           GestoreStampa.stampareMessaggio("Cella occupata da un avversario");
+        }
+     }
+     if (newgiocatoreCorrente == 2) {
+        puliziaTavoliere();
+        if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
+           visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
+           GestoreStampa.stampareTavoliere(this.tavoliere);
+           String input = Comandi.input();
+           do {
+              GestoreStampa.stampareMessaggio("se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
+              GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+              input = Comandi.input();
+              if (!input.equals("ok")) {
+                 GestoreStampa.stampareMessaggio("\nComando non valido\n\n");
+              }
+           } while (!input.equals("ok"));
+           puliziaTavoliere();
+           GestoreStampa.clearTerminale();
+           GestoreStampa.stampareTitoloGioco();
+           GestoreStampa.stampareTavoliere(this.tavoliere);
+        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 0) {
+           GestoreStampa.stampareMessaggio("Cella vuota");
+     } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
+        GestoreStampa.stampareMessaggio("Cella occupata da un avversario");
+     }
+
+  }
+}
 
 /**
  * Metodo privato che effettua un controllo se la riga e la colanna selazionata
