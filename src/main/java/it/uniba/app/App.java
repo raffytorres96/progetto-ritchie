@@ -1,19 +1,14 @@
 package it.uniba.app;
 
-
 /**
  * Main class of the application.
  */
 public final class App {
 
-
     /**
      * Costruttore.
      */
-    private App() {
-    }
-
-
+    private App() { }
 /**
  * Main della classe app.
  * @param args
