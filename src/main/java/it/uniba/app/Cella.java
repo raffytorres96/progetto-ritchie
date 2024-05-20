@@ -47,12 +47,12 @@ static final int STATO_CELLA_ROSA = 5;
 * Attributo statico che contiene l'icona delle pedine del
 * giocatore 1.
 */
-  static final String ICONA_GIOCATORE1 = Character.toString(0x26AA);
+  static final String ICONA_GIOCATORE1 = Character.toString(0x26AB);
   /**
  * Attributo statico che contiene l'icona delle pedine del
  * giocatore 2.
  */
-  static final String ICONA_GIOCATORE2 = Character.toString(0x26AB);
+  static final String ICONA_GIOCATORE2 = Character.toString(0x26AA);
   /**
  * Attributo statico che contiene l'icona delle celle nelle
  * quali è possibile effettuare una mossa che generi una
