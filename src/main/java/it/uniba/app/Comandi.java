@@ -130,7 +130,6 @@ public final class Comandi {
     public static String input() {
         Scanner keyboard = new Scanner(System.in, "UTF-8");
         String userInput = keyboard.nextLine();
-        keyboard.close();
         return userInput.toLowerCase();
     }
 
@@ -179,7 +178,7 @@ public final class Comandi {
      * @return boolean, true se la conferma è andata a buon fine, false altrimenti
      */
     public static boolean abbandona(final Partita partita) {
-
+        Utils utils = new Utils();
         String conferma;
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE
                 + "Benvenuti in ATAXX" + GestoreStampa.ANSI_RESET
@@ -207,6 +206,7 @@ public final class Comandi {
 
                     partita.setPartitaIniziata(false);
                     partita.setGiocoFinito(true);
+                    utils.setInGame(false);
                     return true;
         }
 
@@ -218,6 +218,7 @@ public final class Comandi {
 
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
+            utils.setInGame(false);
             return true;
         }
 
@@ -233,6 +234,7 @@ public final class Comandi {
         String regolaGioco;
         Partita partita;
         Utils utils = new Utils();
+        utils.setInGame(true);
         do {
             GestoreStampa.stampareMessaggio(
                     "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");

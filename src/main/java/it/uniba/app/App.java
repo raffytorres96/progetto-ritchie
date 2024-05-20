@@ -21,11 +21,7 @@ public final class App {
             do {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "inserisci un comando: ");
                 input = Comandi.input();
-                if (!utils.analizzatoreInput(input)) {
-                    GestoreStampa.stampareMessaggio("Il comando inserito non è corretto\n\n");
 
-                }
-            } while (!utils.analizzatoreInput(input));
             if (input.equals("/help")) {
                 Comandi.help();
 
@@ -37,13 +33,17 @@ public final class App {
             } else if (input.equals("/tavoliere") && !utils.isInGame()) {
                 Tavoliere tavoliere = new Tavoliere();
                 Comandi.comandoTavoliere(tavoliere);
-            } else if (input.equals("/qualimosse") && utils.isInGame()) {
+            } else if (input.equals("/qualimosse") && !utils.isInGame()) {
                 GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
-            }  else if (input.equals("/abbandona") && utils.isInGame()) {
+            }  else if (input.equals("/abbandona") && !utils.isInGame()) {
                 GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
             } else if (input.equals("/esci") && !utils.isInGame()) {
                 Comandi.esci();
+            } else {
+                GestoreStampa.stampareMessaggio("Il comando inserito non è corretto\n\n");
             }
+
+        } while (!utils.analizzatoreInput(input));
 
         } while (true);
 

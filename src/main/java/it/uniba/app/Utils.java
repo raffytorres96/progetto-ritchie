@@ -47,7 +47,11 @@ public class Utils {
     * @return
     */
     public static int mappingRighe(final String riga) {
-        return Integer.parseInt(riga) - 1;
+        if (Character.isDigit(riga.charAt(0))) {
+            return Integer.parseInt(riga) - 1;
+        } else {
+            return -1;
+        }
     }
 
     /**
