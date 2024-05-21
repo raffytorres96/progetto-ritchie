@@ -4,6 +4,9 @@
  *  del gioco.
  */
 package it.uniba.app;
+
+
+
 /**
  * Classe che modella Partita.
  *
@@ -32,6 +35,9 @@ private boolean partitaIniziata = false;
 /** attributo che rappresenta il giocatore corrente.  */
 private int giocatoreCorrente;
 
+/** Variabile statica per ritardare l'uscita dalla partita.  */
+public static final int TIME = 2000;
+
 
 /**
  * Costruttore della classe Partita.
@@ -54,7 +60,7 @@ this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 /**
  * Metodo per il controllo dei comandi in partita. */
 public void controlloPartita(final Mossa mossa) {
-    Utils utils = new Utils();
+
     boolean continua = true;
     GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
         + " solo /qualiMosse.\n\n");
@@ -70,8 +76,13 @@ public void controlloPartita(final Mossa mossa) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
             continua = !Comandi.abbandona(this);
-            if (continua) {
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+            if (!continua) {
+                try {
+                    Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
             }
 
         } else if (input.equals("/esci")) {
