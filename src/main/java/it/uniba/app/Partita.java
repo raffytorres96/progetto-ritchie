@@ -53,9 +53,10 @@ this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 
 /**
  * Metodo per il controllo dei comandi in partita. */
-public void controlloPartita() {
+public void controlloPartita(final Mossa mossa) {
     Utils utils = new Utils();
-    GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
+    boolean continua = true;
+    GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
         + " solo /qualiMosse.\n\n");
     GestoreStampa.stampareMessaggio("Oppure puoi usare"
         + GestoreStampa.ANSI_BLUE + " '/Abbandona' " + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
@@ -63,24 +64,21 @@ public void controlloPartita() {
         + GestoreStampa.ANSI_RED + " '/Esci' " + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
     GestoreStampa.stampareMessaggio("Inserisci un comando: ");
     do {
-        Mossa mossa = new Mossa(getTavoliere(), getGiocatoreCorrente());
         String input = Comandi.input();
-        int colonna;
-        int riga;
         if (input.equals("/qualimosse")) {
             mossa.qualiMosse(getGiocatoreCorrente());
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
             Comandi.abbandona(this);
+            continua = false;
         } else if (input.equals("/esci")) {
             Comandi.esci();
-        } else if (!input.startsWith("/")) {
-            Utils.analizzatoreInputCoordinate(input);
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
         }
 
-    } while (true);
+    } while (continua);
 
 }
     /**
