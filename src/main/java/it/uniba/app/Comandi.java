@@ -5,6 +5,7 @@
  * dell'applicazione in gioco
  */
 package it.uniba.app;
+
 import java.util.Scanner;
 
 /**
@@ -12,10 +13,12 @@ import java.util.Scanner;
  */
 
 public final class Comandi {
-/**
- * Costruttore della classe comandi.
- */
-    private Comandi() { }
+    /**
+     * Costruttore della classe comandi.
+     */
+    private Comandi() {
+    }
+
     /**
      * Metodo statico che stampa le regole e i comandi del gioco.
      */
@@ -197,10 +200,10 @@ public final class Comandi {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
                     + ":" + partita.getGiocatore2().getNome() + " Vince per abbandono per " + numeroPedine + " a 0 \n");
 
-                    partita.setPartitaIniziata(false);
-                    partita.setGiocoFinito(true);
-                    utils.setInGame(false);
-                    return true;
+            partita.setPartitaIniziata(false);
+            partita.setGiocoFinito(true);
+            utils.setInGame(false);
+            return true;
         }
 
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
@@ -226,34 +229,51 @@ public final class Comandi {
         String regolaGioco;
         Partita partita;
         Utils utils = new Utils();
+        GestoreStampa.stampareTitoloGioco();
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
+                + GestoreStampa.ANSI_RESET + " Inserisci i dati per iniziare la partita. \n\n");
         utils.setInGame(true);
         do {
             GestoreStampa.stampareMessaggio(
                     "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");
             regolaGioco = Comandi.input();
             if (!utils.analizzatoreInput(regolaGioco)) {
-                GestoreStampa.stampareMessaggio("Regola non valida, riprova\n");
+                GestoreStampa.stampareMessaggio("\nRegola non valida, riprova\n");
             }
         } while (!utils.analizzatoreInput(regolaGioco));
 
-        GestoreStampa.stampareMessaggio("Inserisci il nome del giocatore 1: ");
-        nomeGiocatore1 = Comandi.input();
+        do {
+            GestoreStampa.stampareMessaggio("\nInserisci il nome del giocatore 1 (Nero): ");
+            nomeGiocatore1 = Comandi.input();
+            if (nomeGiocatore1.trim().isEmpty()) {
+                GestoreStampa.stampareMessaggio("\nNon hai inserito un nome\n\n");
+            }
 
-        GestoreStampa.stampareMessaggio("Inserisci il nome del giocatore 2: ");
-        nomeGiocatore2 = Comandi.input();
-        GestoreStampa.clearTerminale();
+        } while (nomeGiocatore1.trim().isEmpty());
+
+        do {
+            GestoreStampa.stampareMessaggio("\nInserisci il nome del giocatore2 (Bianco): ");
+            nomeGiocatore2 = Comandi.input();
+            if (nomeGiocatore2.trim().isEmpty()) {
+                GestoreStampa.stampareMessaggio("\nNon hai inserito un nome\n\n");
+            }
+
+        } while (nomeGiocatore2.trim().isEmpty());
 
         partita = new Partita(regolaGioco, nomeGiocatore1, nomeGiocatore2);
         Mossa mossa = new Mossa(partita.getTavoliere(), partita.getGiocatoreCorrente());
         GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
-        + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+        + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
         GestoreStampa.stampareTavoliere(partita.getTavoliere());
-        partita.controlloPartita();
+        partita.controlloPartita(mossa);
     }
+
     /**
-     * Metodo che si occupa di gestire il comando /tavoliere, stampa cioè un tavoliere con due pedine
+     * Metodo che si occupa di gestire il comando /tavoliere, stampa cioè un
+     * tavoliere con due pedine
      * per giocatore agli angoli della griglia di gioco.
+     *
      * @param t tavoliere da inizializzare
      */
     public static void comandoTavoliere(Tavoliere t) {
