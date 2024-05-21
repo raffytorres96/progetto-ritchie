@@ -97,6 +97,10 @@ public class Utils {
     */
     public boolean analizzatoreInput(final String input) {
         switch (input) {
+            case "--help":
+                return true;
+            case "-h":
+                return true;
             case "/help":
                 return true;
             case "/esci":

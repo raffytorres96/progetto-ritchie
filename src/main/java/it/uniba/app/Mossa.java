@@ -69,7 +69,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
          GestoreStampa.stampareTitoloGioco();
          GestoreStampa.stampareMessaggio(" " + newgiocatoreCorrente);
          GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-         + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+         + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
          // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOTTO
          for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
             for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
@@ -80,7 +80,8 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
            GestoreStampa.stampareTavoliere(this.tavoliere);
            String input;
            do {
-              GestoreStampa.stampareMessaggio("Se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
+              GestoreStampa.stampareMessaggio("\nSe hai visualizzato le mosse possibili digita 'ok'"
+              + " per continuare: \n\n");
               GestoreStampa.stampareMessaggio("Inserisci un comando: ");
               input = Comandi.input();
               if (!input.equals("ok")) {
@@ -91,9 +92,11 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
               GestoreStampa.clearTerminale();
               GestoreStampa.stampareTitoloGioco();
               GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-                    + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
+              + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+
+
               GestoreStampa.stampareTavoliere(this.tavoliere);
-              GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
+              GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
                     + " solo /qualiMosse.\n\n");
               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
