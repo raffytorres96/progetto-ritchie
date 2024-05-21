@@ -15,22 +15,36 @@ public final class App {
  */
      public static void main(final String[] args) {
         GestoreStampa.stampareTitoloGioco();
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n ");
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Scrivi /help oppure -h o --help"
+        + " per saperne di più !\n\n ");
         Utils utils = new Utils();
         String input;
         do {
             do {
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "inserisci un comando: ");
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\ninserisci un comando: ");
                 input = Comandi.input();
 
-            if (input.equals("/help")) {
+            if (input.equals("/help") || input.equals("-h") || input.equals("--help")) {
                 Comandi.help();
 
             } else if (input.equals("/gioca") && !utils.isInGame()) {
                 GestoreStampa.clearTerminale();
                 Comandi.gioca();
+                GestoreStampa.clearTerminale();
+                GestoreStampa.stampareTitoloGioco();
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n ");
             } else if (input.equals("/vuoto") && !utils.isInGame()) {
+                GestoreStampa.clearTerminale();
+                GestoreStampa.stampareTitoloGioco();
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n "
+                + GestoreStampa.ANSI_RESET);
                 GestoreStampa.stampareTavoliereVuoto();
             } else if (input.equals("/tavoliere") && !utils.isInGame()) {
+                GestoreStampa.clearTerminale();
+                GestoreStampa.stampareTitoloGioco();
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n "
+                + GestoreStampa.ANSI_RESET);
                 Tavoliere tavoliere = new Tavoliere();
                 Comandi.comandoTavoliere(tavoliere);
             } else if (input.equals("/qualimosse") && !utils.isInGame()) {
