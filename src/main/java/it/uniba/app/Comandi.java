@@ -243,7 +243,7 @@ public final class Comandi {
         } while (!utils.analizzatoreInput(regolaGioco));
 
         do {
-            GestoreStampa.stampareMessaggio("\nInserisci il nome del giocatore 1 (Nero): ");
+            GestoreStampa.stampareMessaggio("\nInserisci il nome del Giocatore1 (Nero): ");
             nomeGiocatore1 = Comandi.input();
             if (nomeGiocatore1.trim().isEmpty()) {
                 GestoreStampa.stampareMessaggio("\nNon hai inserito un nome\n\n");
@@ -252,7 +252,7 @@ public final class Comandi {
         } while (nomeGiocatore1.trim().isEmpty());
 
         do {
-            GestoreStampa.stampareMessaggio("\nInserisci il nome del giocatore2 (Bianco): ");
+            GestoreStampa.stampareMessaggio("\nInserisci il nome del Giocatore2 (Bianco): ");
             nomeGiocatore2 = Comandi.input();
             if (nomeGiocatore2.trim().isEmpty()) {
                 GestoreStampa.stampareMessaggio("\nNon hai inserito un nome\n\n");
