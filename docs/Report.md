@@ -134,7 +134,52 @@ _________
 
 ## **7. Manuale utente**
 __________
+**1.** Il gioco si avvia presentando il titolo, e la possibilità di accedere al comando help, tutto seguito da un invito all'utente di digitare un comando.
 
+![SchermataIniziale](./img/schermataIniziale.png)
+
+**2.** Il comando *'/gioca'* permette di avviare il gioco, presentando prima le regole di gioco da intraprendere e successivamente la richiesta dei nomi che verranno attribuiti ai due giocatori all'interno della partita.
+
+![comandoGioca](./img/comandoGioca.png)
+
+**3.** Successivamente al comando *'/gioca'* viene mostrato ai due giocatori il Tavoliere di gioco con all'interno le loro pedine, contraddistinte da due diversi colori, posizionate nei quattro angoli.
+
+![comandoGioca](./img/comandoGiocaTavoliere.png)
+
+**4.** Il comando *'/help'* permette al giocatore di ricevere delle informazioni generali riguardanti il gioco, seguite dall' elenco dei comandi con la propria descrizione, specificando dove posso essere utilizzati all'interno del gioco.
+
+E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà visualizzato quindi il comando
+
+![comandoHelp1](./img/comandoHelpPrimaParte.png)
+![comandoHelp2](./img/comandoHelpSecondaParte.png)
+
+**5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco o le posizioni in cui sarà possibile generare nuove pedine. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere.
+
+![comandoqualiMosse](./img/comandoQualiMosse.png)
+
+**6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno.
+
+![comandoVuoto](./img/comandoVuoto.png)
+
+**7.** Il comando *'/tavoliere'* consente al giocatore di vedere la situazione del Tavoliere durante la partita.
+
+![comandoTavoliere](./img/comandoTavoliere.png)
+
+**8.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
+
+![comandoAbbandona](./img/comandoAbbandonaSi.png)
+
+In caso di risposta negativa, il giocatore rimarrà nella partita corrente.
+
+![comandoAbbandona](./img/comandoAbbandonaNo.png)
+
+**9.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
+
+![comandoEsci](./img/comandoEsciSi.png)
+
+Nel caso di risposta negativa, l'applicazione notificherà all'utente l'avvenuta interruzione del comando, riportandolo nell'applicazione e permettendogli di scegliere un nuovo comando.
+
+![comandoEsci](./img/comandoEsciNo.png)
 
 
 
