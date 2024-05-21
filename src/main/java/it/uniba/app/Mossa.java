@@ -62,20 +62,21 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    /**
    * Metodo che restituisce le mosse possibili sulla cella scelta.
    * @param newgiocatoreCorrente
-   * @param rigaSelezionata
-   * @param colonnaSelezionata
+
    */
-  public void qualiMosse(final int newgiocatoreCorrente, final int rigaSelezionata,
-  final int colonnaSelezionata) {
-     if (newgiocatoreCorrente == 1) {
-        puliziaTavoliere();
-        if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
+  public void qualiMosse(final int newgiocatoreCorrente) {
          GestoreStampa.clearTerminale();
          GestoreStampa.stampareTitoloGioco();
+         GestoreStampa.stampareMessaggio(" " + newgiocatoreCorrente);
          GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
          + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
-         visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
-
+         // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOTTO
+         for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+            for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+                  visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
+            }
+         }
+         // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOPRA ^
            GestoreStampa.stampareTavoliere(this.tavoliere);
            String input;
            do {
@@ -98,98 +99,6 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-
-            } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 0) {
-               GestoreStampa.clearTerminale();
-               GestoreStampa.stampareTitoloGioco();
-               GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-                     + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-
-               GestoreStampa.stampareTavoliere(this.tavoliere);
-               GestoreStampa.stampareMessaggio("La cella è vuota, non puoi visualizzare le mosse possibili\n");
-               GestoreStampa.stampareMessaggio("digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
-                     + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
-               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandaona' "
-                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-
-        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
-         GestoreStampa.clearTerminale();
-         GestoreStampa.stampareTitoloGioco();
-         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-         GestoreStampa.stampareTavoliere(this.tavoliere);
-         GestoreStampa.stampareMessaggio("La cella è occupata da un avversario, devi selezionare una tua cella\n");
-         GestoreStampa.stampareMessaggio("Digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
-               + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
-         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-               + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-               + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-        }
-     }
-     if (newgiocatoreCorrente == 2) {
-        puliziaTavoliere();
-        if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 2) {
-         GestoreStampa.clearTerminale();
-            GestoreStampa.stampareTitoloGioco();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-            + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
-         visualizzaMossePossibili(rigaSelezionata, colonnaSelezionata, tavoliere, newgiocatoreCorrente);
-           GestoreStampa.stampareTavoliere(this.tavoliere);
-           String input;
-           do {
-              GestoreStampa.stampareMessaggio("Se hai visualizzato le mosse possibili digita ok per continuare: \n\n");
-              GestoreStampa.stampareMessaggio("Inserisci un comando: ");
-              input = Comandi.input();
-              if (!input.equals("ok")) {
-                 GestoreStampa.stampareMessaggio("\nComando non valido\n\n");
-              }
-           } while (!input.equals("ok"));
-           puliziaTavoliere();
-            GestoreStampa.clearTerminale();
-            GestoreStampa.stampareTitoloGioco();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-                  + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n");
-            GestoreStampa.stampareTavoliere(this.tavoliere);
-            GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
-                  + " solo /qualiMosse.\n\n");
-            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                  + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                  + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-
-        } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 0) {
-         GestoreStampa.clearTerminale();
-         GestoreStampa.stampareTitoloGioco();
-         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-
-         GestoreStampa.stampareTavoliere(this.tavoliere);
-         GestoreStampa.stampareMessaggio("La cella è vuota, non puoi visualizzare le mosse possibili\n");
-         GestoreStampa.stampareMessaggio("digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
-               + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
-         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandaona' "
-               + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-         GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-               + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-
-     } else if (Cella.getStato(tavoliere.getCella(rigaSelezionata, colonnaSelezionata)) == 1) {
-      GestoreStampa.clearTerminale();
-      GestoreStampa.stampareTitoloGioco();
-       GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-      + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-      GestoreStampa.stampareMessaggio("La cella è occupata da un avversario, devi selezionare una tua cella\n");
-      GestoreStampa.stampareMessaggio("Digita il comando " + GestoreStampa.ANSI_BLUE + " '/qualiMosse'"
-            + GestoreStampa.ANSI_RESET + " per selezionare la cella corretta\n\n");
-      GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-            + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-      GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-            + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-     }
-
-  }
 }
 
 /**
@@ -204,147 +113,147 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    */
 private void visualizzaMossePossibili(final int rigaSelezionata, final int colonnaSelezionata,
    final Tavoliere tavoliereCorrente, final int newgiocatoreCorrente) {
-
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 1 >= 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 1,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata  - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 1 >= 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 1,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata >= 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata - 1 >= 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata - 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 1,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata >= 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata + 1 >= 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata + 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 1,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 1 >= 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 1,
          Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 1 >= 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1,
          colonnaSelezionata + 1,  Cella.STATO_CELLA_GIALLA);
       }
-
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 2 >= 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 2 >= 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata >= 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata - 2 >= 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata - 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata >= 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata + 2 >= 0) {
+      && rigaSelezionata >= 0 && colonnaSelezionata + 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 2 >= 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 2 >= 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 1 >= 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 1 >= 0) {
+      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 1 >= 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 1 >= 0) {
+      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 1 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 1,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 2 >= 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 2 >= 0) {
+      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 2 >= 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
-
       if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 2 >= 0) {
+      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 2 >= 0
+      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente) {
          tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 2,
             Cella.STATO_CELLA_ARANCIONE);
       }
