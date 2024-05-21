@@ -55,16 +55,14 @@ this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
  * Metodo per il controllo dei comandi in partita. */
 public void controlloPartita() {
     Utils utils = new Utils();
-
     GestoreStampa.stampareMessaggio("Al momento è possibile utilizzare come comando in partita"
-            + " solo /qualiMosse.\n\n");
-        GestoreStampa.stampareMessaggio("Oppure puoi usare"
+        + " solo /qualiMosse.\n\n");
+    GestoreStampa.stampareMessaggio("Oppure puoi usare"
         + GestoreStampa.ANSI_BLUE + " '/Abbandona' " + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-        GestoreStampa.stampareMessaggio("Oppure puoi usare"
+    GestoreStampa.stampareMessaggio("Oppure puoi usare"
         + GestoreStampa.ANSI_RED + " '/Esci' " + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-        GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+    GestoreStampa.stampareMessaggio("Inserisci un comando: ");
     do {
-
         Mossa mossa = new Mossa(getTavoliere(), getGiocatoreCorrente());
         String input = Comandi.input();
         int colonna;
