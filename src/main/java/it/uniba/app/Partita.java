@@ -68,25 +68,7 @@ public void controlloPartita() {
         int colonna;
         int riga;
         if (input.equals("/qualimosse")) {
-            do {
-                GestoreStampa.stampareMessaggio("inserisci la colonna: ");
-                 colonna = utils.mappingColonne(Comandi.input());
-                 if (colonna == -1) {
-                    GestoreStampa.stampareMessaggio("\nInserisci una lettera valida tra A e G\n");
-                    GestoreStampa.stampareMessaggio("solo lettere sono accettate.\n\n ");
-                }
-            } while (colonna == -1);
-
-            do {
-
-            GestoreStampa.stampareMessaggio("inserisci la riga: ");
-            riga = utils.mappingRighe(Comandi.input());
-            GestoreStampa.stampareMessaggio("\nInserisci una cifra valida tra 1 e 7\n");
-            GestoreStampa.stampareMessaggio("Solo le cifre sono accettate.\n\n ");
-
-        } while (riga == -1);
-
-            mossa.qualiMosse(getGiocatoreCorrente(), riga, colonna);
+            mossa.qualiMosse(getGiocatoreCorrente());
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
             Comandi.abbandona(this);
@@ -97,9 +79,6 @@ public void controlloPartita() {
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
         }
-
-
-
 
     } while (true);
 
