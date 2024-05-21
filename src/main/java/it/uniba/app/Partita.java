@@ -69,10 +69,18 @@ public void controlloPartita(final Mossa mossa) {
             mossa.qualiMosse(getGiocatoreCorrente());
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
-            Comandi.abbandona(this);
-            continua = false;
+            continua = !Comandi.abbandona(this);
+            if (continua) {
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+            }
+
         } else if (input.equals("/esci")) {
             Comandi.esci();
+        } else if (input.equals("/help") || input.equals("-h") || input.equals("--help")) {
+            Comandi.help();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+
+
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
