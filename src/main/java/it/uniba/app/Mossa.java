@@ -67,10 +67,11 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
   public void qualiMosse(final int newgiocatoreCorrente) {
          GestoreStampa.clearTerminale();
          GestoreStampa.stampareTitoloGioco();
-         GestoreStampa.stampareMessaggio(" " + newgiocatoreCorrente);
          GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
          + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+          GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
          // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOTTO
+
          for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
             for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
                   visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
