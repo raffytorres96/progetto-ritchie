@@ -177,14 +177,15 @@ public final class Comandi {
      * @return boolean, true se la conferma è andata a buon fine, false altrimenti
      */
     public static boolean abbandona(final Partita partita) {
-       String conferma;
+
+        String conferma;
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
                 + ": Sei sicuro di abbandonare la partita? [" + GestoreStampa.ANSI_GREEN
                 + "si" + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
                 + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
         GestoreStampa.stampareMessaggio("Conferma: ");
         conferma = input();
-
+        Utils utils = new Utils();
         while (!(conferma.equals("si") || conferma.equals("no"))) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + ": Non hai inserito una risposta valida\n"
                     + "Sei sicuro di voler abbandonare la partita? [" + GestoreStampa.ANSI_GREEN + "si"
@@ -195,7 +196,6 @@ public final class Comandi {
         }
 
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 1) {
-            Utils utils = new Utils();
             int numeroPedine = partita.getTavoliere().getContaPedine(1);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
                     + ":" + partita.getGiocatore2().getNome() + " Vince per abbandono per " + numeroPedine + " a 0 \n");
@@ -207,7 +207,6 @@ public final class Comandi {
         }
 
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
-            Utils utils = new Utils();
             int numeroPedine = partita.getTavoliere().getContaPedine(2);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
                     + ":" + partita.getGiocatore1().getNome() + "Vince per abbandono per " + numeroPedine + " a 0 \n");
