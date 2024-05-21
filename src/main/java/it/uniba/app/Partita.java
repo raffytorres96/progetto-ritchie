@@ -76,6 +76,7 @@ public void controlloPartita(final Mossa mossa) {
 
         } else if (input.equals("/esci")) {
             Comandi.esci();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/help") || input.equals("-h") || input.equals("--help")) {
             Comandi.help();
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
