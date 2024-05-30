@@ -6,10 +6,17 @@
 - [3. Requisiti specifici](#3-requisiti-specifici)
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
-   
-- [7. Manuale utente](#7-manuale-utente) 
+- [4. System Design](#4-system-Design)
+- [5. OO Design](#5-oo-design) 
+   - [5.1 Diagramma delle classi](#51-diagramma-delle-classi)
+   - [5.2 Diagrammi di sequenza](#52-diagrammi-di-sequenza)
+   - [5.3 Commentare le decisioni prese](#53-commentare-le-decisioni-prese)
+- [6. Riepilogo del test](#6-riepilogo-del-test)     
+- [7. Manuale utente](#7-manuale-utente)
+- [8. Processo di sviluppo e organizzazione del lavoro](#8-processo-di-sviluppo-e-organizzazione-del-lavoro) 
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
+    - [9.2 Sprint 1](#92-sprint-1)
     
 
 
@@ -109,9 +116,57 @@ _________
         • Se la conferma è positiva, l'app si chiude restituendo il controllo al sistema operativo
         • Se la conferma è negativa, l'app si predispone a ricevere nuovi tentativi o comandi
 
+- **RF8**: Come giocatore voglio giocare una nuova pedina in una casella adiacente a una propria pedina
+
+      A partita in corso di gioco, l'applicazione deve accettare che il giocatore di turno giochi sul tavoliere una nuova pedina (bianca o nera) in una casella adiacente (in senso ortogonale e diagonale) ad un'altra in cui vi sia già una propria pedina, utilizzando una notazione algebrica del tipo: a1-a2, dove a1 è la casella di partenza e a2 è la casella adiacente.
+
+- **RF9**: Come giocatore voglio spostare una propria pedina saltando una casella adiacente
+
+      A partita in corso di gioco, l'app deve accettare che il giocatore di turno sposti sul tavoliere una propria pedina (bianca o nera) con il salto di una casella adiacente, utilizzando una notazione algebrica del tipo: a1-a3, dove a1 è la casella di partenza e a3 è la casella di arrivo.
+
+      La casella di arrivo deve essere libera e non deve essere adiacente alla casella originaria.
+
+      La casella saltata può anche essere occupata da una propria pedina o da una pedina avversaria.
+
+- **RF10**: Come giocatore voglio catturare una pedina avversaria come effetto di una mossa
+
+      Se al termine di una mossa vi sono pedine avversarie adiacenti alla casella di arrivo, sia per la mossa di espansione che di spostamento, queste vengono catturate cambiando di colore.
+
+- **RF11**: Come giocatore voglio mostrare le mosse giocate
+
+      Al comando /mosse, l'app mostra la storia delle mosse con notazione algebrica, per esempio: 
+      • a1-a2 (N); 
+      • g7-g6 (B);
+
+- **RF12**: Come giocatore voglio passare il turno per impossibilità di movimento
+
+      Se il giocatore non può muovere nessuna pedina del proprio colore, l’app avvisa che il turno passa all’altro colore.
+
+- **RF13**: Come giocatore voglio visualizzare il fine partita con il vincitore e i punti segnati
+
+      Se nessuna pedina può essere mossa perché le caselle del tavoliere sono state tutte riempite, allora l’app dichiara il vincitore (Bianco o Nero) e riporta i punti del Bianco e Nero contando le rispettive pedine.
+
+      L'app si predispone a ricevere nuovi comandi.
+
+- **RF14**: Come giocatore voglio mostrare il tempo di gioco
+
+      Al comando /tempo, l'app mostra il tempo trascorso dall’inizio partita nel formato ore:minuti:secondi.
+
+- **RF15**: Come giocatore voglio impostare caselle non accessibili
+
+      A partita non in corso, al comando /blocca xn, dove xn sono le coordinate di una casella, la casella xn non è accessibile per le pedine ed è mostrata sul tavoliere con uno sfondo grigio.
+
+      Non è possibile bloccare:
+      
+      • le caselle di partenza del gioco;
+      • tutte le caselle adiacenti a una casella di partenza del gioco, rendendo impossibile la mossa di espansione di una pedina a inizio gioco;
+      • tutte le caselle a distanza 2 da una casella di partenza del gioco, rendendo impossibile la mossa di salto di una pedina a inizio gioco. 
+      
+      Non è possibile bloccare più di 9 caselle.
+
 ### **3.2 Requisiti non funzionali**
 
-- **RNF1**:Il container docker dell’app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
+- **RNF1**: Il container docker dell’app deve essere eseguito da terminali che supportano Unicode con encoding UTF-8 o UTF-16.
 
        Elenco di terminali supportati
       
@@ -130,6 +185,25 @@ _________
       docker run --rm -it ghcr.io/softeng2324-inf-uniba/ataxx-base:latest
 
       dove base sarà sostituito con il nome del gruppo.
+
+
+## **4. System Design**
+__________
+
+
+## **5. OO Design**
+__________
+  ### **5.1 Diagramma delle classi**
+
+
+  ### **5.2 Diagrammi di sequenza**
+
+
+  ### **5.3 Commentare le decisioni prese**
+
+
+## **6. Riepilogo del test**
+__________
 
 
 ## **7. Manuale utente**
@@ -182,6 +256,9 @@ Nel caso di risposta negativa, l'applicazione notificherà all'utente l'avvenuta
 ![comandoEsci](./img/comandoEsciNo.png)
 
 
+## **8. Processo di sviluppo e organizzazione del lavoro**
+__________
+
 
 ## **9. Analisi retrospettiva**    
 __________
@@ -190,6 +267,20 @@ __________
  La seguente immagine riporta l' analisi retrospettiva dello sprint 0, utilizzando il modello "ARRABBIATO,TRISTE,FELICE".
 
  ![Analisi_retrospettiva_sprint0_2](./img/Analisi_retrospettiva_sprint0_2.png)
+
+ ### **9.2 Sprint 1**
+
+ La seguente immagine riporta l' analisi retrospettiva dello sprint 1, utilizzando il modello "ARRABBIATO,TRISTE,FELICE".
+
+ ![Analisi_retrospettiva_sprint1](./img/Analisi_retrospettiva_spint1.png)
+
+ **SOLUZIONI:**
+
+Per quanto riguarda la sezione arrabbiato della tabella abbiamo stabilito di comunicare tempestivamente eventuali ritardi alla partecipazione del meeting così da consentire al team di organizzarsi e rendere più flessibile la pianificazione del lavoro.
+
+Per quanto riguarda, invece, la sezione triste abbiamo pensato al momento della distribuzione degli incarichi che se un componente del team ritiene che le scelte da lui prese sui compiti da eseguire siano eccessivi deve comunicarlo al gruppo e discuterne con i componenti del team sulla ridistribuzione di quest'ultimi al resto dei componenti. D'altra parte se alcuni componenti del team dovessero accorgersene preventivamente, in fase di assegnazione dei compiti, devono farlo notare.
+
+In secondo luogo, abbiamo stabilito di darci dei feedback giornalieri sul processo di compimento del task su cui si sta lavorando così da potenziare la prevenzione di possibili errori derivanti da incomprensioni sui propri compiti da eseguire. Inoltre, abbiamo deciso durante la fase di revisione di assegnare il ruolo di revisore ad almeno due componenti del team.      
 
 
 
