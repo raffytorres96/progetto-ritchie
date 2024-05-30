@@ -12,7 +12,8 @@
    - [5.2 Diagrammi di sequenza](#52-diagrammi-di-sequenza)
    - [5.3 Commentare le decisioni prese](#53-commentare-le-decisioni-prese)
 - [6. Riepilogo del test](#6-riepilogo-del-test)     
-- [7. Manuale utente](#7-manuale-utente) 
+- [7. Manuale utente](#7-manuale-utente)
+- [8. Processo di sviluppo e organizzazione del lavoro](#8-processo-di-sviluppo-e-organizzazione-del-lavoro) 
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
     
@@ -205,6 +206,9 @@ Nel caso di risposta negativa, l'applicazione notificherà all'utente l'avvenuta
 
 ![comandoEsci](./img/comandoEsciNo.png)
 
+
+## **8. Processo di sviluppo e organizzazione del lavoro**
+__________
 
 
 ## **9. Analisi retrospettiva**    
