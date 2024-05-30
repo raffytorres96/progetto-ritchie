@@ -6,7 +6,11 @@
 - [3. Requisiti specifici](#3-requisiti-specifici)
     - [3.1 Requisiti funzionali](#31-requisiti-funzionali)
     - [3.2 Requisiti non funzionali](#32-requisiti-non-funzionali)
-- [4. System Design](#4-system-Design)   
+- [4. System Design](#4-system-Design)
+- [5. OO Design](#5-oo-design) 
+   - [5.1 Diagramma delle classi](#51-diagramma-delle-classi)
+   - [5.2 Diagrammi di sequenza](#52-diagrammi-di-sequenza)
+   - [5.3 Commentare le decisioni prese](#53-commentare-le-decisioni-prese)  
 - [7. Manuale utente](#7-manuale-utente) 
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
@@ -131,8 +135,21 @@ _________
 
       dove base sarà sostituito con il nome del gruppo.
 
+
 ## **4. System Design**
 __________
+
+
+## **5. OO Design**
+__________
+  ### **5.1 Diagramma delle classi**
+
+
+  ### **5.2 Diagrammi di sequenza**
+
+
+  ### **5.3 Commentare le decisioni prese**
+
 
 ## **7. Manuale utente**
 __________
