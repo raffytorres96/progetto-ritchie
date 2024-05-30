@@ -10,7 +10,8 @@
 - [5. OO Design](#5-oo-design) 
    - [5.1 Diagramma delle classi](#51-diagramma-delle-classi)
    - [5.2 Diagrammi di sequenza](#52-diagrammi-di-sequenza)
-   - [5.3 Commentare le decisioni prese](#53-commentare-le-decisioni-prese)  
+   - [5.3 Commentare le decisioni prese](#53-commentare-le-decisioni-prese)
+- [6. Riepilogo del test](#6-riepilogo-del-test)     
 - [7. Manuale utente](#7-manuale-utente) 
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
@@ -149,6 +150,10 @@ __________
 
 
   ### **5.3 Commentare le decisioni prese**
+
+
+## **6. Riepilogo del test**
+__________
 
 
 ## **7. Manuale utente**
