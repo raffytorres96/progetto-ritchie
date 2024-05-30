@@ -16,6 +16,7 @@
 - [8. Processo di sviluppo e organizzazione del lavoro](#8-processo-di-sviluppo-e-organizzazione-del-lavoro) 
 - [9. Analisi retrospettiva](#9-analisi-retrospettiva)
     - [9.1 Sprint 0](#91-sprint-0)
+    - [9.2 Sprint 1](#92-sprint-1)
     
 
 
@@ -218,6 +219,20 @@ __________
  La seguente immagine riporta l' analisi retrospettiva dello sprint 0, utilizzando il modello "ARRABBIATO,TRISTE,FELICE".
 
  ![Analisi_retrospettiva_sprint0_2](./img/Analisi_retrospettiva_sprint0_2.png)
+
+ ### **9.2 Sprint 1**
+
+ La seguente immagine riporta l' analisi retrospettiva dello sprint 1, utilizzando il modello "ARRABBIATO,TRISTE,FELICE".
+
+ ![Analisi_retrospettiva_sprint1](./img/Analisi_retrospettiva_spint1.png)
+
+ **SOLUZIONI:**
+
+Per quanto riguarda la sezione arrabbiato della tabella abbiamo stabilito di comunicare tempestivamente eventuali ritardi alla partecipazione del meeting così da consentire al team di organizzarsi e rendere più flessibile la pianificazione del lavoro.
+
+Per quanto riguarda, invece, la sezione triste abbiamo pensato al momento della distribuzione degli incarichi che se un componente del team ritiene che le scelte da lui prese sui compiti da eseguire siano eccessivi deve comunicarlo al gruppo e discuterne con i componenti del team sulla ridistribuzione di quest'ultimi al resto dei componenti. D'altra parte se alcuni componenti del team dovessero accorgersene preventivamente, in fase di assegnazione dei compiti, devono farlo notare.
+
+In secondo luogo, abbiamo stabilito di darci dei feedback giornalieri sul processo di compimento del task su cui si sta lavorando così da potenziare la prevenzione di possibili errori derivanti da incomprensioni sui propri compiti da eseguire. Inoltre, abbiamo deciso durante la fase di revisione di assegnare il ruolo di revisore ad almeno due componenti del team.      
 
 
 
