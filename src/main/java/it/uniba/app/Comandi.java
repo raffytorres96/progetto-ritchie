@@ -278,8 +278,7 @@ public final class Comandi {
      *
      * @param t tavoliere da inizializzare
      */
-    public static void comandoTavoliere(Tavoliere t) {
-        t = t.inizializzaTavolierePartita(t);
+    public static void comandoTavoliere(final Tavoliere t) {
         GestoreStampa.stampareTavoliere(t);
     }
 
