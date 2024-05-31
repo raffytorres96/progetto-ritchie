@@ -93,6 +93,34 @@ public void controlloPartita(final Mossa mossa) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
 
 
+        } else if (input.equals("/tavoliere")) {
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
+            + " Questo è il tavoliere della partita, fai la tua mossa !\n\n");
+            Comandi.comandoTavoliere(this.getTavoliere());
+            do {
+                GestoreStampa.stampareMessaggio("\nSe hai visualizzato il tavoliere digita 'ok'"
+                + " per continuare. \n\n");
+                GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+                input = Comandi.input();
+                if (!input.equals("ok")) {
+                   GestoreStampa.stampareMessaggio("Comando non valido\n\n");
+                }
+                } while (!input.equals("ok"));
+                GestoreStampa.clearTerminale();
+                GestoreStampa.stampareTitoloGioco();
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+                + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+                Comandi.comandoTavoliere(this.getTavoliere());
+                GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
+                      + " solo /qualiMosse e /tavoliere.\n\n");
+                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                      + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                      + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");

@@ -41,12 +41,10 @@ public final class App {
                 + GestoreStampa.ANSI_RESET);
                 GestoreStampa.stampareTavoliereVuoto();
             } else if (input.equals("/tavoliere") && !utils.isInGame()) {
-                GestoreStampa.clearTerminale();
-                GestoreStampa.stampareTitoloGioco();
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n "
-                + GestoreStampa.ANSI_RESET);
-                Tavoliere tavoliere = new Tavoliere();
-                Comandi.comandoTavoliere(tavoliere);
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
+                + "\nComando utilizzabile solo in partita\n\n");
+                GestoreStampa.stampareMessaggio("Perché non provi a giocare usando il comando"
+                + GestoreStampa.ANSI_BLUE + " /Gioca\n\n" + GestoreStampa.ANSI_RESET);
             } else if (input.equals("/qualimosse") && !utils.isInGame()) {
                 GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
             }  else if (input.equals("/abbandona") && !utils.isInGame()) {
