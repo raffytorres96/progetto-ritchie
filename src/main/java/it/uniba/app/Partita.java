@@ -59,7 +59,7 @@ this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 
 /**
  * Metodo per il controllo dei comandi in partita. */
-public void controlloPartita(final Mossa mossa) {
+public void controlloPartita(final Mossa mossa, final Partita partita) {
 
     boolean continua = true;
     GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
