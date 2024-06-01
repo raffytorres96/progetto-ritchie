@@ -144,7 +144,7 @@ public void controlloPartita(final Mossa mossa) {
    /**
     * Metodo che restituisce il tavoliere.
     */
-    @SuppressWarnings("EI")
+    @edu.umd.cs.findbugs.annotations.SuppressFBWarnings("EI")
     public Tavoliere getTavoliere() {
         return tavoliere;
     }
