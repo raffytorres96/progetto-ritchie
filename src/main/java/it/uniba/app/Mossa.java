@@ -301,7 +301,7 @@ private void puliziaTavoliere() {
     *
     * @return tavoliere
     */
-    @SuppressWarnings("EI")
+    @edu.umd.cs.findbugs.annotations.SuppressFBWarnings("EI")
     public Tavoliere getTavoliere() {
       return tavoliere;
    }
@@ -335,7 +335,7 @@ private void puliziaTavoliere() {
     *
     * @param newTavoliere
     */
-    @SuppressWarnings("EI2")
+   @edu.umd.cs.findbugs.annotations.SuppressFBWarnings("EI2")
    public void setTavoliere(final Tavoliere newTavoliere) {
       this.tavoliere = newTavoliere;
    }
