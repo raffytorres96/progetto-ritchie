@@ -132,20 +132,21 @@ public void controlloPartita(final Mossa mossa) {
     /**
     * Metodo che restituisce il giocatore1.
     */
-    public Giocatore getGiocatore1() {
-        return this.giocatore1;
+    public String getGiocatore1() {
+        return giocatore1.getNome();
     }
     /**
     * Metodo che restituisce il giocatore2.
     */
-    public Giocatore getGiocatore2() {
-        return this.giocatore2;
+    public String getGiocatore2() {
+        return giocatore2.getNome();
     }
    /**
     * Metodo che restituisce il tavoliere.
     */
+    @edu.umd.cs.findbugs.annotations.SuppressFBWarnings("EI")
     public Tavoliere getTavoliere() {
-        return this.tavoliere;
+        return tavoliere;
     }
     /**
     * Metodo che setta il tavoliere.
@@ -160,8 +161,8 @@ public void controlloPartita(final Mossa mossa) {
     * Metodo che restituisce la regola.
     * @return
     */
-    public Regola getRegola() {
-        return this.regola;
+    public String getRegola() {
+        return regola.getTipoRegola();
     }
     /**
     * Metodo che restituisce se il gioco è finito o meno.

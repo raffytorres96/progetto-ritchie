@@ -185,7 +185,6 @@ public final class Comandi {
                 + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
         GestoreStampa.stampareMessaggio("Conferma: ");
         conferma = input();
-        Utils utils = new Utils();
         while (!(conferma.equals("si") || conferma.equals("no"))) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + ": Non hai inserito una risposta valida\n"
                     + "Sei sicuro di voler abbandonare la partita? [" + GestoreStampa.ANSI_GREEN + "si"
@@ -198,24 +197,24 @@ public final class Comandi {
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 1) {
             int numeroPedine = partita.getTavoliere().getContaPedine(1);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore2().getNome()
+                    + ":" + partita.getGiocatore2()
                     + ", vince per abbandono per " + numeroPedine + " a 0 \n");
 
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
-            utils.setInGame(false);
+            Utils.setInGame(false);
             return true;
         }
 
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
             int numeroPedine = partita.getTavoliere().getContaPedine(2);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore1().getNome()
+                    + ":" + partita.getGiocatore1()
                     + ", vince per abbandono per " + numeroPedine + " a 0 \n");
 
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
-            utils.setInGame(false);
+            Utils.setInGame(false);
             return true;
         }
 
@@ -230,19 +229,18 @@ public final class Comandi {
         String nomeGiocatore2;
         String regolaGioco;
         Partita partita;
-        Utils utils = new Utils();
         GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
                 + GestoreStampa.ANSI_RESET + " Inserisci i dati per iniziare la partita. \n\n");
-        utils.setInGame(true);
+                Utils.setInGame(true);
         do {
             GestoreStampa.stampareMessaggio(
                     "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");
             regolaGioco = Comandi.input();
-            if (!utils.analizzatoreInput(regolaGioco)) {
+            if (!Utils.analizzatoreInput(regolaGioco)) {
                 GestoreStampa.stampareMessaggio("\nRegola non valida, riprova\n");
             }
-        } while (!utils.analizzatoreInput(regolaGioco));
+        } while (!Utils.analizzatoreInput(regolaGioco));
 
         do {
             GestoreStampa.stampareMessaggio("\nInserisci il nome del Giocatore1 (Nero): ");
