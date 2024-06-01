@@ -3,10 +3,11 @@ package it.uniba.app;
  * <<Control>>
  * Responsabilità: Contiene metodi per l'analisi dell'input.
  */
-public class Utils {
+public final class Utils {
+private Utils() { }
     /** attributo utilizzato in App per verifiacare che alcuni comandi siano dati
       * prima di iniziare una partita. */
-      private boolean inGame = false;
+      private static boolean inGame = false;
 
     /** Analizzatore utilizzato per separare la stringa delle coordinate date in input
      *  per passare ai meotodi di mapping righe e colonne.
@@ -95,7 +96,7 @@ public class Utils {
     * @param input
     * @return
     */
-    public boolean analizzatoreInput(final String input) {
+    public static boolean analizzatoreInput(final String input) {
         switch (input) {
             case "--help":
                 return true;
@@ -130,12 +131,12 @@ public class Utils {
         return false;
     }
     /** Metodo che restituisce il valore dell'attributo inGame. */
-    public boolean isInGame() {
+    public static boolean isInGame() {
         return inGame;
     }
     /**Metodo che setta il valore dell'attributo inGame. */
-    public void setInGame(final boolean setInGame) {
-        this.inGame = setInGame;
+    public static void setInGame(final boolean setInGame) {
+        inGame = setInGame;
     }
 
 }
