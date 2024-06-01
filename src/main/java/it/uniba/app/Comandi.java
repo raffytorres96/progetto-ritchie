@@ -185,7 +185,6 @@ public final class Comandi {
                 + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
         GestoreStampa.stampareMessaggio("Conferma: ");
         conferma = input();
-
         while (!(conferma.equals("si") || conferma.equals("no"))) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + ": Non hai inserito una risposta valida\n"
                     + "Sei sicuro di voler abbandonare la partita? [" + GestoreStampa.ANSI_GREEN + "si"
@@ -230,11 +229,10 @@ public final class Comandi {
         String nomeGiocatore2;
         String regolaGioco;
         Partita partita;
-
         GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
                 + GestoreStampa.ANSI_RESET + " Inserisci i dati per iniziare la partita. \n\n");
-        Utils.setInGame(true);
+                Utils.setInGame(true);
         do {
             GestoreStampa.stampareMessaggio(
                     "Inserisci la regola di gioco (Classica, Thomas, Assimilation, Variante a Perdere): ");
