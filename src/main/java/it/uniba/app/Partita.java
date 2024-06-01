@@ -133,19 +133,19 @@ public void controlloPartita(final Mossa mossa) {
     * Metodo che restituisce il giocatore1.
     */
     public Giocatore getGiocatore1() {
-        return this.giocatore1;
+        return giocatore1;
     }
     /**
     * Metodo che restituisce il giocatore2.
     */
     public Giocatore getGiocatore2() {
-        return this.giocatore2;
+        return giocatore2;
     }
    /**
     * Metodo che restituisce il tavoliere.
     */
     public Tavoliere getTavoliere() {
-        return this.tavoliere;
+        return tavoliere;
     }
     /**
     * Metodo che setta il tavoliere.
