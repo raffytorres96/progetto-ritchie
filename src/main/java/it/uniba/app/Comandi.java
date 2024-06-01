@@ -198,7 +198,7 @@ public final class Comandi {
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 1) {
             int numeroPedine = partita.getTavoliere().getContaPedine(1);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore2().getNome()
+                    + ":" + partita.getGiocatore2()
                     + ", vince per abbandono per " + numeroPedine + " a 0 \n");
 
             partita.setPartitaIniziata(false);
@@ -210,7 +210,7 @@ public final class Comandi {
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
             int numeroPedine = partita.getTavoliere().getContaPedine(2);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore1().getNome()
+                    + ":" + partita.getGiocatore1()
                     + ", vince per abbandono per " + numeroPedine + " a 0 \n");
 
             partita.setPartitaIniziata(false);
