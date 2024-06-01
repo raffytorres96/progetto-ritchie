@@ -75,6 +75,7 @@ public class Tavoliere {
    * Metodo d'accesso al tavoliere, restituisce lintera griglia di gioco.
    * @return tavoliere intera matrice di celle
    */
+  @SuppressWarnings("EI")
     public Cella[][] getTavoliere() {
         Cella[][] tav = tavoliere;
         return tav;
