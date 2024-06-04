@@ -205,6 +205,23 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
 
 
 
+/**
+ * Metodo che permette ad ogni mossa effettuata
+ * di cambiare cambaire il tunro del giocatore corrente.
+ * @param isGiocatoreCorrente
+ */
+private void passaTurno(final int isGiocatoreCorrente) {
+    if (isGiocatoreCorrente == 1) {
+        this.giocatoreCorrente = Giocatore.GIOCATORE2;
+
+    } else if (isGiocatoreCorrente == 2) {
+        this.giocatoreCorrente = Giocatore.GIOCATORE1;
+    }
+}
+
+
+
+
 
 
 
