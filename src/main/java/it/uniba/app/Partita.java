@@ -130,6 +130,10 @@ public void controlloPartita(final Mossa mossa) {
 
 }
 
+/**
+ * Metodo che controlla se la prima coordinata è effettivamente un pedina del gocatore corrente.
+ * @param input
+ */
 private boolean controlloPedinaCorretta(final String input) {
     if (input.length() != 2) {
 
@@ -139,6 +143,16 @@ private boolean controlloPedinaCorretta(final String input) {
     int riga = Utils.mappingRighe(String.valueOf(input.charAt(1)));
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) != (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La pedina selezionata non è tua\n\n");
+        try {
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
+    } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 0) {
+        GestoreStampa.stampareMessaggio("Hai selezionato una cella vuota\n\n");
         try {
             Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
