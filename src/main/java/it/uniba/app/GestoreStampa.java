@@ -744,4 +744,16 @@ public static void clearTerminale() {
   System.out.print("\033[H\033[2J");
   System.out.flush();
 }
+/**
+ * Metodo che si occupa di stampare il giocatore corrente.
+ * @param partita
+ */
+public static void stampareGiocatoreCorrente(final Partita partita) {
+  if (partita.getGiocatoreCorrente() == 1) {
+      GestoreStampa.stampareMessaggio("E' il turno di: " + partita.getGiocatore1() + " (Nero).\n\n");
+    } else if (partita.getGiocatoreCorrente() == 2) {
+      GestoreStampa.stampareMessaggio("E' il turno di: " + partita.getGiocatore2() + " (Bianco).\n\n");
+    }
+
+}
 }
