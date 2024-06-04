@@ -200,8 +200,90 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
 
     return true;
 }
+/**
+ * Meotodo che si occupa di controllare se la mossa che il giocatore corrente vuole
+ * effettuare sia una lecita, quindi o generativa o spostamento.
+ * @param input1
+ * @param input2
+ */
+private void controlloMossaDaEffettuaree(final String input1, final String input2) {
+    int rigaTemp = -1;
+    int colonnaTemp = -1;
+    int statoTemp = -1;
+    int colonna1 = Utils.mappingColonne(String.valueOf(input1.charAt(0)));
+    int riga1 = Utils.mappingRighe(String.valueOf(input1.charAt(1)));
+    int colonna2 = Utils.mappingColonne(String.valueOf(input2.charAt(0)));
+    int riga2 = Utils.mappingRighe(String.valueOf(input2.charAt(1)));
+    if (Math.abs(colonna1 - colonna2) <= 1 && Math.abs(riga1 - riga2) <= 1) {
+        this.tavoliere.setTavoliere(riga2, colonna2, this.giocatoreCorrente);
+        // Controlla le celle adiacenti
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                // Evita di controllare la cella stessa
+                if (i == 0 && j == 0) {
+                    continue;
+                }
 
+                // Calcola le coordinate della cella adiacente
+                int rigaAdiacente = riga2 + i;
+                int colonnaAdiacente = colonna2 + j;
 
+                // Verifica che le coordinate siano all'interno dei limiti del tavoliere
+                if (rigaAdiacente >= 0 && rigaAdiacente < Tavoliere.N_RIGHE_COLONNE
+                        && colonnaAdiacente >= 0 && colonnaAdiacente < Tavoliere.N_RIGHE_COLONNE) {
+                    rigaTemp = rigaAdiacente;
+                    colonnaTemp = colonnaAdiacente;
+                    statoTemp = Cella.getStato(this.tavoliere.getCella(rigaTemp, colonnaTemp));
+
+                    // Se lo stato della cella adiacente è 2, cambialo in 1
+                    if (statoTemp != this.giocatoreCorrente && statoTemp != 0) {
+                        this.tavoliere.setTavoliere(rigaTemp, colonnaTemp, this.giocatoreCorrente);
+                    }
+                }
+            }
+        }
+        passaTurno(this.giocatoreCorrente);
+
+    } else if (Math.abs(colonna1 - colonna2) <= 2 && Math.abs(riga1 - riga2) <= 2) {
+        this.tavoliere.setTavoliere(riga2, colonna2, this.giocatoreCorrente);
+        this.tavoliere.setTavoliere(riga1, colonna1, 0);
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                // Evita di controllare la cella stessa
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+
+                // Calcola le coordinate della cella adiacente
+                int rigaAdiacente = riga2 + i;
+                int colonnaAdiacente = colonna2 + j;
+                // Verifica che le coordinate siano all'interno dei limiti del tavoliere
+                if (rigaAdiacente >= 0 && rigaAdiacente < Tavoliere.N_RIGHE_COLONNE
+                        && colonnaAdiacente >= 0 && colonnaAdiacente < Tavoliere.N_RIGHE_COLONNE) {
+                    rigaTemp = rigaAdiacente;
+                    colonnaTemp = colonnaAdiacente;
+                    statoTemp = Cella.getStato(this.tavoliere.getCella(rigaTemp, colonnaTemp));
+
+                    // Se lo stato della cella adiacente è 2, cambialo in 1
+                    if (statoTemp != this.giocatoreCorrente && statoTemp != 0) {
+                        this.tavoliere.setTavoliere(rigaTemp, colonnaTemp, this.giocatoreCorrente);
+                    }
+                }
+            }
+        }
+        passaTurno(this.giocatoreCorrente);
+    } else {
+        GestoreStampa.stampareMessaggio("Mossa non valida\n");
+        GestoreStampa.stampareMessaggio("\nLa mossa è valida solo se scegli una cordinata"
+                + " di distanza 1 o 2 da quella di partenza");
+        try {
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
 
 
 
