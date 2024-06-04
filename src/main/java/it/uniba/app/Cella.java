@@ -39,6 +39,11 @@ static final int STATO_CELLA_ARANCIONE = 4;
 * è possibile sia spostare una pedina che generarla.
 */
 static final int STATO_CELLA_ROSA = 5;
+/**
+* Attributo statico che contiene lo stato relativo ad una cella in cui
+* non è possibile posizionare una pedina.
+*/
+static final int STATO_CELLA_BLOCCATA = 6;
   /**
 * Attributo statico che contiene l'icona della cella vuota.
 */
@@ -70,13 +75,18 @@ static final int STATO_CELLA_ROSA = 5;
  */
   static final String ICONA_CELLA_ROSA = Character.toString(0x1F7EA);
   /**
+ * Attributo statico che contiene l'icona delle celle nelle
+ * quali non è possibile spostare una pedina.
+ */
+static final String ICONA_CELLA_BLOCCATA = Character.toString(0x1F532);
+  /**
  * Attributo che contiene lo stato della cella: 0 se vuota,
  * 1 se occupata da una pedina del giocatore 1, 2 se
  * occupata da una pedina del giocatore 2, 3 se vuota ma
  * eleggibile alla generazione di una nuova pedina, 4 se
  * vuota ma eleggibile come destinazione dello spostamento
  * di una pedina esistente, 5 se eleggibile alle azioni
- * di entrambi gli stati 3 e 4.
+ * di entrambi gli stati 3 e 4, 6 se bloccata.
  */
   private int stato;
   /**
@@ -116,6 +126,8 @@ static final int STATO_CELLA_ROSA = 5;
         return ICONA_CELLA_ARANCIONE;
       } else if (getStato(this) == STATO_CELLA_ROSA) {
         return ICONA_CELLA_ROSA;
+      } else if (getStato(this) == STATO_CELLA_BLOCCATA) {
+        return ICONA_CELLA_BLOCCATA;
       }
       return null;
   }
