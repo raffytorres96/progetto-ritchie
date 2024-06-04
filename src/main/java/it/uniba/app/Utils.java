@@ -22,7 +22,9 @@ private Utils() { }
       private static final int SETTE = 7;
 
 
-    /** Analizzatore utilizzato per <.
+    /** Analizzatore utilizzato per verificare la correttezza delle oordinate inserite
+     * ossia che sia date nel formato  xi-yj dove x e y sono lettere da a a g e i e j
+     * numeri da 1 a 7  compreso il trattinoe separatore "-".
      * @param inputCoordinate
      * */
     public static boolean analizzatoreInputCoordinate(final String inputCoordinate) {
