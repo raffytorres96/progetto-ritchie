@@ -129,7 +129,40 @@ public void controlloPartita(final Mossa mossa) {
     } while (continua);
 
 }
-    /**
+
+private boolean controlloPedinaCorretta(final String input) {
+    if (input.length() != 2) {
+
+        return false;
+    }
+    int colonna = Utils.mappingColonne(String.valueOf(input.charAt(0)));
+    int riga = Utils.mappingRighe(String.valueOf(input.charAt(1)));
+    if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) != (this.giocatoreCorrente)) {
+        GestoreStampa.stampareMessaggio("La pedina selezionata non è tua\n\n");
+        try {
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
+    }
+    return true;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
     * Metodo che restituisce il giocatore1.
     */
     public String getGiocatore1() {
