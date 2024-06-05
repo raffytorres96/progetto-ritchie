@@ -24,10 +24,10 @@ private Regola regola;
 private Tavoliere tavoliere;
 
 /** attributo che rappresenta il giocatore1.  */
-private Giocatore giocatore1;
+private static Giocatore giocatore1;
 
 /** attributo che rappresenta il giocatore2.  */
-private Giocatore giocatore2;
+private static Giocatore giocatore2;
 
 /** attributo che imposta la partita a false non chimato il cotruttore dipartita.  */
 private boolean partitaIniziata = false;
@@ -37,6 +37,10 @@ private int giocatoreCorrente;
 
 /** Variabile statica per ritardare l'uscita dalla partita.  */
 public static final int TIME = 2000;
+
+/** Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
+ * di erroe quando si cerca di fare una mossa non lecita.  */
+public static final int TIME2 = 2500;
 
 
 /**
@@ -52,8 +56,8 @@ this.giocatoreCorrente = Giocatore.GIOCATORE1;
 this.tavoliere = new Tavoliere();
 this.tavoliere = this.tavoliere.inizializzaTavolierePartita(this.tavoliere);
 this.regola = new Regola(regolaGioco);
-this.giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
-this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
+Partita.giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
+Partita.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 }
 
 
@@ -89,8 +93,30 @@ public void controlloPartita(final Mossa mossa) {
             Comandi.esci();
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/help") || input.equals("-h") || input.equals("--help")) {
-            Comandi.help();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+            GestoreStampa.clearTerminale();
+            do {
+                Comandi.help();
+                GestoreStampa.stampareMessaggio("\n\nPremere comando 'ok', per ritornare in partita ");
+                GestoreStampa.stampareMessaggio("\n\n");
+                GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+                input = Comandi.input();
+                if (!input.equals("ok")) {
+                   GestoreStampa.stampareMessaggio("Non hai inserito correttamente 'ok'.\n\n");
+                }
+                } while (!input.equals("ok"));
+                GestoreStampa.clearTerminale();
+                GestoreStampa.stampareTitoloGioco();
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+                + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+                GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
+                GestoreStampa.stampareTavoliere(this.tavoliere);
+                GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
+                      + " solo /qualiMosse.\n\n");
+                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                      + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                      + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
 
 
         } else if (input.equals("/tavoliere")) {
@@ -112,6 +138,7 @@ public void controlloPartita(final Mossa mossa) {
                 GestoreStampa.stampareTitoloGioco();
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
                 + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+                GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
                 Comandi.comandoTavoliere(this.getTavoliere());
                 GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
                       + " solo /qualiMosse e /tavoliere.\n\n");
@@ -121,6 +148,27 @@ public void controlloPartita(final Mossa mossa) {
                       + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
 
+        } else if (input.equals("/gioca")) {
+            GestoreStampa.stampareMessaggio("Hai già iniziato una partita.\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
+        } else if (Utils.analizzatoreInputCoordinate(input)) {
+            String[] result = input.split("-");
+            if (controlloPedinaCorretta(result[0]) && controlloPedinaArrivoCorretta(result[1])) {
+                controlloMossaDaEffettuaree(result[0], result[1]);
+            }
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+            + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+            GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
+            Comandi.comandoTavoliere(this.getTavoliere());
+            GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
+                    + " solo /qualiMosse e /tavoliere.\n\n");
+            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
@@ -144,7 +192,7 @@ private boolean controlloPedinaCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) != (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La pedina selezionata non è tua\n\n");
         try {
-            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -154,7 +202,7 @@ private boolean controlloPedinaCorretta(final String input) {
     } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 0) {
         GestoreStampa.stampareMessaggio("Hai selezionato una cella vuota\n\n");
         try {
-            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -165,6 +213,7 @@ private boolean controlloPedinaCorretta(final String input) {
     return true;
 
 }
+
 
 /**
  * Metodo di controllo sulla correttezza della seconda coordinata.
@@ -179,7 +228,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è già occupata da una tua pedina\n\n");
         try {
-            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -190,7 +239,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 2) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è già occupata da una pedina avversaria\n\n");
         try {
-            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -200,6 +249,8 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
 
     return true;
 }
+
+
 /**
  * Meotodo che si occupa di controllare se la mossa che il giocatore corrente vuole
  * effettuare sia una lecita, quindi o generativa o spostamento.
@@ -277,7 +328,7 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
         GestoreStampa.stampareMessaggio("\nLa mossa è valida solo se scegli una cordinata"
                 + " di distanza 1 o 2 da quella di partenza");
         try {
-            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -303,23 +354,16 @@ private void passaTurno(final int isGiocatoreCorrente) {
 
 
 
-
-
-
-
-
-
-
 /**
     * Metodo che restituisce il giocatore1.
     */
-    public String getGiocatore1() {
+    public static String getGiocatore1() {
         return giocatore1.getNome();
     }
     /**
     * Metodo che restituisce il giocatore2.
     */
-    public String getGiocatore2() {
+    public static String getGiocatore2() {
         return giocatore2.getNome();
     }
    /**
