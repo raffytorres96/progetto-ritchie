@@ -197,7 +197,7 @@ public final class Comandi {
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 1) {
             int numeroPedine = partita.getTavoliere().getContaPedine(1);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore2()
+                    + ":" + Partita.getGiocatore2()
                     + ", vince per abbandono per " + numeroPedine + " a 0 \n");
 
             partita.setPartitaIniziata(false);
@@ -209,7 +209,7 @@ public final class Comandi {
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
             int numeroPedine = partita.getTavoliere().getContaPedine(2);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + partita.getGiocatore1()
+                    + ":" + Partita.getGiocatore1()
                     + ", vince per abbandono per " + numeroPedine + " a 0 \n");
 
             partita.setPartitaIniziata(false);
@@ -265,6 +265,7 @@ public final class Comandi {
         GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
         + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+        GestoreStampa.stampareGiocatoreCorrente(partita.getGiocatoreCorrente());
         GestoreStampa.stampareTavoliere(partita.getTavoliere());
         partita.controlloPartita(mossa);
     }
