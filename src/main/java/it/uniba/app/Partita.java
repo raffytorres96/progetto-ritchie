@@ -65,9 +65,7 @@ Partita.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 public void controlloPartita(final Mossa mossa) {
 
     boolean continua = true;
-    GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
-        + " solo /qualiMosse.\n\n");
-    GestoreStampa.stampareMessaggio("Oppure puoi usare"
+    GestoreStampa.stampareMessaggio("Puoi usare"
         + GestoreStampa.ANSI_BLUE + " '/Abbandona' " + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
     GestoreStampa.stampareMessaggio("Oppure puoi usare"
         + GestoreStampa.ANSI_RED + " '/Esci' " + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
@@ -95,8 +93,7 @@ public void controlloPartita(final Mossa mossa) {
             GestoreStampa.clearTerminale();
             do {
                 Comandi.help();
-                GestoreStampa.stampareMessaggio("\n\nPremere comando 'ok', per ritornare in partita ");
-                GestoreStampa.stampareMessaggio("\n\n");
+                GestoreStampa.stampareMessaggio("\n\nPremere comando 'ok', per ritornare in partita\n\n ");
                 GestoreStampa.stampareMessaggio("Inserisci un comando: ");
                 input = Comandi.input();
                 if (!input.equals("ok")) {
@@ -109,9 +106,7 @@ public void controlloPartita(final Mossa mossa) {
                 + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
                 GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
                 GestoreStampa.stampareTavoliere(this.tavoliere);
-                GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
-                      + " solo /qualiMosse.\n\n");
-                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
                       + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
                 GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                       + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
@@ -139,9 +134,7 @@ public void controlloPartita(final Mossa mossa) {
                 + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
                 GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
                 Comandi.comandoTavoliere(this.getTavoliere());
-                GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
-                      + " solo /qualiMosse e /tavoliere.\n\n");
-                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
                       + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
                 GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                       + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
@@ -161,9 +154,7 @@ public void controlloPartita(final Mossa mossa) {
             + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
             GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
             Comandi.comandoTavoliere(this.getTavoliere());
-            GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
-                    + " solo /qualiMosse e /tavoliere.\n\n");
-            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+            GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
             GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
@@ -208,6 +199,16 @@ private boolean controlloPedinaCorretta(final String input) {
 
         return false;
 
+    } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == Cella.STATO_CELLA_BLOCCATA) {
+        GestoreStampa.stampareMessaggio("Hai selezionato una cella di partenza bloccata,"
+        + " seleziona una in cui ci sia una tua pedina.\n\n");
+        try {
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
     return true;
 
@@ -243,6 +244,15 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return false;
+    } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == Cella.STATO_CELLA_BLOCCATA) {
+        GestoreStampa.stampareMessaggio("La destinazione selezionata è bloccata, scegli una destinazione libera.\n\n");
+        try {
+            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
 
@@ -285,8 +295,11 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
                     colonnaTemp = colonnaAdiacente;
                     statoTemp = Cella.getStato(this.tavoliere.getCella(rigaTemp, colonnaTemp));
 
+
                     // Se lo stato della cella adiacente è 2, cambialo in 1
-                    if (statoTemp != this.giocatoreCorrente && statoTemp != 0) {
+                    if (statoTemp != this.giocatoreCorrente
+                    && statoTemp != 0
+                    && statoTemp != Cella.STATO_CELLA_BLOCCATA) {
                         this.tavoliere.setTavoliere(rigaTemp, colonnaTemp, this.giocatoreCorrente);
                     }
                 }
@@ -315,7 +328,9 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
                     statoTemp = Cella.getStato(this.tavoliere.getCella(rigaTemp, colonnaTemp));
 
                     // Se lo stato della cella adiacente è 2, cambialo in 1
-                    if (statoTemp != this.giocatoreCorrente && statoTemp != 0) {
+                    if (statoTemp != this.giocatoreCorrente
+                    && statoTemp != 0
+                    && statoTemp != Cella.STATO_CELLA_BLOCCATA) {
                         this.tavoliere.setTavoliere(rigaTemp, colonnaTemp, this.giocatoreCorrente);
                     }
                 }
@@ -350,6 +365,9 @@ private void passaTurno(final int isGiocatoreCorrente) {
         this.giocatoreCorrente = Giocatore.GIOCATORE1;
     }
 }
+
+
+
 
 
 
