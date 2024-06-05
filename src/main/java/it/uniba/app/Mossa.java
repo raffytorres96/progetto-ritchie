@@ -86,7 +86,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
               GestoreStampa.stampareMessaggio("Inserisci un comando: ");
               input = Comandi.input();
               if (!input.equals("ok")) {
-                 GestoreStampa.stampareMessaggio("Comando non valido\n\n");
+                 GestoreStampa.stampareMessaggio("Non hai inserito correttamente 'ok'.\n\n");
               }
               } while (!input.equals("ok"));
               puliziaTavoliere();
@@ -94,8 +94,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
               GestoreStampa.stampareTitoloGioco();
               GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-
-
+              GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
               GestoreStampa.stampareTavoliere(this.tavoliere);
               GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
                     + " solo /qualiMosse.\n\n");
