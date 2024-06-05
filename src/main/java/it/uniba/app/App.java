@@ -14,6 +14,8 @@ public final class App {
  * @param args
  */
      public static void main(final String[] args) {
+        Tavoliere tavoliere = new Tavoliere();
+        tavoliere.inizializzaTavolierePartita(tavoliere);
         GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n ");
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Scrivi /help oppure -h o --help"
@@ -30,7 +32,7 @@ public final class App {
 
             } else if (input.equals("/gioca") && !Utils.isInGame()) {
                 GestoreStampa.clearTerminale();
-                Comandi.gioca();
+                Comandi.gioca(tavoliere);
                 GestoreStampa.clearTerminale();
                 GestoreStampa.stampareTitoloGioco();
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n ");
@@ -40,6 +42,25 @@ public final class App {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n "
                 + GestoreStampa.ANSI_RESET);
                 GestoreStampa.stampareTavoliereVuoto();
+            } else if (input.equals("/blocca") && !Utils.isInGame()) {
+                GestoreStampa.clearTerminale();
+                GestoreStampa.stampareTitoloGioco();
+                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n"
+                + GestoreStampa.ANSI_RESET);
+                if (tavoliere.getCelleBloccate() >= Tavoliere.MAX_CELLE_BLOCCATE) {
+                    GestoreStampa.stampareMessaggio("E' stato raggiunto il massimo numero di caselle bloccate.");
+                } else {
+                    GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
+                    input = Comandi.input();
+                    int rigaDaBloccare = Utils.mappingRighe(input);
+                    GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
+                    input = Comandi.input();
+                    int colonnaDaBloccare = Utils.mappingColonne(input);
+                    GestoreStampa.stampareMessaggio("RIGA " + rigaDaBloccare + " | COLONNA " + colonnaDaBloccare);
+                    Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
+                    GestoreStampa.stampareMessaggio(" "
+                    + Cella.getStato(tavoliere.getCella(rigaDaBloccare, colonnaDaBloccare)) + "\n");
+                }
             } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
                 + "\nComando utilizzabile solo in partita\n\n");

@@ -56,6 +56,14 @@ public class Tavoliere {
    * Attributo statico che contiene il numero di righe e colonne.
    */
     public static final short N_RIGHE_COLONNE = 7;
+    /**
+   * Attributo statico che contiene il numero massimo di celle bloccate.
+   */
+    public static final short MAX_CELLE_BLOCCATE = 9;
+    /**
+   * Attributo che conta le celle bloccate.
+   */
+    private int celleBloccate = 0;
    /**
    * Attributo che descrive il tavoliere come una matrice 7x7
    * di istanze di Cella (variabili tipo Cella).
@@ -120,6 +128,20 @@ public class Tavoliere {
         }
         return contaPedine;
     }
+/**
+ * Metodo restituisce il numero di celle bloccate nel tavoliere.
+ * @return numero di celle bloccate
+ */
+    public int getCelleBloccate() {
+        return this.celleBloccate;
+    }
+
+/**
+ * Metodo incrementa di 1 il contatore delle celle bloccate nel tavoliere.
+ */
+public void addCelleBloccate() {
+    this.celleBloccate += 1;
+}
 
 /**
  * Metodo che conta le pedine del giocatore corrente nel Tavoliere.
@@ -133,5 +155,216 @@ public class Tavoliere {
         t.setTavoliere(RIGA6, COLONNA0, Giocatore.GIOCATORE2);
         return t;
     }
-
+    /**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante nord ovest (righe 1 e 2, colonne A e B) attorno all'angolo.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoNWvicino(final Tavoliere t) {
+    final int maxBLOCCATE = 2;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA0, COLONNA1)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA1, COLONNA0)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA1, COLONNA1)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+    /**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante nord est (righe 1 e 2, colonne F e G) attorno all'angolo.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoNEvicino(final Tavoliere t) {
+    final int maxBLOCCATE = 2;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA0, COLONNA5)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA1, COLONNA5)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA1, COLONNA6)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+    /**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante sud ovest (righe 5 e 6, colonne A e B) attorno all'angolo.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoSWvicino(final Tavoliere t) {
+    final int maxBLOCCATE = 2;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA5, COLONNA0)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA5, COLONNA1)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA6, COLONNA1)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+    /**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante sud est (righe 5 e 6, colonne F e G) attorno all'angolo.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoSEvicino(final Tavoliere t) {
+    final int maxBLOCCATE = 2;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA5, COLONNA5)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA5, COLONNA6)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA6, COLONNA5)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+/**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante nord ovest (righe 1, 2 e 3, colonne A, B e C) lontano una casella
+ * dall'angolo del tavoliere.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoNWlontano(final Tavoliere t) {
+    final int maxBLOCCATE = 4;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA0, COLONNA2)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA1, COLONNA2)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA2, COLONNA2)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA2, COLONNA1)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA2, COLONNA0)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+/**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante nord est (righe 1, 2 e 3, colonne E, F e G) lontano una casella
+ * dall'angolo del tavoliere.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoNElontano(final Tavoliere t) {
+    final int maxBLOCCATE = 4;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA0, COLONNA4)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA1, COLONNA4)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA2, COLONNA4)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA2, COLONNA5)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA2, COLONNA6)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+/**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante sud ovest (righe 5, 6 e 7, colonne A, B e C) lontano una casella
+ * dall'angolo del tavoliere.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoSWlontano(final Tavoliere t) {
+    final int maxBLOCCATE = 4;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA4, COLONNA0)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA4, COLONNA1)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA4, COLONNA2)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA5, COLONNA2)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA6, COLONNA2)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
+/**
+ * Metodo che verifica la fattibilità dell'inserimento di un blocco nel
+ * quadrante sud est (righe 5, 6 e 7, colonne E, F e G) lontano una casella
+ * dall'angolo del tavoliere.
+ * @param t tavoliere di gioco
+ * @return boolean, vero se è fattibile
+ */
+public boolean checkBloccoSElontano(final Tavoliere t) {
+    final int maxBLOCCATE = 4;
+    int contaBloccate = 0;
+    if (Cella.getStato(t.getCella(RIGA4, COLONNA4)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA4, COLONNA5)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA4, COLONNA6)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA5, COLONNA4)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (Cella.getStato(t.getCella(RIGA6, COLONNA4)) == Cella.STATO_CELLA_BLOCCATA) {
+        contaBloccate += 1;
+    }
+    if (contaBloccate < maxBLOCCATE) {
+        return true;
+    }
+    return false;
+}
 }
