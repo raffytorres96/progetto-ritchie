@@ -746,13 +746,13 @@ public static void clearTerminale() {
 }
 /**
  * Metodo che si occupa di stampare il giocatore corrente.
- * @param partita
+ * @param giocatoreCorrente
  */
-public static void stampareGiocatoreCorrente(final Partita partita) {
-  if (partita.getGiocatoreCorrente() == 1) {
-      GestoreStampa.stampareMessaggio("E' il turno di: " + partita.getGiocatore1() + " (Nero).\n\n");
-    } else if (partita.getGiocatoreCorrente() == 2) {
-      GestoreStampa.stampareMessaggio("E' il turno di: " + partita.getGiocatore2() + " (Bianco).\n\n");
+public static void stampareGiocatoreCorrente(final int giocatoreCorrente) {
+  if (giocatoreCorrente == 1) {
+      GestoreStampa.stampareMessaggio("E' il turno di: " + Partita.getGiocatore1() + " (Nero).\n\n");
+    } else if (giocatoreCorrente == 2) {
+      GestoreStampa.stampareMessaggio("E' il turno di: " + Partita.getGiocatore2() + " (Bianco).\n\n");
     }
 
 }
