@@ -96,9 +96,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
               GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
               GestoreStampa.stampareTavoliere(this.tavoliere);
-              GestoreStampa.stampareMessaggio("\n\nAl momento è possibile utilizzare come comando in partita"
-                    + " solo /qualiMosse.\n\n");
-              GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+              GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
               GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
