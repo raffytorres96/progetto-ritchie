@@ -292,40 +292,48 @@ public final class Comandi {
             if (colonna == Tavoliere.COLONNA0 || colonna == Tavoliere.COLONNA1) {
                 if (t.checkBloccoNWvicino(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             } else if (colonna == Tavoliere.COLONNA5 || colonna == Tavoliere.COLONNA6) {
                 if (t.checkBloccoNEvicino(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             }
         } else if (riga == Tavoliere.RIGA5 || riga == Tavoliere.RIGA6) {
             if (colonna == Tavoliere.COLONNA0 || colonna == Tavoliere.COLONNA1) {
                 if (t.checkBloccoSWvicino(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             } else if (colonna == Tavoliere.COLONNA5 || colonna == Tavoliere.COLONNA6) {
                 if (t.checkBloccoSEvicino(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             }
         } else if (riga == Tavoliere.RIGA2) {
             if (colonna <= Tavoliere.COLONNA2) {
                 if (t.checkBloccoNWlontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             } else if (colonna >= Tavoliere.COLONNA4) {
                 if (t.checkBloccoNElontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             }
         } else if (riga == Tavoliere.RIGA4) {
             if (colonna <= Tavoliere.COLONNA2) {
                 if (t.checkBloccoSWlontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             } else if (colonna >= Tavoliere.COLONNA4) {
                 if (t.checkBloccoSElontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             }
         }
@@ -333,10 +341,12 @@ public final class Comandi {
             if (riga <= Tavoliere.RIGA2) {
                 if (t.checkBloccoNWlontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             } else if (riga >= Tavoliere.RIGA4) {
                 if (t.checkBloccoNElontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             }
         }
@@ -344,12 +354,18 @@ public final class Comandi {
             if (riga <= Tavoliere.COLONNA2) {
                 if (t.checkBloccoSWlontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             } else if (riga >= Tavoliere.RIGA4) {
                 if (t.checkBloccoSElontano(t)) {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+                    t.addCelleBloccate();
                 }
             }
+        }
+        if (colonna == Tavoliere.COLONNA3 || riga == Tavoliere.RIGA3) {
+            t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
+            t.addCelleBloccate();
         }
         if (Cella.getStato(t.getCella(riga, colonna)) == 0) {
             GestoreStampa.stampareMessaggio("Non è possibile bloccare questa cella.");

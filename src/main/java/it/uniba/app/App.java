@@ -47,16 +47,20 @@ public final class App {
                 GestoreStampa.stampareTitoloGioco();
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n"
                 + GestoreStampa.ANSI_RESET);
-                GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
-                input = Comandi.input();
-                int rigaDaBloccare = Utils.mappingRighe(input);
-                GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
-                input = Comandi.input();
-                int colonnaDaBloccare = Utils.mappingColonne(input);
-                GestoreStampa.stampareMessaggio("RIGA " + rigaDaBloccare + " | COLONNA " + colonnaDaBloccare);
-                Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
-                GestoreStampa.stampareMessaggio(" "
-                + Cella.getStato(tavoliere.getCella(rigaDaBloccare, colonnaDaBloccare)) + "\n");
+                if (tavoliere.getCelleBloccate() >= Tavoliere.MAX_CELLE_BLOCCATE) {
+                    GestoreStampa.stampareMessaggio("E' stato raggiunto il massimo numero di caselle bloccate.");
+                } else {
+                    GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
+                    input = Comandi.input();
+                    int rigaDaBloccare = Utils.mappingRighe(input);
+                    GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
+                    input = Comandi.input();
+                    int colonnaDaBloccare = Utils.mappingColonne(input);
+                    GestoreStampa.stampareMessaggio("RIGA " + rigaDaBloccare + " | COLONNA " + colonnaDaBloccare);
+                    Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
+                    GestoreStampa.stampareMessaggio(" "
+                    + Cella.getStato(tavoliere.getCella(rigaDaBloccare, colonnaDaBloccare)) + "\n");
+                }
             } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
                 + "\nComando utilizzabile solo in partita\n\n");

@@ -56,6 +56,14 @@ public class Tavoliere {
    * Attributo statico che contiene il numero di righe e colonne.
    */
     public static final short N_RIGHE_COLONNE = 7;
+    /**
+   * Attributo statico che contiene il numero massimo di celle bloccate.
+   */
+    public static final short MAX_CELLE_BLOCCATE = 9;
+    /**
+   * Attributo che conta le celle bloccate.
+   */
+    private int celleBloccate = 0;
    /**
    * Attributo che descrive il tavoliere come una matrice 7x7
    * di istanze di Cella (variabili tipo Cella).
@@ -120,6 +128,20 @@ public class Tavoliere {
         }
         return contaPedine;
     }
+/**
+ * Metodo restituisce il numero di celle bloccate nel tavoliere.
+ * @return numero di celle bloccate
+ */
+    public int getCelleBloccate() {
+        return this.celleBloccate;
+    }
+
+/**
+ * Metodo incrementa di 1 il contatore delle celle bloccate nel tavoliere.
+ */
+public void addCelleBloccate() {
+    this.celleBloccate += 1;
+}
 
 /**
  * Metodo che conta le pedine del giocatore corrente nel Tavoliere.
