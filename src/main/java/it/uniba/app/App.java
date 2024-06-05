@@ -50,12 +50,16 @@ public final class App {
                 if (tavoliere.getCelleBloccate() >= Tavoliere.MAX_CELLE_BLOCCATE) {
                     GestoreStampa.stampareMessaggio("E' stato raggiunto il massimo numero di caselle bloccate.");
                 } else {
-                    GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
-                    input = Comandi.input();
-                    int rigaDaBloccare = Utils.mappingRighe(input);
+                    GestoreStampa.stampareTavoliere(tavoliere);
+                    GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "\nATTENZIONE:" + GestoreStampa.ANSI_RESET
+                    + "Non è possibile bloccare tutte le caselle intorno ad una pedina\n\t   in modo "
+                    + "da impedire qualsiasi possibilità di spostarsi o di\n\t   generarne un'altra accanto a sè.\n\n");
                     GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
                     input = Comandi.input();
                     int colonnaDaBloccare = Utils.mappingColonne(input);
+                    GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
+                    input = Comandi.input();
+                    int rigaDaBloccare = Utils.mappingRighe(input);
                     Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
                 }
             } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
