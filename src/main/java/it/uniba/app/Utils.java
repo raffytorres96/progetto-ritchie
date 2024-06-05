@@ -133,6 +133,8 @@ private Utils() { }
                 return true;
             case "/tavoliere":
                 return true;
+            case "/blocca":
+                return true;
             case "classica":
                 return true;
             case "thomas":

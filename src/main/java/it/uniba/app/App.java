@@ -56,10 +56,7 @@ public final class App {
                     GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
                     input = Comandi.input();
                     int colonnaDaBloccare = Utils.mappingColonne(input);
-                    GestoreStampa.stampareMessaggio("RIGA " + rigaDaBloccare + " | COLONNA " + colonnaDaBloccare);
                     Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
-                    GestoreStampa.stampareMessaggio(" "
-                    + Cella.getStato(tavoliere.getCella(rigaDaBloccare, colonnaDaBloccare)) + "\n");
                 }
             } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
