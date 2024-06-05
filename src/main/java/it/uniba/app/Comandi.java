@@ -224,7 +224,7 @@ public final class Comandi {
     /**
      * Metodo d'istanza che si occupa di iniziare una nuova partita.
      */
-    public static void gioca() {
+    public static void gioca(final Tavoliere tavoliere) {
         String nomeGiocatore1;
         String nomeGiocatore2;
         String regolaGioco;
@@ -260,7 +260,7 @@ public final class Comandi {
 
         } while (nomeGiocatore2.trim().isEmpty());
 
-        partita = new Partita(regolaGioco, nomeGiocatore1, nomeGiocatore2);
+        partita = new Partita(regolaGioco, tavoliere, nomeGiocatore1, nomeGiocatore2);
         Mossa mossa = new Mossa(partita.getTavoliere(), partita.getGiocatoreCorrente());
         GestoreStampa.stampareTitoloGioco();
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
@@ -350,6 +350,9 @@ public final class Comandi {
                     t.setTavoliere(riga, colonna, Cella.STATO_CELLA_BLOCCATA);
                 }
             }
+        }
+        if (Cella.getStato(t.getCella(riga, colonna)) == 0) {
+            GestoreStampa.stampareMessaggio("Non è possibile bloccare questa cella.");
         }
     }
 }

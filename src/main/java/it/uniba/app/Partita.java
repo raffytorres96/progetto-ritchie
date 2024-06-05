@@ -45,12 +45,11 @@ public static final int TIME = 2000;
  * @param nome1
  * @param nome2
  */
-public Partita(final String regolaGioco, final String nome1, final String nome2) {
+public Partita(final String regolaGioco, final Tavoliere t, final String nome1, final String nome2) {
 
 this.partitaIniziata = true;
 this.giocatoreCorrente = Giocatore.GIOCATORE1;
-this.tavoliere = new Tavoliere();
-this.tavoliere = this.tavoliere.inizializzaTavolierePartita(this.tavoliere);
+tavoliere = t;
 this.regola = new Regola(regolaGioco);
 this.giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
 this.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
