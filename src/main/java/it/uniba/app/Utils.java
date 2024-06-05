@@ -9,22 +9,38 @@ private Utils() { }
       * prima di iniziare una partita. */
       private static boolean inGame = false;
 
-    /** Analizzatore utilizzato per separare la stringa delle coordinate date in input
-     *  per passare ai meotodi di mapping righe e colonne.
+      /** attributo utilizzato come indice di posizione nel metodo anlaizzatoreInputCoordinate. */
+      private static final int TRE = 3;
+
+      /** attributo utilizzato come indice di posizione nel metodo anlaizzatoreInputCoordinate. */
+      private static final int QUATTRO = 4;
+
+      /** attributo utilizzato come indice di posizione nel metodo anlaizzatoreInputCoordinate. */
+      private static final int CINQUE = 5;
+
+      /** attributo utilizzato come indice di posizione nel metodo anlaizzatoreInputCoordinate. */
+      private static final int SETTE = 7;
+
+
+    /** Analizzatore utilizzato per verificare la correttezza delle oordinate inserite
+     * ossia che sia date nel formato  xi-yj dove x e y sono lettere da a a g e i e j
+     * numeri da 1 a 7  compreso il trattinoe separatore "-".
      * @param inputCoordinate
      * */
     public static boolean analizzatoreInputCoordinate(final String inputCoordinate) {
         boolean errore = false;
-        if (inputCoordinate.length() == 2 && Character.isLetter(inputCoordinate.charAt(0))
-        && Character.isDigit(inputCoordinate.charAt(1))) {
-            char coordinataColonnaCodificata = inputCoordinate.charAt(0);
-            char coordinataRigaCodificata = inputCoordinate.charAt(1);
-            int coordinataColonna = 0;
-            int coordinataRiga = 0;
-            if (coordinataColonnaCodificata >= 'a' && coordinataColonnaCodificata <= 'g'
-                && coordinataRigaCodificata >= '1' && coordinataRigaCodificata <= '7') {
-                coordinataRiga = mappingRighe(Character.toString(coordinataRigaCodificata));
-                coordinataColonna = mappingColonne(Character.toString(coordinataColonnaCodificata));
+        if (inputCoordinate.length() == CINQUE && Character.isLetter(inputCoordinate.charAt(0))
+        && Character.isDigit(inputCoordinate.charAt(1)) && inputCoordinate.charAt(2) == '-'
+        && Character.isLetter(inputCoordinate.charAt(TRE))
+        && Character.isDigit(inputCoordinate.charAt(QUATTRO))) {
+            char coordinataColonnaPartenza = inputCoordinate.charAt(0);
+            int coordinataRigaPartenza = Integer.parseInt(String.valueOf(inputCoordinate.charAt(1)));
+            char coordinataColonnaArrivo = inputCoordinate.charAt(TRE);
+            int coordinataRigaArrivo = Integer.parseInt(String.valueOf(inputCoordinate.charAt(QUATTRO)));
+            if (mappingColonne(Character.toString(coordinataColonnaPartenza)) != -1
+            && mappingColonne(Character.toString(coordinataColonnaArrivo)) != -1
+                && coordinataRigaPartenza >= 1 && coordinataRigaPartenza <= SETTE
+                && coordinataRigaArrivo >= 1 && coordinataRigaArrivo <= SETTE) {
                 //passare coordinataRiga e coordinataColonna al metodo di Mossa che controlla se è valida
                 return true;
             } else {
@@ -34,8 +50,9 @@ private Utils() { }
             errore = true;
         }
         if (errore) {
-            GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->  XY "
-            + " <-con X=lettera della colonna e Y=numero della riga.\n");
+            GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->  xi-yj\n"
+            + "dove i e j sono numeri da 1 a 7 e x e y sono lettere da a a g.\n");
+
             return false;
         } else {
             return true;
