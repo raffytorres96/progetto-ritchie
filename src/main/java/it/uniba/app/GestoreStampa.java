@@ -761,11 +761,42 @@ public static void stampareGiocatoreCorrente(final int giocatoreCorrente) {
  * Metodo che si occupa di stampare lo storico delle mosse.
  */
 public static void stampareStoricoMosse() {
-  stampareMessaggio(ANSI_BLUE + "Turno." + ANSI_GREEN + "CellaPartenza" + ANSI_RESET + "-" + ANSI_ORANGE
+  stampareMessaggio(ANSI_BLUE + "\nTurno." + ANSI_GREEN + "CellaPartenza" + ANSI_RESET + "-" + ANSI_ORANGE
   + "CellaArrivo" + ANSI_PINK + "(Giocatore)" + ANSI_RESET + "\n");
   List<String> storico = Partita.getStoricoMosse();
   for (String i : storico) {
     System.out.println(i);
   }
+}
+/**
+ * Metodo che si occupa di stampare il messaggio che segue ogni mossa o comando.
+ * @param gioc giocatore in turno
+ * @param tav griglia di gioco
+ * @param mex messaggio da stampare accanto al benvenuto
+ * @param redx false se messaggio classico, true se messaggio ridotto
+ */
+public static void stampareMessaggioInGioco(final int gioc, final Tavoliere tav, final String mex, final boolean redx) {
+  GestoreStampa.clearTerminale();
+  GestoreStampa.stampareTitoloGioco();
+  GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+    + GestoreStampa.ANSI_RESET + " " + mex + "\n\n");
+  if (!redx) {
+    GestoreStampa.stampareGiocatoreCorrente(gioc);
+  }
+  GestoreStampa.stampareTavoliere(tav);
+  GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Help' "
+    + GestoreStampa.ANSI_RESET + "per elencare i comandi disponibili\n");
+  if (!redx) {
+    GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+  }
+}
+/**
+ * Metodo che si occupa di stampare il messaggio nella schermata iniziale.
+*/
+public static void stampareMessaggioFuoriGioco() {
+  GestoreStampa.clearTerminale();
+  GestoreStampa.stampareTitoloGioco();
+  GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n"
+  + GestoreStampa.ANSI_RESET);
 }
 }
