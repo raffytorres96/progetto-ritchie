@@ -135,6 +135,8 @@ private Utils() { }
                 return true;
             case "/blocca":
                 return true;
+            case "/mosse":
+                return true;
             case "classica":
                 return true;
             case "thomas":

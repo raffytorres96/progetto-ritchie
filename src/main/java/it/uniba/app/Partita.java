@@ -4,6 +4,8 @@
  *  del gioco.
  */
 package it.uniba.app;
+import java.util.List;
+import java.util.ArrayList;
 
 
 
@@ -35,6 +37,12 @@ private boolean partitaIniziata = false;
 /** attributo che rappresenta il giocatore corrente.  */
 private int giocatoreCorrente;
 
+/** attributo che memorizza lo storico delle mosse effettuate.  */
+private static List<String> storicoMosse = new ArrayList<String>();
+
+/** attributo contatore dei turni di gioco.  */
+private int turno = 1;
+
 /** Variabile statica per ritardare l'uscita dalla partita.  */
 public static final int TIME = 2000;
 
@@ -63,7 +71,6 @@ Partita.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 /**
  * Metodo per il controllo dei comandi in partita. */
 public void controlloPartita(final Mossa mossa) {
-
     boolean continua = true;
     GestoreStampa.stampareMessaggio("Puoi usare"
         + GestoreStampa.ANSI_BLUE + " '/Abbandona' " + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
@@ -128,26 +135,6 @@ public void controlloPartita(final Mossa mossa) {
                    GestoreStampa.stampareMessaggio("Comando non valido\n\n");
                 }
                 } while (!input.equals("ok"));
-                GestoreStampa.clearTerminale();
-                GestoreStampa.stampareTitoloGioco();
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-                + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-                GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
-                Comandi.comandoTavoliere(this.getTavoliere());
-                GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                      + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                      + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
-
-        } else if (input.equals("/gioca")) {
-            GestoreStampa.stampareMessaggio("Hai già iniziato una partita.\n\n");
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
-        } else if (Utils.analizzatoreInputCoordinate(input)) {
-            String[] result = input.split("-");
-            if (controlloPedinaCorretta(result[0]) && controlloPedinaArrivoCorretta(result[1])) {
-                controlloMossaDaEffettuaree(result[0], result[1]);
-            }
             GestoreStampa.clearTerminale();
             GestoreStampa.stampareTitoloGioco();
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
@@ -159,11 +146,55 @@ public void controlloPartita(final Mossa mossa) {
             GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+        } else if (input.equals("/gioca")) {
+            GestoreStampa.stampareMessaggio("Hai già iniziato una partita.\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
+        } else if (input.equals("/mosse")) {
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+            + GestoreStampa.ANSI_RESET + " STORICO MOSSE \n\n");
+            Comandi.mosse();
+            do {
+                GestoreStampa.stampareMessaggio("\nSe hai visualizzato lo storico mosse digita 'ok'"
+                + " per continuare. \n\n");
+                GestoreStampa.stampareMessaggio("Inserisci un comando: ");
+                input = Comandi.input();
+                if (!input.equals("ok")) {
+                   GestoreStampa.stampareMessaggio("Comando non valido\n\n");
+                }
+                } while (!input.equals("ok"));
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+            + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+            GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
+            Comandi.comandoTavoliere(this.getTavoliere());
+            GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+        } else if (Utils.analizzatoreInputCoordinate(input)) {
+            String[] result = input.split("-");
+            if (controlloPedinaCorretta(result[0]) && controlloPedinaArrivoCorretta(result[1])) {
+                controlloMossaDaEffettuaree(result[0], result[1]);
+            }
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+            + GestoreStampa.ANSI_RESET + " TURNO " + turno + "\n\n");
+            GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
+            Comandi.comandoTavoliere(this.getTavoliere());
+            GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
         }
-
     } while (continua);
 
 }
@@ -305,6 +336,7 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
                 }
             }
         }
+        setStoricoMosse(turno, input1, input2, giocatoreCorrente);
         passaTurno(this.giocatoreCorrente);
 
     } else if (Math.abs(colonna1 - colonna2) <= 2 && Math.abs(riga1 - riga2) <= 2) {
@@ -332,10 +364,12 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
                     && statoTemp != 0
                     && statoTemp != Cella.STATO_CELLA_BLOCCATA) {
                         this.tavoliere.setTavoliere(rigaTemp, colonnaTemp, this.giocatoreCorrente);
+
                     }
                 }
             }
         }
+        setStoricoMosse(turno, input1, input2, giocatoreCorrente);
         passaTurno(this.giocatoreCorrente);
     } else {
         GestoreStampa.stampareMessaggio("Mossa non valida\n");
@@ -358,6 +392,7 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
  * @param isGiocatoreCorrente
  */
 private void passaTurno(final int isGiocatoreCorrente) {
+    turno += 1;
     if (isGiocatoreCorrente == 1) {
         this.giocatoreCorrente = Giocatore.GIOCATORE2;
 
@@ -451,6 +486,33 @@ private void passaTurno(final int isGiocatoreCorrente) {
     */
     public void setGiocatoreCorrente(final int newgiocatoreCorrente) {
         this.giocatoreCorrente = newgiocatoreCorrente;
+    }
+
+    /**
+    * Metodo che aggiunge una nuova entry allo storico mosse.
+    * @param t turno in cui si è svolta la mossa
+    * @param cPartenza cella di partenza della mossa
+    * @param cArrivo cella di arrivo della mossa
+    * @param g giocatore che effettua la mossa
+    */
+    public static void setStoricoMosse(final int t, final String cPartenza, final String cArrivo, final int g) {
+        String coloreG = "";
+        if (g == 1) {
+            coloreG = "Nero";
+        } else if (g == 2) {
+            coloreG = "Bianco";
+        }
+        storicoMosse.add(GestoreStampa.ANSI_BLUE + t + GestoreStampa.ANSI_RESET + "."
+        + GestoreStampa.ANSI_GREEN + cPartenza + GestoreStampa.ANSI_RESET + "-"
+        + GestoreStampa.ANSI_ORANGE + cArrivo + GestoreStampa.ANSI_PINK + "(" + coloreG + ")"
+        + GestoreStampa.ANSI_RESET);
+    }
+
+    /**
+    * Metodo che restituisce lo storico delle mosse effettuate.
+    */
+    public static List<String> getStoricoMosse() {
+        return storicoMosse;
     }
 
 
