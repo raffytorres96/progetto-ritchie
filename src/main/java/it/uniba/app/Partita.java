@@ -88,6 +88,7 @@ public void controlloPartita(final Mossa mossa) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
             continua = !Comandi.abbandona(this);
+            resetTavoliere(this.tavoliere);
             if (!continua) {
                 try {
                     Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
@@ -194,6 +195,8 @@ public void controlloPartita(final Mossa mossa) {
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
             GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+                    continua = controlloVincitore();
+                    resetTavoliere(this.tavoliere);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
