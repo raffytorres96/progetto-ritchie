@@ -180,7 +180,7 @@ public final class Comandi {
 
         String conferma;
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                + ": Sei sicuro di abbandonare la partita? [" + GestoreStampa.ANSI_GREEN
+                + "Sei sicuro di abbandonare la partita? [" + GestoreStampa.ANSI_GREEN
                 + "si" + GestoreStampa.ANSI_RESET + "/" + GestoreStampa.ANSI_RED
                 + "no" + GestoreStampa.ANSI_RESET + "] \n\n");
         GestoreStampa.stampareMessaggio("Conferma: ");
@@ -196,10 +196,8 @@ public final class Comandi {
 
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 1) {
             int numeroPedine = partita.getTavoliere().getContaPedine(1);
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + Partita.getGiocatore2()
-                    + ", vince per abbandono per " + numeroPedine + " a 0 \n");
-
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + Partita.getGiocatore2()
+                + ", vince per abbandono per " + numeroPedine + " a 0 \n");
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
             Utils.setInGame(false);
@@ -208,10 +206,8 @@ public final class Comandi {
 
         if (conferma.equals("si") && partita.isPartitaIniziata() && partita.getGiocatoreCorrente() == 2) {
             int numeroPedine = partita.getTavoliere().getContaPedine(2);
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                    + ":" + Partita.getGiocatore1()
-                    + ", vince per abbandono per " + numeroPedine + " a 0 \n");
-
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + Partita.getGiocatore1()
+                + ", vince per abbandono per " + numeroPedine + " a 0 \n");
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
             Utils.setInGame(false);
@@ -262,11 +258,7 @@ public final class Comandi {
 
         partita = new Partita(regolaGioco, tavoliere, nomeGiocatore1, nomeGiocatore2);
         Mossa mossa = new Mossa(partita.getTavoliere(), partita.getGiocatoreCorrente());
-        GestoreStampa.stampareTitoloGioco();
-        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX: "
-        + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-        GestoreStampa.stampareGiocatoreCorrente(partita.getGiocatoreCorrente());
-        GestoreStampa.stampareTavoliere(partita.getTavoliere());
+        GestoreStampa.stampareMessaggioInGioco(partita.getGiocatoreCorrente(), tavoliere, "NUOVA PARTITA", false);
         partita.controlloPartita(mossa);
     }
 
