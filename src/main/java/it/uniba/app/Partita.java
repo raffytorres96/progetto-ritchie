@@ -44,12 +44,16 @@ private static List<String> storicoMosse = new ArrayList<String>();
 private int turno = 1;
 
 /** Variabile statica per ritardare l'uscita dalla partita.  */
-public static final int TIME = 2000;
+public static final int TIME = 2800;
 
 /** Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
  * di erroe quando si cerca di fare una mossa non lecita.  */
-public static final int TIME2 = 2500;
+public static final int TIME2 = 3200;
 
+/**
+Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
+*di erroe LUNGHI quando si cerca di fare una mossa non lecita.  */
+public static final int TIME3 = 3000;
 
 /**
  * Costruttore della classe Partita.
@@ -86,7 +90,7 @@ public void controlloPartita(final Mossa mossa) {
             continua = !Comandi.abbandona(this);
             if (!continua) {
                 try {
-                    Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -213,7 +217,7 @@ private boolean controlloPedinaCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) != (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La pedina selezionata non è tua\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -223,7 +227,7 @@ private boolean controlloPedinaCorretta(final String input) {
     } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 0) {
         GestoreStampa.stampareMessaggio("Hai selezionato una cella vuota\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -234,7 +238,7 @@ private boolean controlloPedinaCorretta(final String input) {
         GestoreStampa.stampareMessaggio("Hai selezionato una cella di partenza bloccata,"
         + " seleziona una in cui ci sia una tua pedina.\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -259,7 +263,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è già occupata da una tua pedina\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -270,7 +274,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 2) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è già occupata da una pedina avversaria\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -279,7 +283,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == Cella.STATO_CELLA_BLOCCATA) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è bloccata, scegli una destinazione libera.\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -376,7 +380,7 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
         GestoreStampa.stampareMessaggio("\nLa mossa è valida solo se scegli una cordinata"
                 + " di distanza 1 o 2 da quella di partenza");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME3); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
