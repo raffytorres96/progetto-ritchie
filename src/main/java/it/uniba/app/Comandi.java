@@ -283,6 +283,9 @@ public final class Comandi {
     /**
      * Metodo che gestisce il comando "blocca", ovvero imposta lo stato di una cella
      * a "6".
+     * @param t tavoliere di gioco
+     * @param riga coordinata:riga della cella da bloccare
+     * @param colonna coordinata:colonna della cella da bloccare
      */
     public static void blocca(final Tavoliere t, final int riga, final int colonna) {
         if (Cella.getStato(t.getCella(riga, colonna)) != Cella.STATO_CELLA_VUOTA) {
@@ -371,5 +374,12 @@ public final class Comandi {
         if (Cella.getStato(t.getCella(riga, colonna)) == 0) {
             GestoreStampa.stampareMessaggio("Non è possibile bloccare questa cella.");
         }
+    }
+     /**
+     * Metodo che gestisce il comando "mosse", ovvero mostra lo storico delle mosse
+     * effettuate dai giocatori fino al momento corrente.
+     */
+    public static void mosse() {
+        GestoreStampa.stampareStoricoMosse();
     }
 }
