@@ -1,4 +1,6 @@
 package it.uniba.app;
+import java.util.List;
+
 
 /**
  * <<Boundary>>
@@ -9,7 +11,7 @@ package it.uniba.app;
  * sono stati inseriti i colori e una particolare formattazione
  * dei messaggi.
  *
- * @author GrruppoRitchie
+ * @author GruppoRitchie
  */
 
 public final class GestoreStampa {
@@ -754,6 +756,16 @@ public static void stampareGiocatoreCorrente(final int giocatoreCorrente) {
     } else if (giocatoreCorrente == 2) {
       GestoreStampa.stampareMessaggio("E' il turno di: " + Partita.getGiocatore2() + " (Bianco).\n\n");
     }
-
+}
+/**
+ * Metodo che si occupa di stampare lo storico delle mosse.
+ */
+public static void stampareStoricoMosse() {
+  stampareMessaggio(ANSI_BLUE + "Turno." + ANSI_GREEN + "CellaPartenza" + ANSI_RESET + "-" + ANSI_ORANGE
+  + "CellaArrivo" + ANSI_PINK + "(Giocatore)" + ANSI_RESET + "\n");
+  List<String> storico = Partita.getStoricoMosse();
+  for (String i : storico) {
+    System.out.println(i);
+  }
 }
 }
