@@ -44,12 +44,16 @@ private static List<String> storicoMosse = new ArrayList<String>();
 private int turno = 1;
 
 /** Variabile statica per ritardare l'uscita dalla partita.  */
-public static final int TIME = 2000;
+public static final int TIME = 2800;
 
 /** Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
  * di erroe quando si cerca di fare una mossa non lecita.  */
-public static final int TIME2 = 2500;
+public static final int TIME2 = 3200;
 
+/**
+Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
+*di erroe LUNGHI quando si cerca di fare una mossa non lecita.  */
+public static final int TIME3 = 3000;
 
 /**
  * Costruttore della classe Partita.
@@ -84,9 +88,10 @@ public void controlloPartita(final Mossa mossa) {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else if (input.equals("/abbandona")) {
             continua = !Comandi.abbandona(this);
+            resetTavoliere(this.tavoliere);
             if (!continua) {
                 try {
-                    Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -190,6 +195,8 @@ public void controlloPartita(final Mossa mossa) {
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
             GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
                     + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+                    continua = controlloVincitore();
+                    resetTavoliere(this.tavoliere);
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
         } else {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
@@ -213,7 +220,7 @@ private boolean controlloPedinaCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) != (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La pedina selezionata non è tua\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -223,7 +230,7 @@ private boolean controlloPedinaCorretta(final String input) {
     } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 0) {
         GestoreStampa.stampareMessaggio("Hai selezionato una cella vuota\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -234,7 +241,7 @@ private boolean controlloPedinaCorretta(final String input) {
         GestoreStampa.stampareMessaggio("Hai selezionato una cella di partenza bloccata,"
         + " seleziona una in cui ci sia una tua pedina.\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -259,7 +266,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == (this.giocatoreCorrente)) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è già occupata da una tua pedina\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -270,7 +277,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == 2) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è già occupata da una pedina avversaria\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -279,7 +286,7 @@ private boolean controlloPedinaArrivoCorretta(final String input) {
     } else if (Cella.getStato(this.tavoliere.getCella(riga, colonna)) == Cella.STATO_CELLA_BLOCCATA) {
         GestoreStampa.stampareMessaggio("La destinazione selezionata è bloccata, scegli una destinazione libera.\n\n");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -376,7 +383,7 @@ private void controlloMossaDaEffettuaree(final String input1, final String input
         GestoreStampa.stampareMessaggio("\nLa mossa è valida solo se scegli una cordinata"
                 + " di distanza 1 o 2 da quella di partenza");
         try {
-            Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+            Thread.sleep(TIME3); // Ritarda l'esecuzione per 2 secondi
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -401,9 +408,130 @@ private void passaTurno(final int isGiocatoreCorrente) {
     }
 }
 
+/**
+ * Metodo che controlla se il vincitore della partita.
+ * Il metodo controlla se le pedine del giocatore corrente
+ * sono esaurite il vincitore è l'avversario.
+ * Altrimenti, se il tavoliere è pieno, controlla quale
+ * giocatore ha il numero di pedine maggiore e restituisce
+ * il medesimo come vincitore.
+ */
+private boolean controlloVincitore() {
 
+    int puntiNero = tavoliere.getContaPedine(Giocatore.GIOCATORE1);
+    int puntiBianco = tavoliere.getContaPedine(Giocatore.GIOCATORE2);
+    if (puntiBianco == 0 || puntiNero == 0) {
+        if (puntiBianco == 0) {
+            GestoreStampa.stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore1() + " con "
+            + GestoreStampa.ANSI_YELLOW + puntiNero
+            + GestoreStampa.ANSI_RESET + " punti");
+            this.partitaIniziata = false;
+            this.giocoFinito = true;
+            Utils.setInGame(false);
+            try {
+                Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
+            GestoreStampa.stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore2() + " con "
+            + GestoreStampa.ANSI_YELLOW + puntiBianco
+            + GestoreStampa.ANSI_RESET + " punti");
+            this.partitaIniziata = false;
+            this.giocoFinito = true;
+            Utils.setInGame(false);
+            try {
+                Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return this.partitaIniziata;
+        }
+    } else {
+        boolean tutteCasellePiene = true;
+
+        for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+            for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+                if (Cella.getStato(this.tavoliere.getCella(i, j)) == 0) {
+                    tutteCasellePiene = false;
+                    break;
+                }
+            }
+            if (!tutteCasellePiene) {
+                break;
+            }
+        }
+
+        if (tutteCasellePiene) {
+            if (puntiBianco > puntiNero) {
+                GestoreStampa.stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore2() + " con "
+                + GestoreStampa.ANSI_YELLOW + puntiBianco
+                + GestoreStampa.ANSI_RESET + " punti");
+                this.partitaIniziata = false;
+                this.giocoFinito = true;
+                Utils.setInGame(false);
+                try {
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else if (puntiNero > puntiBianco) {
+                GestoreStampa
+                        .stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore1() + " con "
+                        + GestoreStampa.ANSI_YELLOW + puntiNero
+                        + GestoreStampa.ANSI_RESET + " punti");
+                this.partitaIniziata = false;
+                this.giocoFinito = true;
+                Utils.setInGame(false);
+                try {
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("La partita è finita in pareggio");
+                this.partitaIniziata = false;
+                this.giocoFinito = true;
+                Utils.setInGame(false);
+                try {
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return this.partitaIniziata;
+        }
+    }
+    return this.partitaIniziata;
+}
+
+/**
+ * Metodo che si occupa di resettare il tavoliere quando
+ * si esce dalla partita.
+ @param isTavoliere
+ */
+
+private void resetTavoliere(final Tavoliere isTavoliere) {
+
+    // Se isGiocoFinito() restituisce true, il codice all'interno dell'if verrà eseguito
+    if (isGiocoFinito()) {
+
+        // Questi due cicli for attraversano tutte le righe e le colonne del tavoliere
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+       for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+           isTavoliere.setTavoliere(i, j, Cella.STATO_CELLA_VUOTA);
+       }
+   }
+     // imposto le pedine di partenza alle loro posizioni iniziali
+     isTavoliere.inizializzaTavolierePartita(isTavoliere);
+}
+
+}
 
 
 /**
