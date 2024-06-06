@@ -405,9 +405,130 @@ private void passaTurno(final int isGiocatoreCorrente) {
     }
 }
 
+/**
+ * Metodo che controlla se il vincitore della partita.
+ * Il metodo controlla se le pedine del giocatore corrente
+ * sono esaurite il vincitore è l'avversario.
+ * Altrimenti, se il tavoliere è pieno, controlla quale
+ * giocatore ha il numero di pedine maggiore e restituisce
+ * il medesimo come vincitore.
+ */
+private boolean controlloVincitore() {
 
+    int puntiNero = tavoliere.getContaPedine(Giocatore.GIOCATORE1);
+    int puntiBianco = tavoliere.getContaPedine(Giocatore.GIOCATORE2);
+    if (puntiBianco == 0 || puntiNero == 0) {
+        if (puntiBianco == 0) {
+            GestoreStampa.stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore1() + " con "
+            + GestoreStampa.ANSI_YELLOW + puntiNero
+            + GestoreStampa.ANSI_RESET + " punti");
+            this.partitaIniziata = false;
+            this.giocoFinito = true;
+            Utils.setInGame(false);
+            try {
+                Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
+            GestoreStampa.stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore2() + " con "
+            + GestoreStampa.ANSI_YELLOW + puntiBianco
+            + GestoreStampa.ANSI_RESET + " punti");
+            this.partitaIniziata = false;
+            this.giocoFinito = true;
+            Utils.setInGame(false);
+            try {
+                Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return this.partitaIniziata;
+        }
+    } else {
+        boolean tutteCasellePiene = true;
+
+        for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+            for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+                if (Cella.getStato(this.tavoliere.getCella(i, j)) == 0) {
+                    tutteCasellePiene = false;
+                    break;
+                }
+            }
+            if (!tutteCasellePiene) {
+                break;
+            }
+        }
+
+        if (tutteCasellePiene) {
+            if (puntiBianco > puntiNero) {
+                GestoreStampa.stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore2() + " con "
+                + GestoreStampa.ANSI_YELLOW + puntiBianco
+                + GestoreStampa.ANSI_RESET + " punti");
+                this.partitaIniziata = false;
+                this.giocoFinito = true;
+                Utils.setInGame(false);
+                try {
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else if (puntiNero > puntiBianco) {
+                GestoreStampa
+                        .stampareMessaggio("Vince: " + GestoreStampa.ANSI_GREEN + getGiocatore1() + " con "
+                        + GestoreStampa.ANSI_YELLOW + puntiNero
+                        + GestoreStampa.ANSI_RESET + " punti");
+                this.partitaIniziata = false;
+                this.giocoFinito = true;
+                Utils.setInGame(false);
+                try {
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("La partita è finita in pareggio");
+                this.partitaIniziata = false;
+                this.giocoFinito = true;
+                Utils.setInGame(false);
+                try {
+                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return this.partitaIniziata;
+        }
+    }
+    return this.partitaIniziata;
+}
+
+/**
+ * Metodo che si occupa di resettare il tavoliere quando
+ * si esce dalla partita.
+ @param isTavoliere
+ */
+
+private void resetTavoliere(final Tavoliere isTavoliere) {
+
+    // Se isGiocoFinito() restituisce true, il codice all'interno dell'if verrà eseguito
+    if (isGiocoFinito()) {
+
+        // Questi due cicli for attraversano tutte le righe e le colonne del tavoliere
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+       for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+           isTavoliere.setTavoliere(i, j, Cella.STATO_CELLA_VUOTA);
+       }
+   }
+     // imposto le pedine di partenza alle loro posizioni iniziali
+     isTavoliere.inizializzaTavolierePartita(isTavoliere);
+}
+
+}
 
 
 /**
