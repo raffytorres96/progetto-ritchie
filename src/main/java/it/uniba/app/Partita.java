@@ -76,11 +76,6 @@ Partita.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
  * Metodo per il controllo dei comandi in partita. */
 public void controlloPartita(final Mossa mossa) {
     boolean continua = true;
-    GestoreStampa.stampareMessaggio("Puoi usare"
-        + GestoreStampa.ANSI_BLUE + " '/Abbandona' " + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-    GestoreStampa.stampareMessaggio("Oppure puoi usare"
-        + GestoreStampa.ANSI_RED + " '/Esci' " + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-    GestoreStampa.stampareMessaggio("Inserisci un comando: ");
     do {
         String input = Comandi.input();
         if (input.equals("/qualimosse")) {
@@ -112,18 +107,8 @@ public void controlloPartita(final Mossa mossa) {
                    GestoreStampa.stampareMessaggio("Non hai inserito correttamente 'ok'.\n\n");
                 }
                 } while (!input.equals("ok"));
-                GestoreStampa.clearTerminale();
-                GestoreStampa.stampareTitoloGioco();
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-                + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-                GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
-                GestoreStampa.stampareTavoliere(this.tavoliere);
-                GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                      + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-                GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                      + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
-
+                GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
+                 "Hai iniziato una nuova partita, DIVERTITI !", false);
 
         } else if (input.equals("/tavoliere")) {
             GestoreStampa.clearTerminale();
@@ -140,25 +125,14 @@ public void controlloPartita(final Mossa mossa) {
                    GestoreStampa.stampareMessaggio("Comando non valido\n\n");
                 }
                 } while (!input.equals("ok"));
-            GestoreStampa.clearTerminale();
-            GestoreStampa.stampareTitoloGioco();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-            + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-            GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
-            Comandi.comandoTavoliere(this.getTavoliere());
-            GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
+            "Hai iniziato una nuova partita, DIVERTITI !", false);
         } else if (input.equals("/gioca")) {
             GestoreStampa.stampareMessaggio("Hai già iniziato una partita.\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
         } else if (input.equals("/mosse")) {
-            GestoreStampa.clearTerminale();
-            GestoreStampa.stampareTitoloGioco();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-            + GestoreStampa.ANSI_RESET + " STORICO MOSSE \n\n");
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
+            "STORICO MOSSE", true);
             Comandi.mosse();
             do {
                 GestoreStampa.stampareMessaggio("\nSe hai visualizzato lo storico mosse digita 'ok'"
@@ -169,37 +143,20 @@ public void controlloPartita(final Mossa mossa) {
                    GestoreStampa.stampareMessaggio("Comando non valido\n\n");
                 }
                 } while (!input.equals("ok"));
-            GestoreStampa.clearTerminale();
-            GestoreStampa.stampareTitoloGioco();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-            + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-            GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
-            Comandi.comandoTavoliere(this.getTavoliere());
-            GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
+            "Hai iniziato una nuova partita, DIVERTITI !", false);
         } else if (Utils.analizzatoreInputCoordinate(input)) {
             String[] result = input.split("-");
             if (controlloPedinaCorretta(result[0]) && controlloPedinaArrivoCorretta(result[1])) {
                 controlloMossaDaEffettuaree(result[0], result[1]);
             }
-            GestoreStampa.clearTerminale();
-            GestoreStampa.stampareTitoloGioco();
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-            + GestoreStampa.ANSI_RESET + " TURNO " + turno + "\n\n");
-            GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
-            Comandi.comandoTavoliere(this.getTavoliere());
-            GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-            GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-                    continua = controlloVincitore();
-                    resetTavoliere(this.tavoliere);
-            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
-        } else {
+            String m = "TURNO " + turno;
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, m, false);
+            continua = controlloVincitore();
+            resetTavoliere(this.tavoliere);
+        } else if (input.startsWith("/") || input.startsWith("-") || input.startsWith("--")) {
             GestoreStampa.stampareMessaggio("Comando non utilizzabile in partita\n\n");
+        } else {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
         }
     } while (continua);

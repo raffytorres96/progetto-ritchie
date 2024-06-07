@@ -50,9 +50,12 @@ private Utils() { }
             errore = true;
         }
         if (errore) {
-            GestoreStampa.stampareMessaggio("Errore, coordinate non inserite correttamente.\nIl formato è ->  xi-yj\n"
-            + "dove i e j sono numeri da 1 a 7 e x e y sono lettere da a a g.\n");
-
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "\nERRORE: " + GestoreStampa.ANSI_RESET
+            + "coordinate non inserite correttamente.\n\tIl formato è -> " + GestoreStampa.ANSI_GREEN + "XI"
+            + GestoreStampa.ANSI_RESET + "-" + GestoreStampa.ANSI_ORANGE + "YJ\n" + GestoreStampa.ANSI_RESET
+            + "\tX,Y = lettere da A a G (colonne) | I,J = numeri da 1 a 7 (righe).\n\t"
+            + GestoreStampa.ANSI_GREEN + "XI " + GestoreStampa.ANSI_RESET + "= cella di partenza; "
+            + GestoreStampa.ANSI_ORANGE + "YJ " + GestoreStampa.ANSI_RESET + "= cella di arrivo.\n");
             return false;
         } else {
             return true;

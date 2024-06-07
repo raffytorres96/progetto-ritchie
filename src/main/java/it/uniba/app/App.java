@@ -26,59 +26,46 @@ public final class App {
             do {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\ninserisci un comando: ");
                 input = Comandi.input();
-
-            if (input.equals("/help") || input.equals("-h") || input.equals("--help")) {
-                Comandi.help();
-
-            } else if (input.equals("/gioca") && !Utils.isInGame()) {
-                GestoreStampa.clearTerminale();
-                Comandi.gioca(tavoliere);
-                GestoreStampa.clearTerminale();
-                GestoreStampa.stampareTitoloGioco();
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n ");
-            } else if (input.equals("/vuoto") && !Utils.isInGame()) {
-                GestoreStampa.clearTerminale();
-                GestoreStampa.stampareTitoloGioco();
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n "
-                + GestoreStampa.ANSI_RESET);
-                GestoreStampa.stampareTavoliereVuoto();
-            } else if (input.equals("/blocca") && !Utils.isInGame()) {
-                GestoreStampa.clearTerminale();
-                GestoreStampa.stampareTitoloGioco();
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n"
-                + GestoreStampa.ANSI_RESET);
-                if (tavoliere.getCelleBloccate() >= Tavoliere.MAX_CELLE_BLOCCATE) {
-                    GestoreStampa.stampareMessaggio("E' stato raggiunto il massimo numero di caselle bloccate.");
+                if (input.equals("/help") || input.equals("-h") || input.equals("--help")) {
+                    Comandi.help();
+                } else if (input.equals("/gioca") && !Utils.isInGame()) {
+                    GestoreStampa.clearTerminale();
+                    Comandi.gioca(tavoliere);
+                    GestoreStampa.stampareMessaggioFuoriGioco();
+                } else if (input.equals("/vuoto") && !Utils.isInGame()) {
+                    GestoreStampa.stampareMessaggioFuoriGioco();
+                    GestoreStampa.stampareTavoliereVuoto();
+                } else if (input.equals("/blocca") && !Utils.isInGame()) {
+                    GestoreStampa.stampareMessaggioFuoriGioco();
+                    if (tavoliere.getCelleBloccate() >= Tavoliere.MAX_CELLE_BLOCCATE) {
+                        GestoreStampa.stampareMessaggio("E' stato raggiunto il massimo numero di caselle bloccate.");
+                    } else {
+                        GestoreStampa.stampareTavoliere(tavoliere);
+                        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "\nATTENZIONE:"
+                        + GestoreStampa.ANSI_RESET + "Non è possibile bloccare tutte le caselle intorno ad una pedina"
+                        + "\n\t   in modo da impedire qualsiasi possibilità di spostarsi o di\n\t   "
+                        + "generarne un'altra accanto a sè.\n\n");
+                        GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
+                        input = Comandi.input();
+                        int colonnaDaBloccare = Utils.mappingColonne(input);
+                        GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
+                        input = Comandi.input();
+                        int rigaDaBloccare = Utils.mappingRighe(input);
+                        Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
+                    }
+                } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
+                    GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
+                    + "\nComando utilizzabile solo in partita\n\n");
+                    GestoreStampa.stampareMessaggio("Perché non provi a giocare usando il comando"
+                    + GestoreStampa.ANSI_BLUE + " /Gioca\n\n" + GestoreStampa.ANSI_RESET);
+                } else if ((input.equals("/qualimosse") || input.equals("/abbandona")) && !Utils.isInGame()) {
+                    GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
+                } else if (input.equals("/esci") && !Utils.isInGame()) {
+                    Comandi.esci();
                 } else {
-                    GestoreStampa.stampareTavoliere(tavoliere);
-                    GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "\nATTENZIONE:" + GestoreStampa.ANSI_RESET
-                    + "Non è possibile bloccare tutte le caselle intorno ad una pedina\n\t   in modo "
-                    + "da impedire qualsiasi possibilità di spostarsi o di\n\t   generarne un'altra accanto a sè.\n\n");
-                    GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
-                    input = Comandi.input();
-                    int colonnaDaBloccare = Utils.mappingColonne(input);
-                    GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
-                    input = Comandi.input();
-                    int rigaDaBloccare = Utils.mappingRighe(input);
-                    Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
-                }
-            } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
-                GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET
-                + "\nComando utilizzabile solo in partita\n\n");
-                GestoreStampa.stampareMessaggio("Perché non provi a giocare usando il comando"
-                + GestoreStampa.ANSI_BLUE + " /Gioca\n\n" + GestoreStampa.ANSI_RESET);
-            } else if (input.equals("/qualimosse") && !Utils.isInGame()) {
-                GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
-            }  else if (input.equals("/abbandona") && !Utils.isInGame()) {
-                GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
-            } else if (input.equals("/esci") && !Utils.isInGame()) {
-                Comandi.esci();
-            } else {
-                GestoreStampa.stampareMessaggio("Il comando inserito non è corretto\n\n");
+                    GestoreStampa.stampareMessaggio("Il comando inserito non è corretto\n\n");
             }
-
         } while (!Utils.analizzatoreInput(input));
-
         } while (true);
 
 
