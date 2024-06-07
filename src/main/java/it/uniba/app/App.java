@@ -59,8 +59,7 @@ public final class App {
                                 || !Character.isDigit(inputNumero)) {
                                 GestoreStampa.stampareMessaggio("Formato coordinate non corretto\n");
                                 erroreInput = true;
-                            }
-                            else if (inputLettera < 'a' || inputLettera > 'g' || inputNumero - '0' <= Tavoliere.RIGA0
+                            } else if (inputLettera < 'a' || inputLettera > 'g' || inputNumero - '0' <= Tavoliere.RIGA0
                                 || inputNumero - '0' > Tavoliere.N_RIGHE_COLONNE) {
                                 GestoreStampa.stampareMessaggio("Coordinate non valide\n");
                                 erroreInput = true;
@@ -76,7 +75,9 @@ public final class App {
                     + "\nComando utilizzabile solo in partita\n\n");
                     GestoreStampa.stampareMessaggio("Perché non provi a giocare usando il comando"
                     + GestoreStampa.ANSI_BLUE + " /Gioca\n\n" + GestoreStampa.ANSI_RESET);
-                } else if ((input.equals("/qualimosse") || input.equals("/abbandona")) && !Utils.isInGame()) {
+                } else if ((input.equals("/qualimosse")
+                 || input.equals("/abbandona")
+                 || input.equals("/tempo")) && !Utils.isInGame()) {
                     GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
                 } else if (input.equals("/esci") && !Utils.isInGame()) {
                     Comandi.esci();
