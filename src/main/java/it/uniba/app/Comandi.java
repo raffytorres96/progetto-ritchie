@@ -258,7 +258,7 @@ public final class Comandi {
 
         partita = new Partita(regolaGioco, tavoliere, nomeGiocatore1, nomeGiocatore2);
         Mossa mossa = new Mossa(partita.getTavoliere(), partita.getGiocatoreCorrente());
-        GestoreStampa.stampareMessaggioInGioco(partita.getGiocatoreCorrente(), tavoliere, "NUOVA PARTITA", false);
+        GestoreStampa.stampareMessaggioInGioco(partita.getGiocatoreCorrente(), tavoliere, "NUOVA PARTITA", false, "");
         partita.controlloPartita(mossa);
     }
 
@@ -374,4 +374,15 @@ public final class Comandi {
     public static void mosse() {
         GestoreStampa.stampareStoricoMosse();
     }
+/**
+ * Metodo che gestisce il comando "tempo", ovvero mostra il tempo trascorso dall'inizio della partita.
+ * @param input
+ */
+    public static void comandoTempo(final String input) {
+        if (input.equals("/tempo")) {
+        String tempoTrascorso = Partita.getTempoTrascorso();
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "\n\nTempo trascorso: "
+        + GestoreStampa.ANSI_RESET + tempoTrascorso + "\n\n");
+    }
+}
 }
