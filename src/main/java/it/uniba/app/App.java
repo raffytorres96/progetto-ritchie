@@ -17,11 +17,14 @@ public final class App {
         Tavoliere tavoliere = new Tavoliere();
         tavoliere.inizializzaTavolierePartita(tavoliere);
         GestoreStampa.stampareTitoloGioco();
-        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n ");
+        GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n");
         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Scrivi /help oppure -h o --help"
         + " per saperne di più !\n\n ");
 
         String input;
+        char inputLettera;
+        char inputNumero;
+        boolean erroreInput;
         do {
             do {
                 GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\ninserisci un comando: ");
@@ -45,12 +48,27 @@ public final class App {
                         + GestoreStampa.ANSI_RESET + "Non è possibile bloccare tutte le caselle intorno ad una pedina"
                         + "\n\t   in modo da impedire qualsiasi possibilità di spostarsi o di\n\t   "
                         + "generarne un'altra accanto a sè.\n\n");
-                        GestoreStampa.stampareMessaggio("Inserire la coordinata COLONNA della cella da bloccare ->");
-                        input = Comandi.input();
-                        int colonnaDaBloccare = Utils.mappingColonne(input);
-                        GestoreStampa.stampareMessaggio("Inserire la coordinata RIGA della cella da bloccare ->");
-                        input = Comandi.input();
-                        int rigaDaBloccare = Utils.mappingRighe(input);
+                        do {
+                            erroreInput = false;
+                            GestoreStampa.stampareMessaggio("Inserire coordinate cella da bloccare (formato Z0)->");
+                            input = Comandi.input();
+                            input = input.toLowerCase();
+                            inputLettera = input.charAt(0);
+                            inputNumero = input.charAt(1);
+                            if (input.length() != 2 || !Character.isLetter(inputLettera)
+                                || !Character.isDigit(inputNumero)) {
+                                GestoreStampa.stampareMessaggio("Formato coordinate non corretto\n");
+                                erroreInput = true;
+                            }
+                            else if (inputLettera < 'a' || inputLettera > 'g' || inputNumero - '0' <= Tavoliere.RIGA0
+                                || inputNumero - '0' > Tavoliere.N_RIGHE_COLONNE) {
+                                GestoreStampa.stampareMessaggio("Coordinate non valide\n");
+                                erroreInput = true;
+                            }
+                        } while (erroreInput);
+                        GestoreStampa.stampareMessaggio("Cella " + input.toUpperCase() + " bloccata!\n");
+                        int colonnaDaBloccare = Utils.mappingColonne(input.substring(0, 1));
+                        int rigaDaBloccare = Utils.mappingRighe(input.substring(1, 2));
                         Comandi.blocca(tavoliere, rigaDaBloccare, colonnaDaBloccare);
                     }
                 } else if (input.equals("/tavoliere") && !Utils.isInGame()) {
