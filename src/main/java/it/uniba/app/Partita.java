@@ -6,7 +6,7 @@
 package it.uniba.app;
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -55,6 +55,8 @@ Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
 *di erroe LUNGHI quando si cerca di fare una mossa non lecita.  */
 public static final int TIME3 = 3000;
 
+// Variabile privata per memorizzare l'ora di inizio della partita
+private static long oraInizio;
 /**
  * Costruttore della classe Partita.
  * @param regolaGioco
@@ -69,6 +71,7 @@ tavoliere = t;
 this.regola = new Regola(regolaGioco);
 Partita.giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
 Partita.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
+oraInizio = System.currentTimeMillis();
 }
 
 
@@ -108,7 +111,7 @@ public void controlloPartita(final Mossa mossa) {
                 }
                 } while (!input.equals("ok"));
                 GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
-                 "Hai iniziato una nuova partita, DIVERTITI !", false);
+                 "Hai iniziato una nuova partita, DIVERTITI !", false, input);
 
         } else if (input.equals("/tavoliere")) {
             GestoreStampa.clearTerminale();
@@ -126,13 +129,16 @@ public void controlloPartita(final Mossa mossa) {
                 }
                 } while (!input.equals("ok"));
             GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
-            "Hai iniziato una nuova partita, DIVERTITI !", false);
+            "Hai iniziato una nuova partita, DIVERTITI !", false, input);
         } else if (input.equals("/gioca")) {
             GestoreStampa.stampareMessaggio("Hai già iniziato una partita.\n\n");
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
+        } else if (input.equals("/tempo")) {
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
+            "Hai iniziato una nuova partita, DIVERTITI !", false, input);
         } else if (input.equals("/mosse")) {
             GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
-            "STORICO MOSSE", true);
+            "STORICO MOSSE", true, input);
             Comandi.mosse();
             do {
                 GestoreStampa.stampareMessaggio("\nSe hai visualizzato lo storico mosse digita 'ok'"
@@ -144,14 +150,14 @@ public void controlloPartita(final Mossa mossa) {
                 }
                 } while (!input.equals("ok"));
             GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere,
-            "Hai iniziato una nuova partita, DIVERTITI !", false);
+            "Hai iniziato una nuova partita, DIVERTITI !", false, input);
         } else if (Utils.analizzatoreInputCoordinate(input)) {
             String[] result = input.split("-");
             if (controlloPedinaCorretta(result[0]) && controlloPedinaArrivoCorretta(result[1])) {
                 controlloMossaDaEffettuaree(result[0], result[1]);
             }
             String m = "TURNO " + turno;
-            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, m, false);
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, m, false, input);
             continua = controlloVincitore();
             resetTavoliere(this.tavoliere);
         } else if (input.startsWith("/") || input.startsWith("-") || input.startsWith("--")) {
@@ -599,6 +605,26 @@ private void resetTavoliere(final Tavoliere isTavoliere) {
     public static List<String> getStoricoMosse() {
         return storicoMosse;
     }
+
+    /**
+     * Metodo che restituisce il tempo trascorso dalla partita.
+     */
+public static String getTempoTrascorso() {
+    // Calcola il tempo trascorso in millisecondi
+    long tempoTrascorsoMillis = System.currentTimeMillis() - oraInizio;
+    // Converte il tempo trascorso in ore
+    long ore = TimeUnit.MILLISECONDS.toHours(tempoTrascorsoMillis);
+    // Sottrae le ore dal tempo trascorso
+    tempoTrascorsoMillis -= TimeUnit.HOURS.toMillis(ore);
+    // Converte il tempo rimanente in minuti
+    long minuti = TimeUnit.MILLISECONDS.toMinutes(tempoTrascorsoMillis);
+    // Sottrae i minuti dal tempo trascorso
+    tempoTrascorsoMillis -= TimeUnit.MINUTES.toMillis(minuti);
+    // Converte il tempo rimanente in secondi
+    long secondi = TimeUnit.MILLISECONDS.toSeconds(tempoTrascorsoMillis);
+    // Restituisce il tempo trascorso nel formato ore:minuti:secondi
+    return String.format("%02d:%02d:%02d", ore, minuti, secondi);
+}
 
 
 }

@@ -140,6 +140,8 @@ private Utils() { }
                 return true;
             case "/mosse":
                 return true;
+            case "/tempo":
+                return true;
             case "classica":
                 return true;
             case "thomas":

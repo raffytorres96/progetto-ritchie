@@ -774,8 +774,10 @@ public static void stampareStoricoMosse() {
  * @param tav griglia di gioco
  * @param mex messaggio da stampare accanto al benvenuto
  * @param redx false se messaggio classico, true se messaggio ridotto
+ * @param input input di controllo per la stampa del tempo
  */
-public static void stampareMessaggioInGioco(final int gioc, final Tavoliere tav, final String mex, final boolean redx) {
+public static void stampareMessaggioInGioco(final int gioc, final Tavoliere tav, final String mex,
+final boolean redx, final String input) {
   GestoreStampa.clearTerminale();
   GestoreStampa.stampareTitoloGioco();
   GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
@@ -786,6 +788,7 @@ public static void stampareMessaggioInGioco(final int gioc, final Tavoliere tav,
   GestoreStampa.stampareTavoliere(tav);
   GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Help' "
     + GestoreStampa.ANSI_RESET + "per elencare i comandi disponibili\n");
+    Comandi.comandoTempo(input);
   if (!redx) {
     GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "\nInserisci un comando: ");
   }
@@ -799,4 +802,5 @@ public static void stampareMessaggioFuoriGioco() {
   GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "Benvenuti in ATAXX\n\n"
   + GestoreStampa.ANSI_RESET);
 }
+
 }
