@@ -114,487 +114,301 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    */
 private void visualizzaMossePossibili(final int rigaSelezionata, final int colonnaSelezionata,
    final Tavoliere tavoliereCorrente, final int newgiocatoreCorrente) {
-      if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_ARANCIONE
-         && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_ROSA) {
-            tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 1,
-            Cella.STATO_CELLA_GIALLA);
-         } else {
-            tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 1,
-            Cella.STATO_CELLA_ROSA);
-         }
+   visualizzaGiallo(rigaSelezionata, colonnaSelezionata, tavoliereCorrente, newgiocatoreCorrente);
+   visualizzaArancione(rigaSelezionata, colonnaSelezionata, tavoliereCorrente, newgiocatoreCorrente);
+}
 
+/**
+ * Metodo privato che setta il colore della cella a giallo
+ * se risulta essere una cella in cui è possbile fare generazione
+ * rispetto alle coordinate rigaSelezionata colonnnaSelezionata fornite.
+   * @param tavoliereCorrente
+   * @param rigaSelezionata
+   * @param colonnaSelezionata
+   * @param newgiocatoreCorrente
+ */
+private void visualizzaGiallo(final int rigaSelezionata, final int colonnaSelezionata,
+final Tavoliere tavoliereCorrente, final int newgiocatoreCorrente) {
+   if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 1 >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata + 1, colonnaSelezionata + 1, Cella.STATO_CELLA_GIALLA);
+
+   }
+   if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata  - 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 1 >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata - 1, colonnaSelezionata - 1, Cella.STATO_CELLA_GIALLA);
+
+   }
+   if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 1 >= 0 && colonnaSelezionata >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata - 1, colonnaSelezionata, Cella.STATO_CELLA_GIALLA);
+
+   }
+   if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata >= 0 && colonnaSelezionata - 1 >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata, colonnaSelezionata - 1, Cella.STATO_CELLA_GIALLA);
+   }
+   if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 1 >= 0 && colonnaSelezionata >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata + 1, colonnaSelezionata, Cella.STATO_CELLA_GIALLA);
+   }
+   if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata >= 0 && colonnaSelezionata + 1 >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata,  colonnaSelezionata + 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata, colonnaSelezionata + 1, Cella.STATO_CELLA_GIALLA);
+   }
+   if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 1 >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata + 1, colonnaSelezionata - 1, Cella.STATO_CELLA_GIALLA);
+   }
+   if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 1 >= 0
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE2
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE1
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavoliereCorrente, rigaSelezionata - 1, colonnaSelezionata + 1, Cella.STATO_CELLA_GIALLA);
+   }
+}
+
+/**
+ * Metodo privato che setta il colore della cella a arancione
+ * se risulta essere una cella in cui è possbile spostare una pedina
+ * rispetto alle coordinate rigaSelezionata colonnnaSelezionata fornite.
+   * @param tavCorrente
+   * @param rigaSelezionata
+   * @param colonnaSelezionata
+   * @param newgiocatoreCorrente
+ */
+private void visualizzaArancione(final int rigaSelezionata, final int colonnaSelezionata,
+final Tavoliere tavCorrente, final int newgiocatoreCorrente) {
+   if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 2, colonnaSelezionata + 2, Cella.STATO_CELLA_ARANCIONE);
       }
-      if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata  - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-            if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
-         != Cella.STATO_CELLA_BLOCCATA) {
-            if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata - 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-            if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
-         != Cella.STATO_CELLA_BLOCCATA) {
-            if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata + 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata,  colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_ARANCIONE
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_GIALLA);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-            if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata,
-               Cella.STATO_CELLA_ROSA);
-         }
-      }
-      if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata - 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata >= 0 && colonnaSelezionata + 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 2, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata + 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 1 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 2, colonnaSelezionata - 1,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-            if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata + 1, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata + 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
-      if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
-      && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 2 >= 0
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE2
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
-         != Cella.STATO_GIOCATORE1
-      && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
-         != Cella.STATO_CELLA_BLOCCATA) {
-         if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_GIALLA
-            && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
-            != Cella.STATO_CELLA_ROSA) {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ARANCIONE);
-            } else {
-               tavoliereCorrente.setTavoliere(rigaSelezionata - 1, colonnaSelezionata - 2,
-               Cella.STATO_CELLA_ROSA);
-            }
-      }
+   if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata - 2, colonnaSelezionata - 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 2 >= 0 && colonnaSelezionata >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata - 2, colonnaSelezionata, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata >= 0 && colonnaSelezionata - 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata - 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata, colonnaSelezionata - 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 2 >= 0 && colonnaSelezionata >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 2, colonnaSelezionata, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata >= 0 && colonnaSelezionata + 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata + 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata, colonnaSelezionata + 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 2, colonnaSelezionata - 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata - 2, colonnaSelezionata + 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 2 >= 0 && colonnaSelezionata + 1 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata + 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 2, colonnaSelezionata + 1, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 2 >= 0 && colonnaSelezionata - 1 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 2, colonnaSelezionata - 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 2, colonnaSelezionata - 1, Cella.STATO_CELLA_ARANCIONE);
+
+   }
+   if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 2 >= 0 && colonnaSelezionata + 1 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata + 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata - 2, colonnaSelezionata + 1, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 2 >= 0 && colonnaSelezionata - 1 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 2, colonnaSelezionata - 1))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata - 2, colonnaSelezionata - 1, Cella.STATO_CELLA_ARANCIONE);
+
+   }
+   if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 1 >= 0 && colonnaSelezionata + 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata + 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 1, colonnaSelezionata + 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+   if (rigaSelezionata + 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata + 1 >= 0 && colonnaSelezionata - 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata + 1, colonnaSelezionata - 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata + 1, colonnaSelezionata - 2, Cella.STATO_CELLA_ARANCIONE);
+
+   }
+   if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata + 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 1 >= 0 && colonnaSelezionata + 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata + 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+         settaColore(tavCorrente, rigaSelezionata - 1, colonnaSelezionata + 2, Cella.STATO_CELLA_ARANCIONE);
+
+   }
+   if (rigaSelezionata - 1 < Tavoliere.N_RIGHE_COLONNE && colonnaSelezionata - 2 < Tavoliere.N_RIGHE_COLONNE
+   && rigaSelezionata - 1 >= 0 && colonnaSelezionata - 2 >= 0
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata, colonnaSelezionata)) == newgiocatoreCorrente
+   && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE2 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
+      != Cella.STATO_GIOCATORE1 && Cella.getStato(tavCorrente.getCella(rigaSelezionata - 1, colonnaSelezionata - 2))
+      != Cella.STATO_CELLA_BLOCCATA) {
+      settaColore(tavCorrente, rigaSelezionata - 1, colonnaSelezionata - 2, Cella.STATO_CELLA_ARANCIONE);
+   }
+}
+
+/**
+ * Metodo privato che setta il colore della cella a rosa
+ * se risulta essere una cella in cui è possbile spostare una pedina
+ * rispetto alle coordinate rigaSelezionata colonnnaSelezionata fornite.
+   * @param tavoliereCorrente
+   * @param rigaSelezionata
+   * @param colonnaSelezionata
+   * @param colore
+ */
+private void settaColore(final Tavoliere tavoliereCorrente, final int rigaSelezionata,
+final int colonnaSelezionata, final int colore) {
+   int coloreConfronto = -1;
+   if (colore == Cella.STATO_CELLA_GIALLA) {
+      coloreConfronto = Cella.STATO_CELLA_ARANCIONE;
+   } else {
+      coloreConfronto = Cella.STATO_CELLA_GIALLA;
+   }
+   if (Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata))
+   != coloreConfronto
+   && Cella.getStato(tavoliereCorrente.getCella(rigaSelezionata, colonnaSelezionata))
+   != Cella.STATO_CELLA_ROSA) {
+      tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata, colore);
+   } else {
+      tavoliereCorrente.setTavoliere(rigaSelezionata, colonnaSelezionata,
+      Cella.STATO_CELLA_ROSA);
+   }
 }
 /**
  * Metodo privato che pulisce il tavoliere
