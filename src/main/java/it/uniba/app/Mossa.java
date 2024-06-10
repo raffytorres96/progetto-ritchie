@@ -69,7 +69,11 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
          GestoreStampa.stampareTitoloGioco();
          GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
          + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-          GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
+         if (newgiocatoreCorrente == 1) {
+            GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
+         } else {
+            GestoreStampa.stampareMessaggio("\nCon le pedine bianche puoi fare le seguenti mosse:\n\n");
+         }
          // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOTTO
 
          for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
@@ -79,22 +83,17 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
          }
          // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOPRA ^
            GestoreStampa.stampareTavoliere(this.tavoliere);
-           String input;
-           do {
-              GestoreStampa.stampareMessaggio("\nSe hai visualizzato le mosse possibili digita 'ok'"
-              + " per continuare: \n\n");
-              GestoreStampa.stampareMessaggio("Inserisci un comando: ");
-              input = Comandi.input();
-              if (!input.equals("ok")) {
-                 GestoreStampa.stampareMessaggio("Non hai inserito correttamente 'ok'.\n\n");
-              }
-              } while (!input.equals("ok"));
+           try {
+            Thread.sleep(Partita.TIME4); // Ritarda l'esecuzione per 2 secondi
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
               puliziaTavoliere();
               GestoreStampa.clearTerminale();
               GestoreStampa.stampareTitoloGioco();
               GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
               + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-              GestoreStampa.stampareGiocatoreCorrente(this.giocatoreCorrente);
+              GestoreStampa.stampareGiocatoreCorrente(newgiocatoreCorrente);
               GestoreStampa.stampareTavoliere(this.tavoliere);
               GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
                     + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
