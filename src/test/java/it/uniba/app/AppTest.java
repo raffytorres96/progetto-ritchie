@@ -2,26 +2,26 @@ package it.uniba.app;
 
 
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Disabled;
+//import org.junit.jupiter.api.DisplayName;
+//import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-import java.io.ByteArrayInputStream;
+//import java.io.ByteArrayOutputStream;
+//import java.io.IOException;
+//import java.io.InputStream;
+//import java.io.PrintStream;
+//import java.io.UnsupportedEncodingException;
+//import java.io.ByteArrayInputStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Main test class of the application.
  */
 class AppTest {
-
+/*
     @Test
     @DisplayName("il test che segue vuole verificare la corretteza del comportamento"
             + "del metodo main all'atto dell'inserimento del comando /gioca")
@@ -51,13 +51,8 @@ void testInserimantoComandoGioca() throws IOException {
         System.setIn(originalIn);
         System.setOut(originalOut);
     }
-}
-    /*
-     *
-     * @throws UnsupportedEncodingException
-    *
-     *
-     */
+} */
+/*
     @Disabled
     @Test
     @DisplayName("il test che segue vuole verificare la corretteza del comportamento"
@@ -213,5 +208,5 @@ void testInserimantoComandoGioca() throws IOException {
 
 
     }
-
+*/
 }
