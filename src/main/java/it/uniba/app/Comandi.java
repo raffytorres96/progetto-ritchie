@@ -66,6 +66,33 @@ public final class Comandi {
                 + "- In caso di parità, quando il numero di caselle è pari, si verifica un pareggio.\n\n"
 
                 // STAMPA DEI COMANDI DI GIOCO
+                + GestoreStampa.ANSI_YELLOW + "COME INSERIRE LE COORDINATE DELLE CELLE\n\n"
+                + GestoreStampa.ANSI_RESET + "Le coordinate delle celle sono composte da una lettera e un numero,"
+                + GestoreStampa.ANSI_RESET + " corrispettivamente le lettere rappresentano le colonne\n"
+                + GestoreStampa.ANSI_RESET + "e i numeri le righe."
+                + GestoreStampa.ANSI_RESET + " Le lettere delle colonne vanno dalla A alla G e i numeri delle righe"
+                + GestoreStampa.ANSI_RESET + " vanno dal 1 al 7.\n\n"
+                + GestoreStampa.ANSI_RESET + "Esempio: 'A1' rappresenta la cella"
+                + GestoreStampa.ANSI_RESET + " in alto a sinistra della scacchiera.\n\n"
+                + GestoreStampa.ANSI_RESET + "Durante la partita il giocatore può compiere per ogni sua pedina"
+                + GestoreStampa.ANSI_RESET + " una mossa per volta e questa può essere di due tipi:\n\n"
+                + GestoreStampa.ANSI_RESET + " 1) Generazione di una nuova pedina in una casella"
+                + GestoreStampa.ANSI_RESET + " adiacente a quella selezionata\n"
+                + GestoreStampa.ANSI_RESET + " 2) Salto su una casella a distanza due rispetto a quella selezionata\n\n"
+                + GestoreStampa.ANSI_RESET + "Per compiere una delle due mosse il giocatore deve inserire le coordinate"
+                + GestoreStampa.ANSI_RESET + " nel formato"
+                + GestoreStampa.ANSI_GREEN + " 'cella di partenza'" + GestoreStampa.ANSI_RESET + "-"
+                + GestoreStampa.ANSI_YELLOW + "'cella di arrivo'.\n\n"
+                + GestoreStampa.ANSI_RESET + "Esempio: 'A1-B3'\n\n"
+                + GestoreStampa.ANSI_RESET + "Rappresenta la mossa di una pedina dalla cella"
+                + GestoreStampa.ANSI_RESET + " in alto a sinistra a quella in basso a destra"
+                + GestoreStampa.ANSI_RESET + " e in questo caso"
+                + GestoreStampa.ANSI_RESET + " essendo la cella B3 una\n"
+                + GestoreStampa.ANSI_RESET + "cella a distanza 2 dalla cella A1"
+                + GestoreStampa.ANSI_RESET + " la pedina nella cella A1 si sposterà nella cella B3.\n\n"
+
+
+
                 + GestoreStampa.ANSI_BLUE + "COMANDI UTILIZZABILI\n\n"
 
                 + GestoreStampa.ANSI_RESET + "Per visualizzare i comandi disponibili" + GestoreStampa.ANSI_RED
@@ -121,7 +148,28 @@ public final class Comandi {
 
                 + GestoreStampa.ANSI_RESET + "Per uscire dall'applicazione" + GestoreStampa.ANSI_RED + " (QUALUNQUE)\n"
                 + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_RED + "/esci:"
-                + GestoreStampa.ANSI_RESET + " Chiude l'applicazione.\n\n");
+                + GestoreStampa.ANSI_RESET + " Chiude l'applicazione.\n\n"
+
+                + GestoreStampa.ANSI_RESET + "Per bloccare una cella"
+                + GestoreStampa.ANSI_GREEN + " (SCHERMATA DI PRINCIPALE)\n"
+                + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_GREEN + "/blocca:"
+                + GestoreStampa.ANSI_RESET
+                + " Il comando da la possibilità al giocatore di inizialaizzare il tavoliere di gioco"
+                + GestoreStampa.ANSI_RESET + "  bloccando una cella a sua scelta.\n"
+                + GestoreStampa.ANSI_RESET + " La cella scelta va inserita nel formato 'Z0' dove:\n"
+                + GestoreStampa.ANSI_RESET + " - Z è la lettera della colonna\n"
+                + GestoreStampa.ANSI_RESET + " - 0 è il numero della riga\n\n"
+
+                + GestoreStampa.ANSI_RESET + "Per visualizzare lo storico delle mosse effettuate"
+                + GestoreStampa.ANSI_BLUE + " (SCHERMATA DI GIOCO)\n"
+                + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_BLUE + "/mosse:"
+                + GestoreStampa.ANSI_RESET + " Mostra lo storico delle mosse effettuate da entrambi i giocatori.\n\n"
+
+                + GestoreStampa.ANSI_RESET + "Per visualizzare il tempo trascorso dall'inizio della partita"
+                + GestoreStampa.ANSI_BLUE + " (SCHERMATA DI GIOCO)\n"
+                + GestoreStampa.ANSI_RESET + "- " + GestoreStampa.ANSI_BLUE + "/tempo:"
+                + GestoreStampa.ANSI_RESET + " Mostra il tempo trascorso dall'inizio della partita.\n\n");
+
 
     }
 
@@ -201,6 +249,7 @@ public final class Comandi {
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
             Utils.setInGame(false);
+            partita.azzeraStoricoMosse();
             return true;
         }
 
@@ -211,6 +260,7 @@ public final class Comandi {
             partita.setPartitaIniziata(false);
             partita.setGiocoFinito(true);
             Utils.setInGame(false);
+            partita.azzeraStoricoMosse();
             return true;
         }
 
@@ -385,4 +435,5 @@ public final class Comandi {
         + GestoreStampa.ANSI_RESET + tempoTrascorso + "\n\n");
     }
 }
+
 }
