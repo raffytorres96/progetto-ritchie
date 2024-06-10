@@ -266,6 +266,48 @@ Nel caso di risposta negativa, l'applicazione notificherà all'utente l'avvenuta
 ## **8. Processo di sviluppo e organizzazione del lavoro**
 __________
 
+Il gruppo di lavoro durante lo svolgimento delle consegne ha perseguito una strategia precisa nell’organizzazione e nella divisione del lavoro.  
+
+Prima dell’inizio del lavoro effettivo per la realizzazione dei requisiti funzionali è stato sempre effettuato un primo incontro di chiarifica, in seguito al lancio di ognuno dei 3 sprint, con tutti i membri del gruppo. In questo incontro sono stati analizzati i seguenti temi:
+
+- **Identificazione e chiarimento dei requisiti funzionali richiesti.**
+
+- **Identificazione dell'ordine di priorità dei requisiti funzionali da implementare.**
+
+- **Assegnazione dei compiti da svolgere ai membri del gruppo.**
+
+Durante il primo incontro di chiarifica sono stati enunciati i requisiti richiesti che il programma doveva rispettare. Ogni requisito è stato poi successivamente analizzato e chiarito in maniera più esaustiva se presenti punti poco chiari o dubbi da parte dei membri del gruppo.
+
+Successivamente una volta individuata la sequenza di realizzazione dei requisiti funzionali da implementare per un corretto sviluppo, alcuni di essi sono stati realizzati in parallelo ottimizzando i tempi di sviluppo, altri invece no, in quanto avrebbero potuto creare dei conflitti se sviluppati in contemporanea ad altri.
+
+Dopo l’incontro iniziale solitamente quasi ogni giorno venivano notificati aggiornamenti riguardanti lo stato di compimento del proprio lavoro di ognuno, così da poter discutere delle modifiche apportate e delle difficoltà incontrate durante lo sviluppo del progetto. A seconda della gravità del problema si decideva se pianificare un incontro per cercare di risolvere insieme le difficoltà incontrate, sempre che queste non potessero essere risolte tramite soluzioni inviate via chat.
+
+Per ognuno dei 3 sprint è stato creato un milestone, chiamato con il nome del relativo sprint, a cui sono stati assegnati tutti gli issue, le pull request e la project board associati allo sprint in corso. 
+
+La project board di ogni sprint prevedeva le seguenti colonne:
+- **ToDo**, relativa agli incarichi assegnati, ma il cui lavoro non è ancora iniziato.
+- **inProgress**, per i compiti in fase di realizzazione.
+- **Review**, per i lavori terminati, ma in attesa di revisione prima del merge.
+- **Ready**, per gli incarichi revisionati dai membri del gruppo, di cui è stato effettuato il merge e in attesa della revisione dal product owner.
+- **Done**, relativa alle issue portate a termine e confermate dopo la revisione effettuata dal product owner.
+
+Ogni requisito funzionale è stato assegnato ad un membro del gruppo in base alla effettiva difficoltà di realizzazione.
+In ogni singola assegnazione è stata lasciata piena libertà nell’autogestirsi sulla divisione del proprio lavoro.
+Una volta stabilito il lavoro da svolgere sono stati aperti i rispettivi issue, in base all' ordine prefissato durante il meeting.
+
+Ognuno di noi ha creato sul proprio repository locale un branch, relativo a ciascun issue assegnato, sul quale lavorare, in modo tale da mantenere in locale tutte le modifiche prima di aggiornare il branch remoto. 
+
+Una volta portato a termine il proprio compito ed effettuata la pull request è stato richiesto ad almeno due componenti del gruppo, laddove l'intero team non avrebbe potuto riunirsi, per confermare ed approvare le modifiche effettuate. In alcuni casi la revisione ha portato ad ulteriori modifiche prima che le pull request potessero essere approvate. Nel caso in cui dopo aver confermato le modifiche, in corso d'opera, fosse stata sentita l'esigenza di apportare delle nuove modifiche venivano comunicate al team e create delle issue che andassero ad identificare la modifica da compiere. Dopo di che, come detto precedentemente, ogni membro si assegnava la nuova issue.
+
+Prima della data di consegna del progetto, per ogni sprint, il gruppo si è riunito in un incontro finale per un’ultima revisione prima di confermare al product owner la conclusione del lavoro richiesto.
+
+Durante la  realizzazione del progetto, come ambiente di sviluppo, è stato usato l'IDE Visual Studio Code con plug-in: Gradle, JUnit, Checkstyle, Spotbugs.
+Altri Software utilizzati sono stati: 
+   - _Docker_ per l'utilizzo di container;
+   - _starUML_ per i diagrammi di dominio, delle classi e di flusso;
+   - _Visual Studio Code_ per i file markdown e lo sviluppo del codice;
+   - _Discord_  per gli incontri e il lavoro comune;
+   - _WhatsApp_ per le comunicazioni e le risoluzioni di problemi più semplici.
 
 ## **9. Analisi retrospettiva**    
 __________
