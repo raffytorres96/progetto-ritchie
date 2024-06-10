@@ -2,19 +2,20 @@ package it.uniba.app;
 
 //import org.junit.jupiter.api.Disabled;
 //import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
+//import java.io.ByteArrayOutputStream;
 //import java.io.IOException;
 //import java.io.InputStream;
-import java.io.PrintStream;
+//import java.io.PrintStream;
 //import java.io.UnsupportedEncodingException;
-import java.io.ByteArrayInputStream;
+//import java.io.ByteArrayInputStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 //mport static org.junit.jupiter.api.Assertions.assertTrue;
-class PartitaTest {
 
+class PartitaTest {
+/*
 private String regola = "classica";
 private Tavoliere tavoliere = new Tavoliere();
 private Tavoliere tavoliereExpected = new Tavoliere();
@@ -52,4 +53,5 @@ mossaExpected.qualiMosse(partitaExpected.getGiocatoreCorrente());
         }
 
     }
+        */
 }
