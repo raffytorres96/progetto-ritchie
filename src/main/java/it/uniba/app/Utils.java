@@ -55,7 +55,8 @@ private Utils() { }
             + GestoreStampa.ANSI_RESET + "-" + GestoreStampa.ANSI_ORANGE + "YJ\n" + GestoreStampa.ANSI_RESET
             + "\tX,Y = lettere da A a G (colonne) | I,J = numeri da 1 a 7 (righe).\n\t"
             + GestoreStampa.ANSI_GREEN + "XI " + GestoreStampa.ANSI_RESET + "= cella di partenza; "
-            + GestoreStampa.ANSI_ORANGE + "YJ " + GestoreStampa.ANSI_RESET + "= cella di arrivo.\n");
+            + GestoreStampa.ANSI_ORANGE + "YJ " + GestoreStampa.ANSI_RESET + "= cella di arrivo.\n\n");
+
             return false;
         } else {
             return true;

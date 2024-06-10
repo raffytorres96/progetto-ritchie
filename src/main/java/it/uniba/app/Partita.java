@@ -46,7 +46,7 @@ private int turno = 1;
 /** Variabile statica per ritardare l'uscita dalla partita.  */
 public static final int TIME = 2800;
 
-/** Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
+/** Variabile statica per mantenerete per 3.2 secondi l'uscita dei messaggi
  * di erroe quando si cerca di fare una mossa non lecita.  */
 public static final int TIME2 = 3200;
 
@@ -54,6 +54,11 @@ public static final int TIME2 = 3200;
 Variabile statica per mantenerete per 3 secondi l'uscita dei messaggi
 *di erroe LUNGHI quando si cerca di fare una mossa non lecita.  */
 public static final int TIME3 = 3000;
+/**
+ * Variabile statica per mantenerete per 5 secondi l'uscita
+ * del tavoliere con le mosse possibili.
+ */
+public static final int TIME4 = 5000;
 
 // Variabile privata per memorizzare l'ora di inizio della partita
 private static long oraInizio;
@@ -626,6 +631,12 @@ public static String getTempoTrascorso() {
     return String.format("%02d:%02d:%02d", ore, minuti, secondi);
 }
 
+/**
+ * Metodo che azzera lo storico delle mosse.
+ */
+public void azzeraStoricoMosse() {
+    storicoMosse.clear();
+}
 
 }
 
