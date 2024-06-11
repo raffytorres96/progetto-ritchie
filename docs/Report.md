@@ -227,18 +227,19 @@ __________
 
 ![comandoGioca](./img/comandoGiocaTavoliere.png)
 
-**4.** Il comando *'/help'* permette al giocatore di ricevere delle informazioni generali riguardanti il gioco, seguite dall' elenco dei comandi con la propria descrizione, specificando dove posso essere utilizzati all'interno del gioco.
+**4.** Il comando *'/help'* permette al giocatore di ricevere delle informazioni generali riguardanti il gioco, le modalità con la quale potrà inserire le coordinate delle celle in modo da poter giocare, tutto ciò seguito dall' elenco dei comandi con la propria descrizione, specificando dove posso essere utilizzati all'interno del gioco.
 
 E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà visualizzato quindi il comando
 
 ![comandoHelp1](./img/comandoHelpPrimaParte.png)
 ![comandoHelp2](./img/comandoHelpSecondaParte.png)
+![comandoHelp3]
 
 **5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco o le posizioni in cui sarà possibile generare nuove pedine. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere.
 
 ![comandoqualiMosse](./img/comandoQualiMosse.png)
 
-**6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno.
+**6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno prima dell'inizio della partita.
 
 ![comandoVuoto](./img/comandoVuoto.png)
 
@@ -246,7 +247,11 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 
 ![comandoTavoliere](./img/comandoTavoliere.png)
 
-**8.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
+**8.** Il comando *'/tempo'*, consente di mostrare il tempo trascorso dall’inizio partita nel formato ore:minuti:secondi.
+
+![comandoTempo](./img/comandoTempo.png)
+
+**9.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
 
 ![comandoAbbandona](./img/comandoAbbandonaSi.png)
 
@@ -254,7 +259,7 @@ In caso di risposta negativa, il giocatore rimarrà nella partita corrente.
 
 ![comandoAbbandona](./img/comandoAbbandonaNo.png)
 
-**9.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
+**10.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
 
 ![comandoEsci](./img/comandoEsciSi.png)
 
