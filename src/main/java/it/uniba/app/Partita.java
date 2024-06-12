@@ -63,6 +63,10 @@ public static final int TIME4 = 5000;
 // Variabile privata per memorizzare l'ora di inizio della partita
 private static long oraInizio;
 /**
+ * variabile privata per il controllo dell'esecuzione in ambiente di test.
+ */
+private boolean test = false;
+/**
  * Costruttore della classe Partita.
  * @param regolaGioco
  * @param nome1
@@ -186,7 +190,7 @@ public void controlloPartita(final Mossa mossa) {
         } else {
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RESET + "Inserisci un comando: ");
         }
-    } while (continua);
+    } while (continua && !test);
 
 }
 
@@ -658,6 +662,15 @@ public static String getTempoTrascorso() {
 public void azzeraStoricoMosse() {
     storicoMosse.clear();
 }
+
+/**
+ * Metodo che setta il valore dell'attributo test.
+ * @return
+ */
+public void setTest(final boolean newTest) {
+    this.test = newTest;
+}
+
 
 }
 
