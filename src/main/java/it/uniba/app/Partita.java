@@ -86,6 +86,8 @@ public void controlloPartita(final Mossa mossa) {
     boolean continua = true;
     do {
         if (!mossa.fattibilitaMosse(getGiocatoreCorrente())) {
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
             GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "NESSUNA MOSSA POSSIBILE"
             + GestoreStampa.ANSI_RESET + "\nTurno Passato.\n");
             setStoricoMosse(turno, "Turno", "Passato", getGiocatoreCorrente());
@@ -96,7 +98,7 @@ public void controlloPartita(final Mossa mossa) {
                 e.printStackTrace();
             }
             String mex = "TURNO: " + turno;
-            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, mex, false, "/tempo");
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, mex, false, "");
             continue;
         }
         String input = Comandi.input();
