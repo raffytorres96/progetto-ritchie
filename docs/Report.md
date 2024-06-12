@@ -278,22 +278,43 @@ __________
 
 Per quanto riguarda l'UML abbiamo deciso di rappresentare 5 delle user story più importanti quali:
 
-    • Il comando /help, perchè contiene tutte le informazioni necessarie affinchè l'utente possa essere guidato nell'utilizzo dell'applicazione.
+    • Il comando /help, perchè contiene tutte le informazioni necessarie affinchè l'utente possa utilizzare l'applicazione.
 
-    • Il comando /gioca, perchè rappresenza la principale dinamica di base dell'applicazione.
+    • Il comando /gioca, perchè rappresenta la dinamica di base dell'applicazione, quindi il suo nucleo.
 
-    • Il comando /mosse, è importante perchè aiuta gli utenti durante il gioco in modo da ricordare quali mosse sono state effettuate e in quale ordine.
+    • Il comando /mosse, è importante perchè aiuta gli utenti durante il gioco ricordando quali mosse sono state effettuate, in quale ordine e da chi.
 
     • Il comando /qualiMosse, perchè rappresenta uno dei comandi principali durante la partita in quanto aiuta l'utente a decidere quale strategia adottare per la mossa successiva evidenziando la tipologia di mosse che puo' effettuare per ogni sua pedina.
 
     • Il comando /blocca, perchè rappresenta un comando utile all'utente per personalizzare l'esperienza del gioco.
 
-Nella classe Comandi abbiamo deciso di implementare tutte le userStory richieste Product Owner in modo tale di averle disponibili in una singola classe.
+Nella classe Comandi abbiamo deciso di implementare tutte le userStory richieste dal Product Owner in modo da averle disponibili in una singola classe. Qui abbiamo inoltre gestito l'input utente.
 
+Tutti i messaggi da stampare a video vengono gestiti dalla classe GestioneStampa; qui vengono anche "composti" gli elementi non testuali da mostrare in output, come il tavoliere di gioco o il logo ATAXX in ascii art.
+
+Nella classe Utils abbiamo implementato dei metodi che ci consentono di controllare la correttezza dell'input utente, sia nel caso si tratti di comandi sia nel caso di coordinate.
+
+La classe Cella descrive una singola cella del Tavoliere, che è infatti implementato con una classe apposita e ha come attributo principale una matrice di Celle. In Tavoliere sono inoltre presenti metodi che controllano la quantità di celle bloccate per impedire che una pedina non abbia mosse disponibili a inizio partita.
+
+Le regole di gioco verrebbero gestita dalla classe Regola. 
+
+Per lo svolgimento della partita sono essenziali le classi Mossa e Partita. La prima si occupa di gestire le mosse riguardanti lo spostamento di pedine sul tavoliere del giocatore (gestito con la classe Giocatore), la seconda è il vero fulcro dell'applicazione e gestisce l'alternanza dei turni e i controlli sull'eventuale vittoria di uno dei due giocatori.
+
+![Suppress](./img/SUPPRESS.png)
+
+Sono state soppresse delle segnalazioni proposte da Spotbugs riguardanti la modifica di campi statici tramite il costruttore della classe Partita in quanto avremo sempre e solo un'unica istanza di Partita durante l'esecuzione del programma, quindi questa pratica non creerà problemi. 
+Sono stati inoltre soppressi dei messaggi relativi all'esposizione di rappresentazione interna di oggetti come "storicoMosse" o "tavoliere".
 
 ## **6. Riepilogo del test**
 __________
+Per la stesura dei test JUnit della nostra applicazione abbiamo posto particolare attenzione sull'assicurare la funzionalità delle singole classi, ognuna presa a sè.
 
+Il focus è stato messo sulla simulazione di diversi possibili input utente, simulando errori di battitura o mancato rispetto della struttura di input prevista, tutto per verificare che l'esecuzione non si interrompesse in questi casi. 
+Un esempio di questo approccio è il test di input parziali per i comandi, di input vuoti o di inserimenti di coordinate con la sintassi diversa da quella richiesta per l'esecuzione delle mosse.
+
+E' stato anche testato l'input di coordinate di destinazione della pedina più lontane di quanto previsto dalle regole di Ataxx.
+
+Attraverso questi test approfonditi abbiamo cercato di garantire un'applicazione affidabile e solida, in grado di gestire un'ampia varietà di possibili errori o comunque situazioni inattese nel migliore dei modi.
 
 ## **7. Manuale utente**
 __________
