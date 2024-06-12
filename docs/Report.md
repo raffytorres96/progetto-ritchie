@@ -251,7 +251,11 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 
 ![comandoTempo](./img/comandoTempo.png)
 
-**9.** A partita non in corso, il comando *'/blocca xn'*, dove xn sono le coordinate di una casella, rende non accessibile la casella xn per tutte le pedine. 
+**9.** Il comando *'/mosse'*, mostra la storia delle mosse con notazione algebrica, per esempio: 1. a1-a2 (N); 2. g1-e3 (B);
+
+![comandoMosse](./img/comandoMosse.png)
+
+**10.** A partita non in corso, il comando *'/blocca xn'*, dove xn sono le coordinate di una casella, rende non accessibile la casella xn per tutte le pedine. 
 
 ![comandoBlocca](.img/comandoBlocca.png)
 
@@ -265,7 +269,7 @@ Non è possibile bloccare:
 - tutte le caselle a distanza 2 da una casella di partenza del gioco, rendendo impossibile la mossa di salto di una pedina a inizio gioco;
 - più di 9 caselle in totale.
 
-**12.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
+**11.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
 
 ![comandoAbbandona](./img/comandoAbbandonaSi.png)
 
@@ -273,7 +277,7 @@ In caso di risposta negativa, il giocatore rimarrà nella partita corrente.
 
 ![comandoAbbandona](./img/comandoAbbandonaNo.png)
 
-**13.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
+**12.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
 
 ![comandoEsci](./img/comandoEsciSi.png)
 
