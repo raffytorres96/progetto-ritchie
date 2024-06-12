@@ -64,8 +64,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    * @param newgiocatoreCorrente
 
    */
-  public boolean qualiMosse(final int newgiocatoreCorrente) {
-   int contaMossePossibili = 0;
+  public void qualiMosse(final int newgiocatoreCorrente) {
    GestoreStampa.clearTerminale();
    GestoreStampa.stampareTitoloGioco();
    GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
@@ -78,15 +77,7 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
       for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
             visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
-            if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
-            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
-            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
-               contaMossePossibili += 1;
-            }
       }
-   }
-   if (contaMossePossibili == 0) {
-      return true;
    }
    GestoreStampa.stampareTavoliere(this.tavoliere);
    try {
@@ -105,7 +96,6 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
       + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
    GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
       + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
-   return false;
 }
 
 /**
@@ -417,6 +407,31 @@ final int colonnaSelezionata, final int colore) {
    }
 }
 /**
+ * Metodo che controlla, senza fornire output a video, che il giocatore corrente abbia
+ * delle mosse a disposizione.
+ * @param newgiocatoreCorrente giocatore a cui tocca
+ * @return boolean restituisce true se il giocatore ha mosse a disposizione
+   */
+  public boolean fattibilitaMosse(final int newgiocatoreCorrente) {
+   int contaMossePossibili = 0;
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+      for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+            visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
+            if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
+            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
+            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
+               contaMossePossibili += 1;
+            }
+      }
+   }
+   puliziaTavoliere();
+   if (contaMossePossibili == 0) {
+      return false;
+   }
+   return true;
+  }
+
+/**
  * Metodo privato che pulisce il tavoliere
    * dalle mosse possibili.
    */
@@ -426,7 +441,6 @@ private void puliziaTavoliere() {
             if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
             || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
             || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
-
                   tavoliere.setTavoliere(i, j, Cella.STATO_CELLA_VUOTA);
             }
          }
