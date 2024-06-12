@@ -307,7 +307,14 @@ Sono stati inoltre soppressi dei messaggi relativi all'esposizione di rappresent
 
 ## **6. Riepilogo del test**
 __________
+Per la stesura dei test JUnit della nostra applicazione abbiamo posto particolare attenzione sull'assicurare la funzionalità delle singole classi, ognuna presa a sè.
 
+Il focus è stato messo sulla simulazione di diversi possibili input utente, simulando errori di battitura o mancato rispetto della struttura di input prevista, tutto per verificare che l'esecuzione non si interrompesse in questi casi. 
+Un esempio di questo approccio è il test di input parziali per i comandi, di input vuoti o di inserimenti di coordinate con la sintassi diversa da quella richiesta per l'esecuzione delle mosse.
+
+E' stato anche testato l'input di coordinate di destinazione della pedina più lontane di quanto previsto dalle regole di Ataxx.
+
+Attraverso questi test approfonditi abbiamo cercato di garantire un'applicazione affidabile e solida, in grado di gestire un'ampia varietà di possibili errori o comunque situazioni inattese nel migliore dei modi.
 
 ## **7. Manuale utente**
 __________
