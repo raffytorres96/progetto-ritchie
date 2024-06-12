@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.io.ByteArrayInputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,16 +22,16 @@ private String nomeGiocatore1 = "Andre";
 private String nomeGiocatore2 = "Riccardo";
 
     @Test
-    void testComandoQualiMosse() {
+    void testComandoQualiMosse() throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "/qualimosse\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -54,17 +55,17 @@ mossaExpected.qualiMosse(partitaExpected.getGiocatoreCorrente());
 
     }
     @Test
-    void testControlloPartitaGenera() {
+    void testControlloPartitaGenera() throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "a1-b1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 tavoliereExpected.setTavoliere(0, 1, 1);
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -88,10 +89,10 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
     }
 
     @Test
-    void testControlloPartitaSpostamento() {
+    void testControlloPartitaSpostamento() throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "a1-c1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -100,7 +101,7 @@ tavoliereExpected.setTavoliere(0, 0, 0);
 
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -124,10 +125,10 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
     }
 
     @Test
-    void testCoordinateInesatte() {
+    void testCoordinateInesatte()throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "z1-w1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -135,7 +136,7 @@ tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -159,10 +160,10 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
     }
 
     @Test
-    void testPedinaInizialeErrata() {
+    void testPedinaInizialeErrata()throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "g1-f1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -170,7 +171,7 @@ tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -197,7 +198,7 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
     void testDistanzaEccessiva() throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "a1-d1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -205,7 +206,7 @@ tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -228,10 +229,10 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
     }
 
     @Test
-    void testSelezionaCellaVuota() {
+    void testSelezionaCellaVuota()throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "a2-b1\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -239,7 +240,7 @@ tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -268,7 +269,7 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
     void testComandoNonUsabileInPartita() throws UnsupportedEncodingException {
         // Prepara l'input simulato
         String input = "/\n";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
 tavoliere.inizializzaTavolierePartita(tavoliere);
 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -276,7 +277,7 @@ tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 
         // Prepara l'output simulato
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
         // Prepara l'oggetto da testare
 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -302,7 +303,7 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
             void testComandoVuotoInPartita() throws UnsupportedEncodingException {
                 // Prepara l'input simulato
                 String input = "/vuoto\n";
-                System.setIn(new ByteArrayInputStream(input.getBytes()));
+                System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
 
         tavoliere.inizializzaTavolierePartita(tavoliere);
         tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
@@ -310,7 +311,7 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
 
                 // Prepara l'output simulato
                 ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-                System.setOut(new PrintStream(outContent));
+                System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
                 // Prepara l'oggetto da testare
         Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
@@ -336,14 +337,14 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
                     void testComandoBloccaInPartita() throws UnsupportedEncodingException {
                         // Prepara l'input simulato
                         String input = "/blocca\n";
-                        System.setIn(new ByteArrayInputStream(input.getBytes()));
+                        System.setIn(new ByteArrayInputStream(input.getBytes(Charset.forName("UTF-8"))));
                 tavoliere.inizializzaTavolierePartita(tavoliere);
                 tavoliereExpected.inizializzaTavolierePartita(tavoliereExpected);
 
 
                         // Prepara l'output simulato
                         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-                        System.setOut(new PrintStream(outContent));
+                        System.setOut(new PrintStream(outContent, true, "UTF-8"));
 
                         // Prepara l'oggetto da testare
                 Partita partita = new Partita(regola, tavoliere, nomeGiocatore1, nomeGiocatore2);
