@@ -47,7 +47,8 @@ mossaExpected.qualiMosse(partitaExpected.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                "il comando /qualimosse è stato eseguito correttamente");
             }
         }
 
@@ -79,7 +80,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                " la pedina è stata generata correttamente");
             }
         }
 
@@ -114,7 +116,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                " la pedina si è spostata correttamente");
             }
         }
 
@@ -148,7 +151,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                "Errore: le coordinate inserite sono inesatte");
             }
         }
 
@@ -182,7 +186,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                "Errore: la pedina iniziale è errata");
             }
         }
 
@@ -216,7 +221,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                "Errore: la distanza tra le celle è eccessiva");
             }
         }
     }
@@ -249,7 +255,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         Cella[][] expectedTavoliere = tavoliereExpected.getTavoliere();
         for (int i = 0; i < expectedTavoliere.length; i++) {
             for (int j = 0; j < expectedTavoliere[i].length; j++) {
-                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]));
+                assertEquals(Cella.getStato(expectedTavoliere[i][j]), Cella.getStato(actualTavoliere[i][j]),
+                "Errore: la cella selezionata è vuota");
             }
         }
     }
@@ -287,7 +294,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
         + "\tX,Y = lettere da A a G (colonne) | I,J = numeri da 1 a 7 (righe).\n\t"
         + GestoreStampa.ANSI_GREEN + "XI " + GestoreStampa.ANSI_RESET + "= cella di partenza; "
         + GestoreStampa.ANSI_ORANGE + "YJ " + GestoreStampa.ANSI_RESET + "= cella di arrivo.\n\n"
-        + "Comando non utilizzabile in partita\n\n", outContent.toString("UTF-8"));
+        + "Comando non utilizzabile in partita\n\n", outContent.toString("UTF-8"),
+        "Comando non valido in partita\n\n");
             }
 
             @Test
@@ -318,7 +326,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
                 + "\tX,Y = lettere da A a G (colonne) | I,J = numeri da 1 a 7 (righe).\n\t"
                 + GestoreStampa.ANSI_GREEN + "XI " + GestoreStampa.ANSI_RESET + "= cella di partenza; "
                 + GestoreStampa.ANSI_ORANGE + "YJ " + GestoreStampa.ANSI_RESET + "= cella di arrivo.\n\n"
-                + "Comando non utilizzabile in partita\n\n", outContent.toString("UTF-8"));
+                + "Comando non utilizzabile in partita\n\n", outContent.toString("UTF-8"),
+                "Comando non valido in partita\n\n");
                     }
 
 
@@ -350,7 +359,8 @@ Mossa mossa = new Mossa(tavoliere, partita.getGiocatoreCorrente());
                         + "\tX,Y = lettere da A a G (colonne) | I,J = numeri da 1 a 7 (righe).\n\t"
                         + GestoreStampa.ANSI_GREEN + "XI " + GestoreStampa.ANSI_RESET + "= cella di partenza; "
                         + GestoreStampa.ANSI_ORANGE + "YJ " + GestoreStampa.ANSI_RESET + "= cella di arrivo.\n\n"
-                        + "Comando non utilizzabile in partita\n\n", outContent.toString("UTF-8"));
+                        + "Comando non utilizzabile in partita\n\n", outContent.toString("UTF-8"),
+                        "Comando non valido in partita\n\n");
                             }
 
 
