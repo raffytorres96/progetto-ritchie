@@ -202,8 +202,76 @@ Infine, si è cercato di rispettare i 4 principi sui cambiamenti ideali, applica
 __________
   ### **5.1 Diagramma delle classi**
 
+  1) **DIAGRAMMA DEL COMANDO HELP**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/help`.
+  
+  ![DC_HELP](./img/DC_HELP.png)
+
+  2) **DIAGRAMMA DEL COMANDO GIOCA**
+
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/gioca`.
+
+  ![DC_GIOCA](./img/DC_GIOCA.png)
+  
+  3) **DIAGRAMMA DEL COMANDO MOSSE**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/mosse`.
+  
+  ![DC_MOSSE](./img/DC_MOSSE.png)
+
+  4) **DIAGRAMMA DEL COMANDO QUALIMOSSE**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/qualiMosse`.
+  
+  ![DC_QUALI_MOSSE](./img/DC_QUALIMOSSE.png)
+
+  5) **DIAGRAMMA DEL COMANDO BLOCCA**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/blocca`.
+
+  ![DC_BLOCCA](./img/DC_BLOCCA.png)
+
 
   ### **5.2 Diagrammi di sequenza**
+
+  1)  **DIAGRAMMA DEL COMANDO HELP**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/help`.
+
+  ![DS_HELP](./img/DS_HELP.png)
+
+  2)  **DIAGRAMMA DEL COMANDO GIOCA**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/gioca`.
+
+  ![DS_GIOCA](./img/DS_GIOCA.png)
+
+  3)  **DIAGRAMMA DEL COMANDO MOSSE**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/mosse`.
+
+  ![DS_MOSSE](./img/DS_MOSSE.png)
+
+  Ingrandimento della sezione relativa al diagramma di sequenza del comando `/mosse`.
+
+  ![DS_INGRANDIMENTO_MOSSE](./img/DS_ingrandimentoMOSSE.png)
+
+  4)  **DIAGRAMMA DEL COMANDO QUALIMOSSE**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/qualiMosse`.
+
+  ![DS_QUALI_MOSSE](./img/DS_QUALIMOSSE.png)
+
+  Ingrandimento della sezione relativa al diagramma di sequenza del comando `/qualiMosse`.
+
+  ![DS_INGRANDIMENTO_QUALI_MOSSE](./img/DS_ingrandimentoQUALIMOSSE.png)
+
+  5)  **DIAGRAMMA DEL COMANDO BLOCCA**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/blocca`.
+
+  ![DS_BLOCCA](./img/DS_BLOCCA.png)
 
 
   ### **5.3 Commentare le decisioni prese**
@@ -254,9 +322,17 @@ Se al termine di una mossa vi sono pedine avversarie adiacenti alla casella di a
 
 ![comandoCatturaPedina](./img/catturaPedina.png)
 
+Se il giocatore non può muovere nessuna pedina del proprio colore, l’app avvisa che il turno passa all’altro colore.
+
+![comandoTurnoPassato](./img/comandoTurnoPassato.png)
+
 Se le caselle del tavoliere presentano esclusivamente pedine di uno stesso colore, allora l’app dichiara il vincitore (Bianco o Nero) e riporta i punti del Bianco e Nero contando le rispettive pedine.
 
 ![comandoFinePartita](./img/finePartita.png)
+
+Se nessuna pedina può essere mossa perché le caselle del tavoliere sono state tutte riempite, allora l’app dichiara il vincitore (Bianco o Nero) e riporta i punti del Bianco e Nero contando le rispettive pedine.
+
+![comandoFinePartitaPieno](./img/finePartitaPieno.png)
 
 **6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno prima dell'inizio della partita.
 
