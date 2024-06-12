@@ -72,7 +72,7 @@ private boolean test = false;
  * @param nome1
  * @param nome2
  */
-@edu.umd.cs.findbugs.annotations.SuppressFBWarnings({"EI2","MS"})
+@edu.umd.cs.findbugs.annotations.SuppressFBWarnings({"EI2", "ST"})
 public Partita(final String regolaGioco, final Tavoliere t, final String nome1, final String nome2) {
 
 this.partitaIniziata = true;
