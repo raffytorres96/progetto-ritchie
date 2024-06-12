@@ -1,7 +1,7 @@
 /**
- *  <<Entity>>
+ *  <<Control>>
  *  Responsabilità: Modella l'entità Partita
- *  del gioco.
+ *  del gioco di controllare la logica del gioco.
  */
 package it.uniba.app;
 import java.util.List;
