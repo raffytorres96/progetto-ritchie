@@ -1,8 +1,11 @@
 package it.uniba.app;
 
 /**
- * Main class of the application.
+ *  <<Controll>>
+ *  Responsabilità: responsabilità di controllare i comandi la correttezza dei coamndi
+ * inseriti dell'utente nell schermata iniziale.
  */
+
 public final class App {
 
     /**
@@ -77,7 +80,8 @@ public final class App {
                     + GestoreStampa.ANSI_BLUE + " /Gioca\n\n" + GestoreStampa.ANSI_RESET);
                 } else if ((input.equals("/qualimosse")
                  || input.equals("/abbandona")
-                 || input.equals("/tempo")) && !Utils.isInGame()) {
+                 || input.equals("/tempo"))
+                 || input.equals("/mosse") && !Utils.isInGame()) {
                     GestoreStampa.stampareMessaggio("Questo comando può essere utilizzato solo in partita\n\n");
                 } else if (input.equals("/esci") && !Utils.isInGame()) {
                     Comandi.esci();
@@ -91,5 +95,8 @@ public final class App {
 
 
         }
+
     }
+
+
 
