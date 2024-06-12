@@ -85,6 +85,20 @@ oraInizio = System.currentTimeMillis();
 public void controlloPartita(final Mossa mossa) {
     boolean continua = true;
     do {
+        if (!mossa.fattibilitaMosse(getGiocatoreCorrente())) {
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "NESSUNA MOSSA POSSIBILE"
+            + GestoreStampa.ANSI_RESET + "\nTurno Passato.\n");
+            setStoricoMosse(turno, "Turno", "Passato", getGiocatoreCorrente());
+            passaTurno(this.giocatoreCorrente);
+            try {
+                Thread.sleep(TIME3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            String mex = "TURNO: " + turno;
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, mex, false, "/tempo");
+            continue;
+        }
         String input = Comandi.input();
         if (input.equals("/qualimosse")) {
             mossa.qualiMosse(getGiocatoreCorrente());
