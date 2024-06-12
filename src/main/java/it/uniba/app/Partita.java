@@ -78,8 +78,8 @@ this.partitaIniziata = true;
 this.giocatoreCorrente = Giocatore.GIOCATORE1;
 tavoliere = t;
 this.regola = new Regola(regolaGioco);
-Partita.giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
-Partita.giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
+giocatore1 = new Giocatore(nome1, Giocatore.GIOCATORE1);
+giocatore2 = new Giocatore(nome2, Giocatore.GIOCATORE2);
 oraInizio = System.currentTimeMillis();
 }
 
