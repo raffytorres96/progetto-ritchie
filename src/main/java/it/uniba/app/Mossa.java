@@ -417,11 +417,15 @@ final int colonnaSelezionata, final int colore) {
    for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
       for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
             visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
-            if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
-            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
-            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
-               contaMossePossibili += 1;
-            }
+      }
+   }
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+      for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+         if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
+         || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
+         || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
+            contaMossePossibili++;
+         }
       }
    }
    puliziaTavoliere();
