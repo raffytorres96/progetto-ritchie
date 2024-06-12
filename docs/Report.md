@@ -190,16 +190,105 @@ _________
 ## **4. System Design**
 __________
 
+Il *System Design* viene principalmente adottato nella progettazione di software di alto livello e consiste nell'identificazione dei principali componenti e delle relazioni tra questi.  
+Solitamente, l'architettura di un software deve essere definita nella prima fase di progettazione (inizio fase Sprint 1), ma il nostro Team non ha ritenuto importante applicare uno stile architetturale ben preciso.
+
+Di conseguenza non c'è stato alcun modo di rappresentarlo e difatto non è stato necessario realizzare nessun diagramma a tale scopo.
+Nonostante l'assenza di tutto ciò, si è comunque seguito lo stile di un sistema software robusto e di facile comprensione.  
+Infine, si è cercato di rispettare i 4 principi sui cambiamenti ideali, applicando appieno il **principio di Information Hiding**.
+
 
 ## **5. OO Design**
 __________
   ### **5.1 Diagramma delle classi**
 
+  1) **DIAGRAMMA DEL COMANDO HELP**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/help`.
+  
+  ![DC_HELP](./img/DC_HELP.png)
+
+  2) **DIAGRAMMA DEL COMANDO GIOCA**
+
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/gioca`.
+
+  ![DC_GIOCA](./img/DC_GIOCA.png)
+  
+  3) **DIAGRAMMA DEL COMANDO MOSSE**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/mosse`.
+  
+  ![DC_MOSSE](./img/DC_MOSSE.png)
+
+  4) **DIAGRAMMA DEL COMANDO QUALIMOSSE**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/qualiMosse`.
+  
+  ![DC_QUALI_MOSSE](./img/DC_QUALIMOSSE.png)
+
+  5) **DIAGRAMMA DEL COMANDO BLOCCA**
+  
+  Viene riportato il diagramma che rappresenta le classi coinvolte per il comando `/blocca`.
+
+  ![DC_BLOCCA](./img/DC_BLOCCA.png)
+
 
   ### **5.2 Diagrammi di sequenza**
 
+  1)  **DIAGRAMMA DEL COMANDO HELP**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/help`.
+
+  ![DS_HELP](./img/DS_HELP.png)
+
+  2)  **DIAGRAMMA DEL COMANDO GIOCA**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/gioca`.
+
+  ![DS_GIOCA](./img/DS_GIOCA.png)
+
+  3)  **DIAGRAMMA DEL COMANDO MOSSE**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/mosse`.
+
+  ![DS_MOSSE](./img/DS_MOSSE.png)
+
+  Ingrandimento della sezione relativa al diagramma di sequenza del comando `/mosse`.
+
+  ![DS_INGRANDIMENTO_MOSSE](./img/DS_ingrandimentoMOSSE.png)
+
+  4)  **DIAGRAMMA DEL COMANDO QUALIMOSSE**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/qualiMosse`.
+
+  ![DS_QUALI_MOSSE](./img/DS_QUALIMOSSE.png)
+
+  Ingrandimento della sezione relativa al diagramma di sequenza del comando `/qualiMosse`.
+
+  ![DS_INGRANDIMENTO_QUALI_MOSSE](./img/DS_ingrandimentoQUALIMOSSE.png)
+
+  5)  **DIAGRAMMA DEL COMANDO BLOCCA**
+
+  Viene riportato il diagramma che rappresenta la sequenza delle classi coinvolte per il comando `/blocca`.
+
+  ![DS_BLOCCA](./img/DS_BLOCCA.png)
+
 
   ### **5.3 Commentare le decisioni prese**
+
+Per quanto riguarda l'UML abbiamo deciso di rappresentare 5 delle user story più importanti quali:
+
+    • Il comando /help, perchè contiene tutte le informazioni necessarie affinchè l'utente possa essere guidato nell'utilizzo dell'applicazione.
+
+    • Il comando /gioca, perchè rappresenza la principale dinamica di base dell'applicazione.
+
+    • Il comando /mosse, è importante perchè aiuta gli utenti durante il gioco in modo da ricordare quali mosse sono state effettuate e in quale ordine.
+
+    • Il comando /qualiMosse, perchè rappresenta uno dei comandi principali durante la partita in quanto aiuta l'utente a decidere quale strategia adottare per la mossa successiva evidenziando la tipologia di mosse che puo' effettuare per ogni sua pedina.
+
+    • Il comando /blocca, perchè rappresenta un comando utile all'utente per personalizzare l'esperienza del gioco.
+
+Nella classe Comandi abbiamo deciso di implementare tutte le userStory richieste Product Owner in modo tale di averle disponibili in una singola classe.
 
 
 ## **6. Riepilogo del test**
@@ -220,18 +309,46 @@ __________
 
 ![comandoGioca](./img/comandoGiocaTavoliere.png)
 
-**4.** Il comando *'/help'* permette al giocatore di ricevere delle informazioni generali riguardanti il gioco, seguite dall' elenco dei comandi con la propria descrizione, specificando dove posso essere utilizzati all'interno del gioco.
+**4.** Il comando *'/help'* permette al giocatore di ricevere delle informazioni generali riguardanti il gioco, le modalità con la quale potrà inserire le coordinate delle celle in modo da poter giocare, tutto ciò seguito dall' elenco dei comandi con la propria descrizione, specificando dove posso essere utilizzati all'interno del gioco.
 
 E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà visualizzato quindi il comando
 
 ![comandoHelp1](./img/comandoHelpPrimaParte.png)
 ![comandoHelp2](./img/comandoHelpSecondaParte.png)
+![comandoHelp3](./img/comandoHelpTerzaParte.png)
 
-**5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco o le posizioni in cui sarà possibile generare nuove pedine. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere.
+**5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco, le posizioni in cui sarà possibile generare nuove pedine e le posizioni in cui sarà possibile effettuare entrambe le mosse precedentemente descritte. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere. Inoltre, le altre celle con colorazione rosa, indicano le posizioni possibili in cui il giocatore potrà effettuare sia una mossa di spostamento che una mossa di generazione.
 
-![comandoqualiMosse](./img/comandoQualiMosse.png)
+![comandoqualiMosse](./img/qualiMosse.png)
 
-**6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno.
+A partita in corso di gioco, il giocatore di turno puo' giocare sul tavoliere una nuova pedina (bianca o nera) in una casella adiacente (in senso ortogonale e diagonale) ad un'altra in cui vi sia già una propria pedina, utilizzando una notazione algebrica del tipo: a1-a2, dove a1 è la casella di partenza e a2 è la casella adiacente.
+
+![comandoPedinaAdiacente](./img/pedinaAdiacente.png)
+
+A partita in corso di gioco, il giocatore di turno puo' spostare sul tavoliere una propria pedina (bianca o nera) con il salto di una casella adiacente, utilizzando una notazione algebrica del tipo: g1-e1, dove g1 è la casella di partenza ed e1 è la casella di arrivo.
+
+La casella di arrivo deve essere libera e non deve essere adiacente alla casella originaria.
+La casella saltata può anche essere occupata da una propria pedina o da una pedina avversaria.
+
+![comandoPedinaSalto](./img/pedinaSalto.png)
+
+Se al termine di una mossa vi sono pedine avversarie adiacenti alla casella di arrivo, sia per la mossa di generazione che di spostamento, queste vengono catturate cambiando di colore.
+
+![comandoCatturaPedina](./img/catturaPedina.png)
+
+Se il giocatore non può muovere nessuna pedina del proprio colore, l’app avvisa che non c'è più nessuna mossa disponibile da poter effettuare e il turno passa all’altro colore.
+
+![comandoTurnoPassato](./img/comandoTurnoPassato.png)
+
+Se le caselle del tavoliere presentano esclusivamente pedine di uno stesso colore, allora l’app dichiara il vincitore (Bianco o Nero) e riporta i punti del Bianco e Nero contando le rispettive pedine.
+
+![comandoFinePartita](./img/finePartita.png)
+
+Se nessuna pedina può essere mossa perché le caselle del tavoliere sono state tutte riempite, allora l’app dichiara il vincitore (Bianco o Nero) e riporta i punti del Bianco e Nero contando le rispettive pedine.
+
+![comandoFinePartitaPieno](./img/finePartitaPieno.png)
+
+**6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno prima dell'inizio della partita.
 
 ![comandoVuoto](./img/comandoVuoto.png)
 
@@ -239,7 +356,29 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 
 ![comandoTavoliere](./img/comandoTavoliere.png)
 
-**8.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
+**8.** Il comando *'/tempo'*, consente di mostrare il tempo trascorso dall’inizio partita nel formato ore:minuti:secondi.
+
+![comandoTempo](./img/comandoTempo.png)
+
+**9.** Il comando *'/mosse'*, mostra la storia delle mosse con notazione algebrica, per esempio: 1. a1-a2 (N); 2. g1-e3 (B);
+
+![comandoMosse](./img/comandoMosse.png)
+
+**10.** A partita non in corso, il comando *'/blocca xn'*, dove xn sono le coordinate di una casella, rende non accessibile la casella xn per tutte le pedine. 
+
+![comandoBlocca](.img/comandoBlocca.png)
+
+La casella bloccata viene mostrata sul tavoliere con un quadratino di colore bianco.
+
+![comandoBlocca](.img/comandoBloccaTavoliere.png)
+
+Non è possibile bloccare:
+- le caselle di partenza del gioco;
+- tutte le caselle adiacenti a una casella di partenza del gioco, rendendo impossibile la mossa di espansione di una pedina a inizio gioco;
+- tutte le caselle a distanza 2 da una casella di partenza del gioco, rendendo impossibile la mossa di salto di una pedina a inizio gioco;
+- più di 9 caselle in totale.
+
+**11.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
 
 ![comandoAbbandona](./img/comandoAbbandonaSi.png)
 
@@ -247,7 +386,7 @@ In caso di risposta negativa, il giocatore rimarrà nella partita corrente.
 
 ![comandoAbbandona](./img/comandoAbbandonaNo.png)
 
-**9.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
+**12.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
 
 ![comandoEsci](./img/comandoEsciSi.png)
 
@@ -259,6 +398,48 @@ Nel caso di risposta negativa, l'applicazione notificherà all'utente l'avvenuta
 ## **8. Processo di sviluppo e organizzazione del lavoro**
 __________
 
+Il gruppo di lavoro durante lo svolgimento delle consegne ha perseguito una strategia precisa nell’organizzazione e nella divisione del lavoro.  
+
+Prima dell’inizio del lavoro effettivo per la realizzazione dei requisiti funzionali è stato sempre effettuato un primo incontro di chiarifica, in seguito al lancio di ognuno dei 3 sprint, con tutti i membri del gruppo. In questo incontro sono stati analizzati i seguenti temi:
+
+- **Identificazione e chiarimento dei requisiti funzionali richiesti.**
+
+- **Identificazione dell'ordine di priorità dei requisiti funzionali da implementare.**
+
+- **Assegnazione dei compiti da svolgere ai membri del gruppo.**
+
+Durante il primo incontro di chiarifica sono stati enunciati i requisiti richiesti che il programma doveva rispettare. Ogni requisito è stato poi successivamente analizzato e chiarito in maniera più esaustiva se presenti punti poco chiari o dubbi da parte dei membri del gruppo.
+
+Successivamente una volta individuata la sequenza di realizzazione dei requisiti funzionali da implementare per un corretto sviluppo, alcuni di essi sono stati realizzati in parallelo ottimizzando i tempi di sviluppo, altri invece no, in quanto avrebbero potuto creare dei conflitti se sviluppati in contemporanea ad altri.
+
+Dopo l’incontro iniziale solitamente quasi ogni giorno venivano notificati aggiornamenti riguardanti lo stato di compimento del proprio lavoro di ognuno, così da poter discutere delle modifiche apportate e delle difficoltà incontrate durante lo sviluppo del progetto. A seconda della gravità del problema si decideva se pianificare un incontro per cercare di risolvere insieme le difficoltà incontrate, sempre che queste non potessero essere risolte tramite soluzioni inviate via chat.
+
+Per ognuno dei 3 sprint è stato creato un milestone, chiamato con il nome del relativo sprint, a cui sono stati assegnati tutti gli issue, le pull request e la project board associati allo sprint in corso. 
+
+La project board di ogni sprint prevedeva le seguenti colonne:
+- **ToDo**, relativa agli incarichi assegnati, ma il cui lavoro non è ancora iniziato.
+- **inProgress**, per i compiti in fase di realizzazione.
+- **Review**, per i lavori terminati, ma in attesa di revisione prima del merge.
+- **Ready**, per gli incarichi revisionati dai membri del gruppo, di cui è stato effettuato il merge e in attesa della revisione dal product owner.
+- **Done**, relativa alle issue portate a termine e confermate dopo la revisione effettuata dal product owner.
+
+Ogni requisito funzionale è stato assegnato ad un membro del gruppo in base alla effettiva difficoltà di realizzazione.
+In ogni singola assegnazione è stata lasciata piena libertà nell’autogestirsi sulla divisione del proprio lavoro.
+Una volta stabilito il lavoro da svolgere sono stati aperti i rispettivi issue, in base all' ordine prefissato durante il meeting.
+
+Ognuno di noi ha creato sul proprio repository locale un branch, relativo a ciascun issue assegnato, sul quale lavorare, in modo tale da mantenere in locale tutte le modifiche prima di aggiornare il branch remoto. 
+
+Una volta portato a termine il proprio compito ed effettuata la pull request è stato richiesto ad almeno due componenti del gruppo, laddove l'intero team non avrebbe potuto riunirsi, per confermare ed approvare le modifiche effettuate. In alcuni casi la revisione ha portato ad ulteriori modifiche prima che le pull request potessero essere approvate. Nel caso in cui dopo aver confermato le modifiche, in corso d'opera, fosse stata sentita l'esigenza di apportare delle nuove modifiche venivano comunicate al team e create delle issue che andassero ad identificare la modifica da compiere. Dopo di che, come detto precedentemente, ogni membro si assegnava la nuova issue.
+
+Prima della data di consegna del progetto, per ogni sprint, il gruppo si è riunito in un incontro finale per un’ultima revisione prima di confermare al product owner la conclusione del lavoro richiesto.
+
+Durante la  realizzazione del progetto, come ambiente di sviluppo, è stato usato l'IDE Visual Studio Code con plug-in: Gradle, JUnit, Checkstyle, Spotbugs.
+Altri Software utilizzati sono stati: 
+   - _Docker_ per l'utilizzo di container;
+   - _starUML_ per i diagrammi di dominio, delle classi e di flusso;
+   - _Visual Studio Code_ per i file markdown e lo sviluppo del codice;
+   - _Discord_  per gli incontri e il lavoro comune;
+   - _WhatsApp_ per le comunicazioni e le risoluzioni di problemi più semplici.
 
 ## **9. Analisi retrospettiva**    
 __________
