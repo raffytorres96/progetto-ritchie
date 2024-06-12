@@ -251,7 +251,21 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 
 ![comandoTempo](./img/comandoTempo.png)
 
-**9.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
+**9.** A partita non in corso, il comando *'/blocca xn'*, dove xn sono le coordinate di una casella, rende non accessibile la casella xn per tutte le pedine. 
+
+![comandoBlocca](.img/comandoBlocca.png)
+
+La casella bloccata viene mostrata sul tavoliere con un quadratino di colore bianco.
+
+![comandoBlocca](.img/comandoBloccaTavoliere.png)
+
+Non è possibile bloccare:
+- le caselle di partenza del gioco;
+- tutte le caselle adiacenti a una casella di partenza del gioco, rendendo impossibile la mossa di espansione di una pedina a inizio gioco;
+- tutte le caselle a distanza 2 da una casella di partenza del gioco, rendendo impossibile la mossa di salto di una pedina a inizio gioco;
+- più di 9 caselle in totale.
+
+**12.** Il comando *'/abbandona'* se iniziata la partita, fornisce al giocatore, previo consenso esplicito,la possibilità di uscire dalla partita. In caso di risposta affermativa, il giocatore corrente perderà a tavolino la partita e verrà riportato al menù principale.
 
 ![comandoAbbandona](./img/comandoAbbandonaSi.png)
 
@@ -259,7 +273,7 @@ In caso di risposta negativa, il giocatore rimarrà nella partita corrente.
 
 ![comandoAbbandona](./img/comandoAbbandonaNo.png)
 
-**10.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
+**13.** Il comando *'/esci'* permette all' utente di uscire dal gioco, richiedendo esplicita conferma da parte del giocatore. Nel caso in cui la risposta dell' utente sia affermativa, l'applicazione terminerà.
 
 ![comandoEsci](./img/comandoEsciSi.png)
 
