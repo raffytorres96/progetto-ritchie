@@ -239,6 +239,25 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 
 ![comandoqualiMosse](./img/qualiMosse.png)
 
+A partita in corso di gioco, il giocatore di turno puo' giocare sul tavoliere una nuova pedina (bianca o nera) in una casella adiacente (in senso ortogonale e diagonale) ad un'altra in cui vi sia già una propria pedina, utilizzando una notazione algebrica del tipo: a1-a2, dove a1 è la casella di partenza e a2 è la casella adiacente.
+
+![comandoPedinaAdiacente](./img/pedinaAdiacente.png)
+
+A partita in corso di gioco, il giocatore di turno puo' spostare sul tavoliere una propria pedina (bianca o nera) con il salto di una casella adiacente, utilizzando una notazione algebrica del tipo: g1-e1, dove g1 è la casella di partenza ed e1 è la casella di arrivo.
+
+La casella di arrivo deve essere libera e non deve essere adiacente alla casella originaria.
+La casella saltata può anche essere occupata da una propria pedina o da una pedina avversaria.
+
+![comandoPedinaSalto](./img/pedinaSalto.png)
+
+Se al termine di una mossa vi sono pedine avversarie adiacenti alla casella di arrivo, sia per la mossa di generazione che di spostamento, queste vengono catturate cambiando di colore.
+
+![comandoCatturaPedina](./img/catturaPedina.png)
+
+Se le caselle del tavoliere presentano esclusivamente pedine di uno stesso colore, allora l’app dichiara il vincitore (Bianco o Nero) e riporta i punti del Bianco e Nero contando le rispettive pedine.
+
+![comandoFinePartita](./img/finePartita.png)
+
 **6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno prima dell'inizio della partita.
 
 ![comandoVuoto](./img/comandoVuoto.png)
