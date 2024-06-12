@@ -85,6 +85,22 @@ oraInizio = System.currentTimeMillis();
 public void controlloPartita(final Mossa mossa) {
     boolean continua = true;
     do {
+        if (!mossa.fattibilitaMosse(getGiocatoreCorrente())) {
+            GestoreStampa.clearTerminale();
+            GestoreStampa.stampareTitoloGioco();
+            GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_RED + "NESSUNA MOSSA POSSIBILE"
+            + GestoreStampa.ANSI_RESET + "\nTurno Passato.\n");
+            setStoricoMosse(turno, "Turno", "Passato", getGiocatoreCorrente());
+            passaTurno(this.giocatoreCorrente);
+            try {
+                Thread.sleep(TIME3);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            String mex = "TURNO: " + turno;
+            GestoreStampa.stampareMessaggioInGioco(this.giocatoreCorrente, this.tavoliere, mex, false, "");
+            continue;
+        }
         String input = Comandi.input();
         if (input.equals("/qualimosse")) {
             mossa.qualiMosse(getGiocatoreCorrente());
@@ -395,9 +411,10 @@ private boolean controlloVincitore() {
             + GestoreStampa.ANSI_RESET + " punti");
             this.partitaIniziata = false;
             this.giocoFinito = true;
+            azzeraStoricoMosse();
             Utils.setInGame(false);
             try {
-                Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+                Thread.sleep(TIME4); // Ritarda l'esecuzione per 2 secondi
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -408,9 +425,10 @@ private boolean controlloVincitore() {
             + GestoreStampa.ANSI_RESET + " punti");
             this.partitaIniziata = false;
             this.giocoFinito = true;
+            azzeraStoricoMosse();
             Utils.setInGame(false);
             try {
-                Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+                Thread.sleep(TIME4); // Ritarda l'esecuzione per 2 secondi
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -439,9 +457,10 @@ private boolean controlloVincitore() {
                 + GestoreStampa.ANSI_RESET + " punti");
                 this.partitaIniziata = false;
                 this.giocoFinito = true;
+                azzeraStoricoMosse();
                 Utils.setInGame(false);
                 try {
-                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+                    Thread.sleep(TIME4); // Ritarda l'esecuzione per 2 secondi
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -453,9 +472,10 @@ private boolean controlloVincitore() {
                         + GestoreStampa.ANSI_RESET + " punti");
                 this.partitaIniziata = false;
                 this.giocoFinito = true;
+                azzeraStoricoMosse();
                 Utils.setInGame(false);
                 try {
-                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+                    Thread.sleep(TIME4); // Ritarda l'esecuzione per 2 secondi
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -464,9 +484,10 @@ private boolean controlloVincitore() {
                 System.out.println("La partita è finita in pareggio");
                 this.partitaIniziata = false;
                 this.giocoFinito = true;
+                azzeraStoricoMosse();
                 Utils.setInGame(false);
                 try {
-                    Thread.sleep(TIME2); // Ritarda l'esecuzione per 2 secondi
+                    Thread.sleep(TIME4); // Ritarda l'esecuzione per 2 secondi
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -65,40 +65,37 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
 
    */
   public void qualiMosse(final int newgiocatoreCorrente) {
-         GestoreStampa.clearTerminale();
-         GestoreStampa.stampareTitoloGioco();
-         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-         + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-         if (newgiocatoreCorrente == 1) {
-            GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
-         } else {
-            GestoreStampa.stampareMessaggio("\nCon le pedine bianche puoi fare le seguenti mosse:\n\n");
-         }
-         // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOTTO
-
-         for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
-            for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
-                  visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
-            }
-         }
-         // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOPRA ^
-           GestoreStampa.stampareTavoliere(this.tavoliere);
-           try {
-            Thread.sleep(Partita.TIME4); // Ritarda l'esecuzione per 2 secondi
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-              puliziaTavoliere();
-              GestoreStampa.clearTerminale();
-              GestoreStampa.stampareTitoloGioco();
-              GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-              + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-              GestoreStampa.stampareGiocatoreCorrente(newgiocatoreCorrente);
-              GestoreStampa.stampareTavoliere(this.tavoliere);
-              GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-              GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+   GestoreStampa.clearTerminale();
+   GestoreStampa.stampareTitoloGioco();
+   GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+   + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+   if (newgiocatoreCorrente == 1) {
+      GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
+   } else {
+      GestoreStampa.stampareMessaggio("\nCon le pedine bianche puoi fare le seguenti mosse:\n\n");
+   }
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+      for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+            visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
+      }
+   }
+   GestoreStampa.stampareTavoliere(this.tavoliere);
+   try {
+      Thread.sleep(Partita.TIME4); // Ritarda l'esecuzione per 2 secondi
+   } catch (InterruptedException e) {
+      e.printStackTrace();
+   }
+   puliziaTavoliere();
+   GestoreStampa.clearTerminale();
+   GestoreStampa.stampareTitoloGioco();
+   GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+      + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+   GestoreStampa.stampareGiocatoreCorrente(newgiocatoreCorrente);
+   GestoreStampa.stampareTavoliere(this.tavoliere);
+   GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+      + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+   GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+      + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
 }
 
 /**
@@ -410,6 +407,35 @@ final int colonnaSelezionata, final int colore) {
    }
 }
 /**
+ * Metodo che controlla, senza fornire output a video, che il giocatore corrente abbia
+ * delle mosse a disposizione.
+ * @param newgiocatoreCorrente giocatore a cui tocca
+ * @return boolean restituisce true se il giocatore ha mosse a disposizione
+   */
+  public boolean fattibilitaMosse(final int newgiocatoreCorrente) {
+   int contaMossePossibili = 0;
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+      for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+            visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
+      }
+   }
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+      for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+         if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
+         || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
+         || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
+            contaMossePossibili++;
+         }
+      }
+   }
+   puliziaTavoliere();
+   if (contaMossePossibili == 0) {
+      return false;
+   }
+   return true;
+  }
+
+/**
  * Metodo privato che pulisce il tavoliere
    * dalle mosse possibili.
    */
@@ -419,7 +445,6 @@ private void puliziaTavoliere() {
             if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
             || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
             || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
-
                   tavoliere.setTavoliere(i, j, Cella.STATO_CELLA_VUOTA);
             }
          }
