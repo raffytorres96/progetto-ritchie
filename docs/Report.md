@@ -322,7 +322,7 @@ Se al termine di una mossa vi sono pedine avversarie adiacenti alla casella di a
 
 ![comandoCatturaPedina](./img/catturaPedina.png)
 
-Se il giocatore non può muovere nessuna pedina del proprio colore, l’app avvisa che il turno passa all’altro colore.
+Se il giocatore non può muovere nessuna pedina del proprio colore, l’app avvisa che non c'è più nessuna mossa disponibile da poter effettuare e il turno passa all’altro colore.
 
 ![comandoTurnoPassato](./img/comandoTurnoPassato.png)
 
