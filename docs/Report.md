@@ -276,6 +276,20 @@ __________
 
   ### **5.3 Commentare le decisioni prese**
 
+Per quanto riguarda l'UML abbiamo deciso di rappresentare 5 delle user story più importanti quali:
+
+    • Il comando /help, perchè contiene tutte le informazioni necessarie affinchè l'utente possa essere guidato nell'utilizzo dell'applicazione.
+
+    • Il comando /gioca, perchè rappresenza la principale dinamica di base dell'applicazione.
+
+    • Il comando /mosse, è importante perchè aiuta gli utenti durante il gioco in modo da ricordare quali mosse sono state effettuate e in quale ordine.
+
+    • Il comando /qualiMosse, perchè rappresenta uno dei comandi principali durante la partita in quanto aiuta l'utente a decidere quale strategia adottare per la mossa successiva evidenziando la tipologia di mosse che puo' effettuare per ogni sua pedina.
+
+    • Il comando /blocca, perchè rappresenta un comando utile all'utente per personalizzare l'esperienza del gioco.
+
+Nella classe Comandi abbiamo deciso di implementare tutte le userStory richieste Product Owner in modo tale di averle disponibili in una singola classe.
+
 
 ## **6. Riepilogo del test**
 __________
