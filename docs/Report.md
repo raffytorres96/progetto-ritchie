@@ -235,9 +235,9 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 ![comandoHelp2](./img/comandoHelpSecondaParte.png)
 ![comandoHelp3](./img/comandoHelpTerzaParte.png)
 
-**5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco o le posizioni in cui sarà possibile generare nuove pedine. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere.
+**5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco, le posizioni in cui sarà possibile generare nuove pedine e le posizioni in cui sarà possibile effettuare entrambe le mosse precedentemente descritte. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere. Inoltre, le altre celle con colorazione rosa, indicano le posizioni possibili in cui il giocatore potrà effettuare sia una mossa di spostamento che una mossa di generazione.
 
-![comandoqualiMosse](./img/comandoQualiMosse.png)
+![comandoqualiMosse](./img/qualiMosse.png)
 
 **6.** Il comando *'/vuoto'* permette al giocatore di visualizzare l'intero Tavoliere di gioco privo di qualsiasi pedina al suo interno prima dell'inizio della partita.
 
