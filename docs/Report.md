@@ -233,7 +233,7 @@ E' possibile avviare il comando attraverso i flag *'-h'* / *'--help'* . Verrà v
 
 ![comandoHelp1](./img/comandoHelpPrimaParte.png)
 ![comandoHelp2](./img/comandoHelpSecondaParte.png)
-![comandoHelp3]
+![comandoHelp3](./img/comandoHelpTerzaParte.png)
 
 **5.** Il comando *'/qualiMosse'* indica al giocatore corrente tutte le posizioni delle celle in cui la propria pedina potrà essere spostata all'interno del Tavoliere di gioco o le posizioni in cui sarà possibile generare nuove pedine. Le celle adiacenti alle pedine del giocatore corrente, indicate con la colorazione gialla, indicano la possibilità di generazione di ulteriori pedine da parte del giocatore. Le altre celle, indicate con la colorazione arancione, indicano le posizioni possibili in cui il giocatore potrà spostare le sue pedine presenti sul Tavoliere.
 
