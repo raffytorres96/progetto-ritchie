@@ -64,41 +64,48 @@ Mossa(final Tavoliere tavoliereCorrente, final int newGiocatoreCorrente) {
    * @param newgiocatoreCorrente
 
    */
-  public void qualiMosse(final int newgiocatoreCorrente) {
-         GestoreStampa.clearTerminale();
-         GestoreStampa.stampareTitoloGioco();
-         GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-         + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
-         if (newgiocatoreCorrente == 1) {
-            GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
-         } else {
-            GestoreStampa.stampareMessaggio("\nCon le pedine bianche puoi fare le seguenti mosse:\n\n");
-         }
-         // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOTTO
-
-         for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
-            for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
-                  visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
+  public boolean qualiMosse(final int newgiocatoreCorrente) {
+   int contaMossePossibili = 0;
+   GestoreStampa.clearTerminale();
+   GestoreStampa.stampareTitoloGioco();
+   GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+   + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI ! \n\n");
+   if (newgiocatoreCorrente == 1) {
+      GestoreStampa.stampareMessaggio("\nCon le pedine nere puoi fare le seguenti mosse:\n\n");
+   } else {
+      GestoreStampa.stampareMessaggio("\nCon le pedine bianche puoi fare le seguenti mosse:\n\n");
+   }
+   for (int i = 0; i < Tavoliere.N_RIGHE_COLONNE; i++) {
+      for (int j = 0; j < Tavoliere.N_RIGHE_COLONNE; j++) {
+            visualizzaMossePossibili(i, j, tavoliere, newgiocatoreCorrente);
+            if (Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_GIALLA
+            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ARANCIONE
+            || Cella.getStato(tavoliere.getCella(i, j)) == Cella.STATO_CELLA_ROSA) {
+               contaMossePossibili += 1;
             }
-         }
-         // BLOCCO NUOVO PER ESAMINARE TUTTE LE PEDINE DEL GIOCATORE 1 SOPRA ^
-           GestoreStampa.stampareTavoliere(this.tavoliere);
-           try {
-            Thread.sleep(Partita.TIME4); // Ritarda l'esecuzione per 2 secondi
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-              puliziaTavoliere();
-              GestoreStampa.clearTerminale();
-              GestoreStampa.stampareTitoloGioco();
-              GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
-              + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
-              GestoreStampa.stampareGiocatoreCorrente(newgiocatoreCorrente);
-              GestoreStampa.stampareTavoliere(this.tavoliere);
-              GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
-                    + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
-              GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
-                    + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+      }
+   }
+   if (contaMossePossibili == 0) {
+      return true;
+   }
+   GestoreStampa.stampareTavoliere(this.tavoliere);
+   try {
+      Thread.sleep(Partita.TIME4); // Ritarda l'esecuzione per 2 secondi
+   } catch (InterruptedException e) {
+      e.printStackTrace();
+   }
+   puliziaTavoliere();
+   GestoreStampa.clearTerminale();
+   GestoreStampa.stampareTitoloGioco();
+   GestoreStampa.stampareMessaggio(GestoreStampa.ANSI_BLUE + "\nBenvenuti in ATAXX: "
+      + GestoreStampa.ANSI_RESET + " Hai iniziato una nuova partita, DIVERTITI !\n\n");
+   GestoreStampa.stampareGiocatoreCorrente(newgiocatoreCorrente);
+   GestoreStampa.stampareTavoliere(this.tavoliere);
+   GestoreStampa.stampareMessaggio("Puoi usare" + GestoreStampa.ANSI_BLUE + " '/Abbandona' "
+      + GestoreStampa.ANSI_RESET + "per abbandonare la partita\n");
+   GestoreStampa.stampareMessaggio("Oppure puoi usare" + GestoreStampa.ANSI_RED + " '/Esci' "
+      + GestoreStampa.ANSI_RESET + "per uscire dal gioco\n\n");
+   return false;
 }
 
 /**
